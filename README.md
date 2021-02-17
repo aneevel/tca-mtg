@@ -13,9 +13,9 @@ susceptible to change throughout the semester.
 UPDATE February 16th, 2021
 ---
 
-Chose Angular as JS Framework
-Chose Angular-Material as CSS Framework
-Now we are looking at project completion near my birthday...all the way in November! :nerd_face: The beginning of the project is slow to show progress...
+* Chose Angular as JS Framework
+* Chose Angular-Material as CSS Framework
+* Now we are looking at project completion near my birthday...all the way in November! :nerd_face: The beginning of the project is slow to show progress...
 
 ![February 16 Breakdown Backlog](commentary/BBFeb16.png?raw=true)
 ![February 16 Burn-up Chart](commentary/BurnUpFeb16.png?raw=true)
