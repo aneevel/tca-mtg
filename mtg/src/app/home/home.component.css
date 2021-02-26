@@ -1,0 +1,15 @@
+li button{
+    font-size: 24px;
+}
+
+#play-button {
+    background-color: darkblue;
+}
+
+#stats-button {
+    background-color: red;
+}
+
+#users-button {
+    background-color: green;
+}
