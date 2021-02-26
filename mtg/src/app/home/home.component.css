@@ -21,6 +21,11 @@ mat-list-item {
     margin-bottom: 50px;
 }
 
+mat-divider {
+    border-top-width: 2px;
+    border-top-style: dashed;
+}
+
 mat-list-item a{
     font-size: 24px;
     text-align: center;
