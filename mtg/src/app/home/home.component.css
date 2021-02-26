@@ -1,4 +1,14 @@
-ul#app-features {
+#feature-box {
+    width: 50%;
+    min-height: 500px;
+    margin: auto;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#app-features {
     list-style-type: none;
 }
 
