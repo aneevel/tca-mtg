@@ -1,3 +1,7 @@
+ul#app-features {
+    list-style-type: none;
+}
+
 li button{
     font-size: 24px;
 }
