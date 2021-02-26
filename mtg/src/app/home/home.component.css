@@ -16,11 +16,12 @@
     align-items: center;
 }
 
-li {
-    margin: 20px;
+mat-list-item {
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
 
-li a{
+mat-list-item a{
     font-size: 24px;
     text-align: center;
     line-height: 100px;
