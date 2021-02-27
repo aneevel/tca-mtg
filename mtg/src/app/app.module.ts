@@ -11,10 +11,14 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+<<<<<<< HEAD
 import { GamePlayComponent } from './game-play/game-play.component';
 import { GameResultsComponent } from './game-results/game-results.component';
 import { ViewStatsComponent } from './view-stats/view-stats.component';
 import { ViewUsersComponent } from './view-users/view-users.component';
+=======
+import { ViewUserProfileComponent } from './view-user-profile/view-user-profile.component';
+>>>>>>> view-user-profile-component
 
 const routes: Routes = [
     { path: 'game-setup', component: GameSetupComponent },
@@ -31,10 +35,14 @@ const routes: Routes = [
     AppComponent,
     HomeComponent,
     GameSetupComponent,
+<<<<<<< HEAD
     GamePlayComponent,
     GameResultsComponent,
     ViewStatsComponent,
     ViewUsersComponent
+=======
+    ViewUserProfileComponent
+>>>>>>> view-user-profile-component
   ],
   imports: [
     RouterModule.forRoot(routes),
