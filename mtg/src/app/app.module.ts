@@ -11,6 +11,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ViewStatsComponent } from './view-stats/view-stats.component';
 
 const routes: Routes = [
     { path: 'game-setup', component: GameSetupComponent },
@@ -26,7 +27,8 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     HomeComponent,
-    GameSetupComponent
+    GameSetupComponent,
+    ViewStatsComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
