@@ -12,6 +12,16 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+const routes: Routes = [
+    { path: 'game-setup', component: GameSetupComponent },
+    { path: 'game-play', component: GamePlayComponent },
+    { path: 'game-results', component: GameResultsComponent },
+    { path: 'view-stats', component: ViewStatsComponent },
+    { path: 'view-users', component: ViewUsersComponent },
+    { path: 'view-user-profile', component: ViewUserProfileComponent },
+    { path: 'view-decks', component: ViewDecksComponent }
+];
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,6 +29,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     GameSetupComponent
   ],
   imports: [
+    RouterModule.forRoot(routes),
     BrowserModule,
     MatToolbarModule,
     MatButtonModule,
@@ -26,6 +37,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatListModule,
     BrowserAnimationsModule
   ],
+  exports: [RouterModule],
   providers: [],
   bootstrap: [AppComponent]
 })
