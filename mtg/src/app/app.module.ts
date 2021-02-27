@@ -17,6 +17,7 @@ import { ViewStatsComponent } from './view-stats/view-stats.component';
 import { ViewUsersComponent } from './view-users/view-users.component';
 import { ViewUserProfileComponent } from './view-user-profile/view-user-profile.component';
 import { ViewDecksComponent } from './view-decks/view-decks.component';
+import { NavigationComponent } from './navigation/navigation.component';
 
 const routes: Routes = [
     { path: 'game-setup', component: GameSetupComponent },
@@ -38,7 +39,8 @@ const routes: Routes = [
     ViewStatsComponent,
     ViewUsersComponent,
     ViewUserProfileComponent,
-    ViewDecksComponent
+    ViewDecksComponent,
+    NavigationComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
