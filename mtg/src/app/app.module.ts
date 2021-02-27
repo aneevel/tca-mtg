@@ -12,6 +12,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GamePlayComponent } from './game-play/game-play.component';
+import { GameResultsComponent } from './game-results/game-results.component';
 
 const routes: Routes = [
     { path: 'game-setup', component: GameSetupComponent },
@@ -28,7 +29,8 @@ const routes: Routes = [
     AppComponent,
     HomeComponent,
     GameSetupComponent,
-    GamePlayComponent
+    GamePlayComponent,
+    GameResultsComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
