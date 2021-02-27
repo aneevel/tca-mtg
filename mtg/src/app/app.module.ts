@@ -14,6 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GamePlayComponent } from './game-play/game-play.component';
 import { GameResultsComponent } from './game-results/game-results.component';
 import { ViewStatsComponent } from './view-stats/view-stats.component';
+import { ViewUsersComponent } from './view-users/view-users.component';
 
 const routes: Routes = [
     { path: 'game-setup', component: GameSetupComponent },
@@ -32,7 +33,8 @@ const routes: Routes = [
     GameSetupComponent,
     GamePlayComponent,
     GameResultsComponent,
-    ViewStatsComponent
+    ViewStatsComponent,
+    ViewUsersComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
