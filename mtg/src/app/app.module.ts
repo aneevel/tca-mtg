@@ -13,6 +13,7 @@ import { MatListModule } from '@angular/material/list';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GamePlayComponent } from './game-play/game-play.component';
 import { GameResultsComponent } from './game-results/game-results.component';
+import { ViewStatsComponent } from './view-stats/view-stats.component';
 
 const routes: Routes = [
     { path: 'game-setup', component: GameSetupComponent },
@@ -30,7 +31,8 @@ const routes: Routes = [
     HomeComponent,
     GameSetupComponent,
     GamePlayComponent,
-    GameResultsComponent
+    GameResultsComponent,
+    ViewStatsComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
