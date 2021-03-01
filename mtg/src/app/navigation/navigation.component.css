@@ -14,3 +14,10 @@
 #users-button {
     background-color: green;
 }
+
+@media (max-width: 680px)
+{
+    #app-header {
+        display: none;
+    }
+}
