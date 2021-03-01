@@ -27,7 +27,8 @@ const routes: Routes = [
     { path: 'view-stats', component: ViewStatsComponent },
     { path: 'view-users', component: ViewUsersComponent },
     { path: 'view-user-profile', component: ViewUserProfileComponent },
-    { path: 'view-decks', component: ViewDecksComponent }
+    { path: 'view-decks', component: ViewDecksComponent },
+    { path: '**', component: HomeComponent }
 ];
 
 @NgModule({
