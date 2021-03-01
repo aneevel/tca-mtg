@@ -1,38 +1,31 @@
 <mat-toolbar>
     <span>Magic: The Gathering - Companion App</span>
+    <mat-nav-list id="app-features">
+        <mat-list-item>
+        <a routerLink="/game-setup" 
+                routerLinkActive="active"
+                id="play-button" 
+                mat-raised-button color="primary">
+                Play
+            </a>
+        </mat-list-item>
+    <mat-list-item>
+        <a routerLink="/view-stats"
+                routerLinkActive="active"
+                id="stats-button" 
+                mat-raised-button color="primary">
+                Stats
+            </a>
+        </mat-list-item>
+    <mat-list-item>
+        <a routerLink="/view-users"
+                routerLinkActive="active"
+                id="users-button" 
+                mat-raised-button color="primary">
+                Users
+            </a>
+        </mat-list-item> 
+    </mat-nav-list>
 </mat-toolbar>
-<mat-sidenav-container autosize>
-    <mat-sidenav #sidenav opened>
-        <mat-nav-list id="app-features">
-            <mat-list-item>
-            <a routerLink="/game-setup" 
-                    routerLinkActive="active"
-                    id="play-button" 
-                    mat-raised-button color="primary">
-                    Play
-                </a>
-            </mat-list-item>
-        <mat-list-item>
-            <a routerLink="/view-stats"
-                    routerLinkActive="active"
-                    id="stats-button" 
-                    mat-raised-button color="primary">
-                    Stats
-                </a>
-            </mat-list-item>
-        <mat-list-item>
-            <a routerLink="/view-users"
-                    routerLinkActive="active"
-                    id="users-button" 
-                    mat-raised-button color="primary">
-                    Users
-                </a>
-            </mat-list-item> 
-            <router-outlet></router-outlet>
-        </mat-nav-list>
-    </mat-sidenav>
-    <mat-sidenav-content>
-        <app-home></app-home>
-    </mat-sidenav-content>
-</mat-sidenav-container>    
+
 
