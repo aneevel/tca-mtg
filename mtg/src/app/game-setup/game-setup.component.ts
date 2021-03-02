@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { PlayersService } from '../players.service';
+
 @Component({
   selector: 'app-game-setup',
   templateUrl: './game-setup.component.html',
@@ -7,7 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GameSetupComponent implements OnInit {
 
-  constructor() { }
+    players = [];
+
+  constructor(
+      private playerService: PlayersService
+  ) { 
+    this.players = playerService.getPlayers();
+  }
 
   ngOnInit(): void {
   }
