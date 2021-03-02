@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
+import { Deck } from '../deck';
 import { Player } from '../player';
 import { PlayersService } from '../players.service';
 
@@ -16,7 +17,7 @@ export class GameSetupComponent implements OnInit {
     playerOneDeckControl = new FormControl();
 
     players: Player[] = [];
-    decks = [];
+    decks: Deck[] = [];
 
     constructor(
         private playerService: PlayersService
@@ -25,6 +26,10 @@ export class GameSetupComponent implements OnInit {
     }
 
     ngOnInit(): void {
+
+        // Add some dummy data
+        this.players = [...this.players, { name: "Alec" }];
+        this.decks = [...this.decks, { name: "Vizier", description: "A top meta deck in modern", colors: [ "White", "Green" ]}];
     }
 
     displayPlayerFunction(player: Player): string {
