@@ -3,7 +3,7 @@
         <h2>Player One</h2>
         <mat-divider></mat-divider>
         <label for="player-one-names">Player Name</label>
-        <select name="player-one-names" id="player-one-names">
+        <select *ngFor="let player of players">
             <option value="Alec">Alec</option>
             <option value="Alison">Alison</option>
             <option value="Ryan">Ryan</option>
