@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Player } from '../player';
 import { PlayersService } from '../players.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { PlayersService } from '../players.service';
 })
 export class GameSetupComponent implements OnInit {
 
-    players = [];
+    players: Player[] = [];
 
   constructor(
       private playerService: PlayersService

@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 
+import { Player } from './player';
+
 @Injectable({
   providedIn: 'root'
 })
 export class PlayersService {
 
-    players = [];
+    players: Player[] = [];
 
     addPlayer(player) {
         this.players.push(player);

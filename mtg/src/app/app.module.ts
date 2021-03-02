@@ -17,8 +17,10 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
-import { MatSidenavModule } from '@angular/material/sidenav';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatFormFieldModule } from '@angular/material/form-field';
+
 
 const routes: Routes = [
     { path: 'game-setup', component: GameSetupComponent },
@@ -51,7 +53,8 @@ const routes: Routes = [
     MatButtonModule,
     MatDividerModule,
     MatListModule,
-    MatSidenavModule,
+    MatAutocompleteModule,
+    MatFormFieldModule,
     BrowserAnimationsModule
   ],
   exports: [RouterModule],
