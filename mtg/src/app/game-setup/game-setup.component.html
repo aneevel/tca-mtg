@@ -2,10 +2,17 @@
     <div class="player-setup-container" id="player-one-container">
         <h2>Player One</h2>
         <mat-divider></mat-divider>
-        <form class="player-one-form">
+        <form class="player-one-form" [formGroup]="playerOneForm">
+            <div *ngIf="playerOneForm.controls.nameControl.value != '' && playerOneForm.controls.deckControl.value != ''"class="player-one-config">
+                <p>
+                    Player One will be known as {{playerOneForm.controls.nameControl.value}} and they will use the {{playerOneForm.controls.deckControl.value}} deck. 
+                </p>
+            </div>
             <mat-form-field>
-                <mat-label>Player Name</mat-label>
-                <input type="text" matInput [formControl]="playerOneNameControl" [matAutocomplete]="auto"> 
+                <mat-label>
+                    Player Name
+                </mat-label>
+                <input type="text" matInput formControlName="nameControl" [matAutocomplete]="auto"> 
                 <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayPlayerFunction">
                     <mat-option *ngFor="let player of players" [value]="player.name">
                         {{player.name}}
@@ -14,7 +21,7 @@
             </mat-form-field>
             <mat-form-field>
                 <mat-label>Deck</mat-label>
-                <input type="text" matInput [formControl]="playerOneDeckControl" [matAutocomplete]="auto">
+                <input type="text" matInput formControlName="deckControl" [matAutocomplete]="auto">
                 <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayDeckFunction">
                     <mat-option *ngFor="let deck of decks" [value]="deck.name">
                         {{deck.name}}
@@ -22,20 +29,5 @@
                 </mat-autocomplete>
             </mat-form-field>
         </form>
-    </div>
-    <div class="player-setup-container" id="player-two-container">
-        <h2>Player Two</h2>
-        <mat-divider></mat-divider>
-        <label for="player-two-names">Player Name</label>
-        <select name="player-two-names" id="player-two-names">
-            <option value="Alec">Alec</option>
-            <option value="Alison">Alison</option>
-            <option value="Ryan">Ryan</option>
-        </select>
-        <label for="player-two-decks">Player Deck</label>
-        <select name="player-two-decks" id="player-two-decks">
-            <option value="Vizier">Vizier</option>
-            <option value="Death and Taxes">Death and Taxes</option>
-        </select>
-    </div>
+    </div>  
 </div>
