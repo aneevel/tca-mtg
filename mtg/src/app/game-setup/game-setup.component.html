@@ -8,6 +8,7 @@
                     Player One will be known as {{playerOneForm.controls.nameControl.value}} and they will use the {{playerOneForm.controls.deckControl.value}} deck. 
                 </p>
             </div>
+            <h3>Select Player OR Create New Player</h3>
             <mat-form-field>
                 <mat-label>
                     Player Name
@@ -19,6 +20,8 @@
                     </mat-option>
                 </mat-autocomplete>
             </mat-form-field>
+
+            <h3>Select Deck OR Create New Deck</h3>
             <mat-form-field>
                 <mat-label>Deck</mat-label>
                 <input type="text" matInput formControlName="deckControl" [matAutocomplete]="auto">
