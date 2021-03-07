@@ -8,7 +8,8 @@
                     Player One will be known as {{playerOneForm.controls.nameControl.value}} and they will use the {{playerOneForm.controls.deckControl.value}} deck. 
                 </p>
             </div>
-            <h3>Select Player OR Create New Player</h3>
+            <h3>Select Player <em>- OR -</em> Create New Player</h3>
+            <h4>Please enter the player name you would like to use below. If you are entering a new name, you may enter it below and a new user will be created for it.</h4>
             <mat-form-field>
                 <mat-label>
                     Player Name
@@ -21,7 +22,7 @@
                 </mat-autocomplete>
             </mat-form-field>
 
-            <h3>Select Deck OR Create New Deck</h3>
+            <h3>Select Deck <em>- OR -</em> Create New Deck</h3>
             <mat-form-field>
                 <mat-label>Deck</mat-label>
                 <input type="text" matInput formControlName="deckControl" [matAutocomplete]="auto">
@@ -31,6 +32,11 @@
                     </mat-option>
                 </mat-autocomplete>
             </mat-form-field>
+            <mat-divider></mat-divider>
+            <button id="reset-player-one-form" mat-raised-button color="secondary">Reset Form Info</button>
         </form>
+
+        <mat-divider></mat-divider>
+        <button id="play-game-button" mat-raised-button color="primary">Play Game!</button>
     </div>  
 </div>
