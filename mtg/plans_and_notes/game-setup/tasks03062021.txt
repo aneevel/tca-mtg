@@ -1,7 +1,7 @@
 Top 3 Tasks 3/6/2021 7:32 pm session
 ---
 
-1. Add button for game-play that routes to the game-play screen
+1. Add button for game-play that routes to the game-play screen - DONE
     - a. Add a Material Button 
     - b. Route the button press to game-play
 2. Add validation for player/deck names
