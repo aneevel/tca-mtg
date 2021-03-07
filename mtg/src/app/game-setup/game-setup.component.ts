@@ -40,6 +40,14 @@ export class GameSetupComponent implements OnInit {
         
     }
 
+    playerNameExists(playerName: string): boolean {
+        return (this.players.some(x => x.name === playerName));
+    }
+
+    deckNameExists(deckName: string): boolean {
+        return (this.decks.some(x => x.name === deckName));
+    }
+
     displayPlayerFunction(player: Player): string {
         return player && player.name ? player.name : '';
     }
