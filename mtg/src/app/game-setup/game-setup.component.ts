@@ -13,7 +13,7 @@ import { PlayersService } from '../players.service';
 
 export class GameSetupComponent implements OnInit {
 
-    playerOneForm = this.formBuilder.group ({
+    playersForm = this.formBuilder.group ({
         nameControl: ['', Validators.required],
         deckControl: ['', Validators.required],
     });
@@ -38,6 +38,20 @@ export class GameSetupComponent implements OnInit {
             {   name: "Land Destruction", description: "When you don't want your opponent to even play the game!", colors: [ "Red", "Blue"]}
         ];
         
+    }
+
+    onSubmit() {
+        if (this.playerNameExists(this.playersForm.controls.nameControl.value)) {
+            console.warn("Player Name Exists");
+        } else {
+            console.warn("Player Name does NOT Exist");
+        }
+
+        if (this.deckNameExists(this.playersForm.controls.deckControl.value)) {
+            console.warn("Deck exists!");
+        } else {
+            console.warn("Deck does NOT Exist");
+        }
     }
 
     playerNameExists(playerName: string): boolean {

@@ -2,10 +2,10 @@
     <div class="player-setup-container" id="player-one-container">
         <h2>Player One</h2>
         <mat-divider></mat-divider>
-        <form class="player-one-form" [formGroup]="playerOneForm">
-            <div *ngIf="playerOneForm.controls.nameControl.value != '' && playerOneForm.controls.deckControl.value != ''"class="player-one-config">
+        <form class="players-form" [formGroup]="playersForm" (ngSubmit)="onSubmit()">
+            <div *ngIf="playersForm.controls.nameControl.value != '' && playersForm.controls.deckControl.value != ''"class="player-one-config">
                 <p>
-                    Player One will be known as {{playerOneForm.controls.nameControl.value}} and they will use the {{playerOneForm.controls.deckControl.value}} deck. 
+                    Player One will be known as {{playersForm.controls.nameControl.value}} and they will use the {{playersForm.controls.deckControl.value}} deck. 
                 </p>
             </div>
             <h3>Select Player <em>- OR -</em> Create New Player</h3>
@@ -37,12 +37,13 @@
         </form>
 
         <mat-divider></mat-divider>
-        <a routerLink="/game-play"
+        <button type="submit" 
+            [disabled]="!playersForm.valid"
+            routerLink="/game-play"
             routerLinkActive="active"
             id="play-game-button"
-            mat-raised-button color="primary"
-        >
+            mat-raised-button color="primary">
             Play Game!
-        </a>
+        </button>
     </div>  
 </div>
