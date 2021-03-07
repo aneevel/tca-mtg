@@ -41,17 +41,21 @@ export class GameSetupComponent implements OnInit {
     }
 
     onSubmit() {
-        if (this.playerNameExists(this.playersForm.controls.nameControl.value)) {
-            console.warn("Player Name Exists");
-        } else {
-            console.warn("Player Name does NOT Exist");
+        
+        // Add a new player if this one wasn't found
+        if (!this.playerNameExists(this.playersForm.controls.nameControl.value)) {
+            this.playerService.addPlayer({ name: this.playersForm.controls.nameControl.value });
         }
 
-        if (this.deckNameExists(this.playersForm.controls.deckControl.value)) {
-            console.warn("Deck exists!");
-        } else {
-            console.warn("Deck does NOT Exist");
+        // Set player names as active players
+
+
+        // Add a new deck if this one wasn't found
+        if (!this.deckNameExists(this.playersForm.controls.deckControl.value)) {
+            this.decks = [...this.decks, { name: this.playersForm.controls.deckControl.value, description: "", colors: []}];
         }
+
+        // Set decks as active decks
     }
 
     playerNameExists(playerName: string): boolean {
