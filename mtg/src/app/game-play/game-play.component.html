@@ -1,22 +1,22 @@
 <div id="play-mat">
-    <mat-grid-list cols="2" rows="6" rowHeight="2:1">
+    <mat-grid-list cols="2" rows="6" rowHeight="2:0.5">
         <mat-grid-tile>
-            <p>Player One</p>
+            <h2>Player One</h2>
         </mat-grid-tile>
         <mat-grid-tile [rowspan]=3>
-            <p>Mana</p>
+            <h2>Mana</h2>
         </mat-grid-tile>
         <mat-grid-tile>
-            <p>Life: 20</p>
+            <h2>Life: 20</h2>
         </mat-grid-tile>
         <mat-grid-tile>
-            <p>Life: 20</p>
+            <h2>Life: 20</h2>
         </mat-grid-tile>
         <mat-grid-tile>
-            <p>Mana</p>
+            <h2>Player Two</h2>
         </mat-grid-tile>
-        <mat-grid-tile>
-            <p>Player Two</p>
+        <mat-grid-tile [rowspan]=3>
+            <h2>Mana</h2>
         </mat-grid-tile>
     </mat-grid-list>
 </div>
