@@ -1,1 +1,22 @@
-<p>game-play works!</p>
+<div id="play-mat">
+    <mat-grid-list cols="2" rows="6" rowHeight="2:1">
+        <mat-grid-tile>
+            <p>Player One</p>
+        </mat-grid-tile>
+        <mat-grid-tile [rowspan]=3>
+            <p>Mana</p>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <p>Life: 20</p>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <p>Life: 20</p>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <p>Mana</p>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <p>Player Two</p>
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>
