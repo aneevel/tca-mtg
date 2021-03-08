@@ -4,6 +4,9 @@
     margin: 10px;
 }
 
-.name h2 {
-    font-size: 42px;
+@media screen and (min-width: 600px)
+{
+    .name h2 {
+        font-size: 42px;
+    }
 }
