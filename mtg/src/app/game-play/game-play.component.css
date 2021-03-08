@@ -1,0 +1,10 @@
+.name {
+    align-items: center;
+    margin: 10px;
+    font-size: 32px;
+}
+
+.mana {
+    align-items: left;
+    justify-items: top;
+}
