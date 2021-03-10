@@ -1,0 +1,14 @@
+.player-form-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.player-setup-container {
+    margin: 5rem;
+}
+
+#submission-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
