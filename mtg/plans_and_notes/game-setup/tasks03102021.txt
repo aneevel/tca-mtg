@@ -1,0 +1,8 @@
+Top 3 Tasks 3/10 2:30pm session
+---
+
+1. Add second player form to game-setup
+    -a. Copy form fields from first player
+    -b. Give unique ids and proper classes for second player
+2. Fix issue with decks displaying the names 
+3. Pass name and deck info to game-play component
