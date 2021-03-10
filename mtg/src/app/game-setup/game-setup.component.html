@@ -67,14 +67,16 @@
                 They will take on {{playersForm.controls.playerTwoNameControl.value}} and their {{playersForm.controls.playerTwoDeckControl.value}} deck.
             </p>
         </div>  
-        <button type="submit" 
+        <div id="submission-area">
+            <button type="submit" 
                 [disabled]="!playersForm.valid"
                 routerLink="/game-play"
                 routerLinkActive="active"
                 id="play-game-button"
                 mat-raised-button color="primary">
                 Play Game!
-            </button>  
+            </button>
+        </div>  
     </form>
 
 </div>
