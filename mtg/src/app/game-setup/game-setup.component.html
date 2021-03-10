@@ -1,15 +1,10 @@
-<div>
-    <div class="player-setup-container" id="player-one-container">
-        <h2>Player One</h2>
-        <mat-divider></mat-divider>
-        <form class="players-form" [formGroup]="playersForm" (ngSubmit)="onSubmit()">
-            <div *ngIf="playersForm.controls.nameControl.value != '' && playersForm.controls.deckControl.value != ''"class="player-one-config">
-                <p>
-                    Player One will be known as {{playersForm.controls.nameControl.value}} and they will use the {{playersForm.controls.deckControl.value}} deck. 
-                </p>
-            </div>
+<div id="player-form-container">
+    <form class="players-form" [formGroup]="playersForm" (ngSubmit)="onSubmit()">
+        <div class="player-setup-container" id="player-one-container">
+            <h2>Player One</h2>
+            <mat-divider></mat-divider>
+        
             <h3>Select Player <em>- OR -</em> Create New Player</h3>
-            <h4>Please enter the player name you would like to use below. If the player name has not been used before, a new player will be created with the name.</h4>
             <mat-form-field>
                 <mat-label>
                     Player Name
@@ -34,16 +29,52 @@
             </mat-form-field>
             <mat-divider></mat-divider>
             <button id="reset-player-one-form" mat-raised-button color="secondary">Reset Form Info</button>
-        </form>
+        </div>
+        <div class="player-setup-container" id="player-two-container">
+            <h2>Player Two</h2>
+            <mat-divider></mat-divider>
+        
+            <h3>Select Player <em>- OR -</em> Create New Player</h3>
+            <mat-form-field>
+                <mat-label>
+                    Player Name
+                </mat-label>
+                <input type="text" matInput formControlName="nameControl" [matAutocomplete]="auto" required>  
+                <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayPlayerFunction">
+                    <mat-option *ngFor="let player of players" [value]="player.name">
+                        {{player.name}}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
 
+            <h3>Select Deck <em>- OR -</em> Create New Deck</h3>
+            <mat-form-field>
+                <mat-label>Deck</mat-label>
+                <input type="text" matInput formControlName="deckControl" [matAutocomplete]="auto" required>
+                <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayDeckFunction">
+                    <mat-option *ngFor="let deck of decks" [value]="deck.name">
+                        {{deck.name}}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+            <mat-divider></mat-divider>
+            <button id="reset-player-two-form" mat-raised-button color="secondary">Reset Form Info</button>
         <mat-divider></mat-divider>
+        </div>
+        <div *ngIf="playersForm.controls.nameControl.value != '' && playersForm.controls.deckControl.value != ''"class="player-one-config">
+            <p>
+                Player One will be known as {{playersForm.controls.nameControl.value}} and they will use the {{playersForm.controls.deckControl.value}} deck. 
+                They will take on {{playersForm.controls.playerTwoNameControl.value}} and their {{playersForm.controls.playerTwoDeckControl.value}} deck.
+            </p>
+        </div>  
         <button type="submit" 
-            [disabled]="!playersForm.valid"
-            routerLink="/game-play"
-            routerLinkActive="active"
-            id="play-game-button"
-            mat-raised-button color="primary">
-            Play Game!
-        </button>
-    </div>  
+                [disabled]="!playersForm.valid"
+                routerLink="/game-play"
+                routerLinkActive="active"
+                id="play-game-button"
+                mat-raised-button color="primary">
+                Play Game!
+            </button>  
+    </form>
+
 </div>
