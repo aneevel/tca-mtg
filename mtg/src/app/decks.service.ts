@@ -10,7 +10,7 @@ export class DecksService {
   decks: Deck[] = [];
 
   addDeck(deck) {
-  this.decks.push(deck);
+    this.decks.push(deck);
   }
 
   getDecks() {
@@ -18,7 +18,7 @@ export class DecksService {
   }
 
   getDeck(deck) {
-  return this.decks.find(deck);
+    return this.decks.find(deck);
   }
 
   constructor() { }
