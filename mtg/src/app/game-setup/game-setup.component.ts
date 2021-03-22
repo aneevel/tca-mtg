@@ -25,8 +25,8 @@ export class GameSetupComponent implements OnInit {
     decks: Deck[] = [];
 
     constructor(
-        private playerService: PlayersService,
-        private deckService: DecksService,
+        public playerService: PlayersService,
+        public deckService: DecksService,
         private formBuilder: FormBuilder
     ) { 
         this.players = playerService.getPlayers();
@@ -57,7 +57,7 @@ export class GameSetupComponent implements OnInit {
 
         // Add a new deck if this one wasn't found
         if (!this.deckNameExists(this.playersForm.controls.deckControl.value)) {
-            this.deckService.addDeck({ name: this.playersForm.controls.deckControl.value, description: "", colors: []});
+            this.deckService.addDeck({ name: this.playersForm.controls.deckControl.value, description: "No deck description set", colors: []});
         }
 
         // Set decks as active decks

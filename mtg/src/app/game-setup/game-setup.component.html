@@ -102,7 +102,11 @@
         <div id="submission-area">
             <button type="submit" 
                 [disabled]="!playersForm.valid"
-                routerLink="/game-play"
+                [routerLink]="['/game-play', 
+                    this.playerService.getPlayer(playersForm.controls.playerOneNameControl), 
+                    this.deckService.getDeck(playersForm.controls.playerOneDeckControl),
+                    this.playerService.getPlayer(playersForm.controls.playerTwoNameControl),
+                    this.deckService.getDeck(playersForm.controls.playerTwoDeckControl)]"
                 routerLinkActive="active"
                 id="play-game-button"
                 mat-raised-button color="primary">
