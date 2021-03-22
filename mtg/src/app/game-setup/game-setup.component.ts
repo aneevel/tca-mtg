@@ -15,14 +15,10 @@ import { PlayersService } from '../players.service';
 export class GameSetupComponent implements OnInit {
 
     playersForm = this.formBuilder.group ({
-        playerOne: this.formBuilder.group({
-            nameControl: ['', Validators.required],
-            deckControl: ['', Validators.required]
-        }),
-        playerTwo: this.formBuilder.group({
-            nameControl: ['', Validators.required],
-            deckControl: ['', Validators.required]
-        })
+        playerOneNameControl: ['', Validators.required],
+        playerOneDeckControl: ['', Validators.required],
+        playerTwoNameControl: ['', Validators.required],
+        playerTwoDeckControl: ['', Validators.required]
     });
 
     players: Player[] = [];
