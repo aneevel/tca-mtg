@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 
 import { Deck } from '../deck';
+import { DecksService } from '../decks.service';
 import { Player } from '../player';
 import { PlayersService } from '../players.service';
 
@@ -14,8 +15,14 @@ import { PlayersService } from '../players.service';
 export class GameSetupComponent implements OnInit {
 
     playersForm = this.formBuilder.group ({
-        nameControl: ['', Validators.required],
-        deckControl: ['', Validators.required],
+        playerOne: this.formBuilder.group({
+            nameControl: ['', Validators.required],
+            deckControl: ['', Validators.required]
+        }),
+        playerTwo: this.formBuilder.group({
+            nameControl: ['', Validators.required],
+            deckControl: ['', Validators.required]
+        })
     });
 
     players: Player[] = [];
@@ -23,9 +30,11 @@ export class GameSetupComponent implements OnInit {
 
     constructor(
         private playerService: PlayersService,
+        private deckService: DecksService,
         private formBuilder: FormBuilder
     ) { 
         this.players = playerService.getPlayers();
+        this.decks = deckService.getDecks();
     }
 
     ngOnInit(): void {
@@ -52,7 +61,7 @@ export class GameSetupComponent implements OnInit {
 
         // Add a new deck if this one wasn't found
         if (!this.deckNameExists(this.playersForm.controls.deckControl.value)) {
-            this.decks = [...this.decks, { name: this.playersForm.controls.deckControl.value, description: "", colors: []}];
+            this.deckService.addDeck({ name: this.playersForm.controls.deckControl.value, description: "", colors: []});
         }
 
         // Set decks as active decks
