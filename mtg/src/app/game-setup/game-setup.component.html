@@ -39,11 +39,6 @@
                     </mat-option>
                 </mat-autocomplete>
             </mat-form-field>
-            <mat-divider></mat-divider>
-            <button id="reset-player-one-form" 
-                mat-raised-button color="secondary">
-                Reset Form Info
-            </button>
         </div>
         <div class="player-setup-container" 
             id="player-two-container">
@@ -86,11 +81,6 @@
                 </mat-autocomplete>
             </mat-form-field>
             <mat-divider></mat-divider>
-            <button id="reset-player-two-form" 
-                mat-raised-button color="secondary">
-                Reset Form Info
-            </button>
-        <mat-divider></mat-divider>
         </div>
         <div *ngIf="playersForm.controls.playerOneNameControl.value != '' && playersForm.controls.playerOneDeckControl.value 
                 && playersForm.controls.playerTwoNameControl.value != '' && playersForm.controls.playerTwoDeckControl.value != ''" class="player-one-config">
