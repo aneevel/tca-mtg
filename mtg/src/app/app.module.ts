@@ -46,7 +46,7 @@ const routes: Routes = [
     ViewUsersComponent,
     ViewUserProfileComponent,
     ViewDecksComponent,
-    NavigationComponent
+    NavigationComponent,
   ],
   imports: [
     RouterModule.forRoot(routes),
