@@ -53,6 +53,7 @@ export class PlayerViewCreatorService {
 
     const playerGlobalWinLossHeader = this.renderer.createElement('h3');
     this.renderer.setAttribute(playerGlobalWinLossHeader, 'class', 'player-global-wl-header');
+    this.renderer.setProperty(playerGlobalWinLossHeader, 'innerHTML', 'Win - Loss Record');
 
     const playerVsRecordsList = this.renderer.createElement('ul');
     this.renderer.setAttribute(playerVsRecordsList, 'class', 'player-vs-records-list');
@@ -72,6 +73,7 @@ export class PlayerViewCreatorService {
 
     const playerResultsHeader = this.renderer.createElement('h3');
     this.renderer.setAttribute(playerResultsHeader, 'class', 'player-results-header');
+    this.renderer.setProperty(playerResultsHeader, 'innerHTML', 'Recent Results');
 
     const playerRecentResultsList = this.renderer.createElement('ul');
     this.renderer.setAttribute(playerRecentResultsList, 'class', 'player-recent-results-list');
@@ -89,6 +91,7 @@ export class PlayerViewCreatorService {
 
     const playerTopDecksHeader = this.renderer.createElement('h3');
     this.renderer.setAttribute(playerTopDecksHeader, 'class', 'player-top-decks-header');
+    this.renderer.setProperty(playerTopDecksHeader, 'innerHTML', 'Top Decks Used');
 
     const playerTopDecksList = this.renderer.createElement('ul');
     this.renderer.setAttribute(playerTopDecksList, 'class', 'player-top-decks-list');
