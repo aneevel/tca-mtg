@@ -49,13 +49,13 @@ export class PlayerViewCreatorService {
   createWinLossContainer() {
 
     const playerWinLossContainer = this.renderer.createElement('div');
-    this.renderer.setProperty(playerWinLossContainer, 'class', 'player-win-loss-container');
+    this.renderer.setAttribute(playerWinLossContainer, 'class', 'player-win-loss-container');
 
     const playerGlobalWinLossHeader = this.renderer.createElement('h3');
-    this.renderer.setProperty(playerGlobalWinLossHeader, 'class', 'player-global-wl-header');
+    this.renderer.setAttribute(playerGlobalWinLossHeader, 'class', 'player-global-wl-header');
 
     const playerVsRecordsList = this.renderer.createElement('ul');
-    this.renderer.setProperty(playerVsRecordsList, 'class', 'player-vs-records-list');
+    this.renderer.setAttribute(playerVsRecordsList, 'class', 'player-vs-records-list');
 
     this.renderer.appendChild(playerWinLossContainer, playerGlobalWinLossHeader);
     this.renderer.appendChild(playerWinLossContainer, playerVsRecordsList);
@@ -68,13 +68,13 @@ export class PlayerViewCreatorService {
   createRecentResultsContainer() {
 
     const playerResultsContainer = this.renderer.createElement('div');
-    this.renderer.setProperty(playerResultsContainer, 'class', 'player-results-container');
+    this.renderer.setAttribute(playerResultsContainer, 'class', 'player-results-container');
 
     const playerResultsHeader = this.renderer.createElement('h3');
-    this.renderer.setProperty(playerResultsHeader, 'class', 'player-results-header');
+    this.renderer.setAttribute(playerResultsHeader, 'class', 'player-results-header');
 
     const playerRecentResultsList = this.renderer.createElement('ul');
-    this.renderer.setProperty(playerRecentResultsList, 'class', 'player-recent-results-list');
+    this.renderer.setAttribute(playerRecentResultsList, 'class', 'player-recent-results-list');
 
     this.renderer.appendChild(playerResultsContainer, playerResultsHeader);
     this.renderer.appendChild(playerResultsContainer, playerRecentResultsList);
@@ -85,13 +85,13 @@ export class PlayerViewCreatorService {
   createDecksUsedContainer() {
 
     const playerDecksContainer = this.renderer.createElement('div');
-    this.renderer.setProperty(playerDecksContainer, 'class', 'player-decks-container');
+    this.renderer.setAttribute(playerDecksContainer, 'class', 'player-decks-container');
 
     const playerTopDecksHeader = this.renderer.createElement('h3');
-    this.renderer.setProperty(playerTopDecksHeader, 'class', 'player-top-decks-header');
+    this.renderer.setAttribute(playerTopDecksHeader, 'class', 'player-top-decks-header');
 
     const playerTopDecksList = this.renderer.createElement('ul');
-    this.renderer.setProperty(playerTopDecksList, 'class', 'player-top-decks-list');
+    this.renderer.setAttribute(playerTopDecksList, 'class', 'player-top-decks-list');
 
     this.renderer.appendChild(playerDecksContainer, playerTopDecksHeader);
     this.renderer.appendChild(playerDecksContainer, playerTopDecksList);
