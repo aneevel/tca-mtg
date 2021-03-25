@@ -32,17 +32,10 @@ export class PlayerViewCreatorService {
     const playerNameHeader = this.renderer.createElement('h2');
     this.renderer.setProperty(playerNameHeader, 'innerHTML', player.name);
 
-    const playerTopDecksHeader = this.renderer.createElement('h3');
-    const playerTopDecksList = this.renderer.createElement('ul');
-
     /** Tie all HTML elements together properly */
 
     // Name
     this.renderer.appendChild(playerNameContainer, playerNameHeader);
-
-    // Top Decks used
-    this.renderer.appendChild(playerDecksContainer, playerTopDecksHeader);
-    this.renderer.appendChild(playerDecksContainer, playerTopDecksList);
 
     // Top-level 
     this.renderer.appendChild(playerContainer, playerNameContainer);
@@ -99,6 +92,9 @@ export class PlayerViewCreatorService {
 
     const playerTopDecksList = this.renderer.createElement('ul');
     this.renderer.setProperty(playerTopDecksList, 'class', 'player-top-decks-list');
+
+    this.renderer.appendChild(playerDecksContainer, playerTopDecksHeader);
+    this.renderer.appendChild(playerDecksContainer, playerTopDecksList);
 
     return playerDecksContainer;
   }
