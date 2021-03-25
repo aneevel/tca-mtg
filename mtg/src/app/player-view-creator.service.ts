@@ -23,43 +23,22 @@ export class PlayerViewCreatorService {
     this.renderer.setAttribute(playerContainer, 'class', 'player-container');
     
     const playerNameContainer = this.renderer.createElement('div');
-    const playerWinLossContainer = this.renderer.createElement('div');
-    const playerResultsContainer = this.renderer.createElement('div');
-    const playerDecksContainer = this.renderer.createElement('div');
+
+    const playerWinLossContainer = this.createWinLossContainer();
+    const playerResultsContainer = this.createRecentResultsContainer();
+    const playerDecksContainer = this.createDecksUsedContainer();
 
     // Name
     const playerNameHeader = this.renderer.createElement('h2');
     this.renderer.setProperty(playerNameHeader, 'innerHTML', player.name);
 
-    // W-L Record
-    const playerGlobalWinLossHeader = this.renderer.createElement('h3');
-    const playerVsRecordsList = this.renderer.createElement('ul');
-    // TODO: Add each record to list
-
-    // Recent results
-    const playerResultsHeader = this.renderer.createElement('h3');
-    const playerRecentResultsList = this.renderer.createElement('ul');
-    // TODO: Add each result to list
-
-    // Top Decks used
     const playerTopDecksHeader = this.renderer.createElement('h3');
     const playerTopDecksList = this.renderer.createElement('ul');
-    // TODO: Add each deck to list
 
     /** Tie all HTML elements together properly */
 
-    // Tie all descendents of containers
-
     // Name
     this.renderer.appendChild(playerNameContainer, playerNameHeader);
-
-    // W-L Record
-    this.renderer.appendChild(playerWinLossContainer, playerGlobalWinLossHeader);
-    this.renderer.appendChild(playerWinLossContainer, playerVsRecordsList);
-
-    // Recent results
-    this.renderer.appendChild(playerResultsContainer, playerResultsHeader);
-    this.renderer.appendChild(playerResultsContainer, playerRecentResultsList);
 
     // Top Decks used
     this.renderer.appendChild(playerDecksContainer, playerTopDecksHeader);
@@ -72,6 +51,56 @@ export class PlayerViewCreatorService {
     this.renderer.appendChild(playerContainer, playerDecksContainer);
 
     return playerContainer;
+  }
+
+  createWinLossContainer() {
+
+    const playerWinLossContainer = this.renderer.createElement('div');
+    this.renderer.setProperty(playerWinLossContainer, 'class', 'player-win-loss-container');
+
+    const playerGlobalWinLossHeader = this.renderer.createElement('h3');
+    this.renderer.setProperty(playerGlobalWinLossHeader, 'class', 'player-global-wl-header');
+
+    const playerVsRecordsList = this.renderer.createElement('ul');
+    this.renderer.setProperty(playerVsRecordsList, 'class', 'player-vs-records-list');
+
+    this.renderer.appendChild(playerWinLossContainer, playerGlobalWinLossHeader);
+    this.renderer.appendChild(playerWinLossContainer, playerVsRecordsList);
+
+    // TODO: Setup and attach each individual vs record
+
+    return playerWinLossContainer;
+  }
+
+  createRecentResultsContainer() {
+
+    const playerResultsContainer = this.renderer.createElement('div');
+    this.renderer.setProperty(playerResultsContainer, 'class', 'player-results-container');
+
+    const playerResultsHeader = this.renderer.createElement('h3');
+    this.renderer.setProperty(playerResultsHeader, 'class', 'player-results-header');
+
+    const playerRecentResultsList = this.renderer.createElement('ul');
+    this.renderer.setProperty(playerRecentResultsList, 'class', 'player-recent-results-list');
+
+    this.renderer.appendChild(playerResultsContainer, playerResultsHeader);
+    this.renderer.appendChild(playerResultsContainer, playerRecentResultsList);
+
+    return playerResultsContainer;
+  }
+
+  createDecksUsedContainer() {
+
+    const playerDecksContainer = this.renderer.createElement('div');
+    this.renderer.setProperty(playerDecksContainer, 'class', 'player-decks-container');
+
+    const playerTopDecksHeader = this.renderer.createElement('h3');
+    this.renderer.setProperty(playerTopDecksHeader, 'class', 'player-top-decks-header');
+
+    const playerTopDecksList = this.renderer.createElement('ul');
+    this.renderer.setProperty(playerTopDecksList, 'class', 'player-top-decks-list');
+
+    return playerDecksContainer;
   }
 
   generatePlayerViews(players: Player[]) {
