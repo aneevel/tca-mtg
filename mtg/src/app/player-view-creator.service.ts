@@ -1,5 +1,7 @@
 import { Injectable, Renderer2, RendererFactory2 } from '@angular/core';
 
+import { Player } from "./player";
+
 @Injectable({
   providedIn: 'root'
 })
@@ -12,13 +14,13 @@ export class PlayerViewCreatorService {
     this.renderer = rendererFactory.createRenderer(null, null);
   }
 
-  createPlayerContainer() {
+  createPlayerContainer(player: Player): HTMLElement {
     
     /**  Create all html elements */
 
     // Top level player container
     const playerContainer = this.renderer.createElement('div');
-    this.renderer.setProperty(playerContainer, 'class', 'player-container');
+    this.renderer.setAttribute(playerContainer, 'class', 'player-container');
     
     const playerNameContainer = this.renderer.createElement('div');
     const playerWinLossContainer = this.renderer.createElement('div');
@@ -27,6 +29,7 @@ export class PlayerViewCreatorService {
 
     // Name
     const playerNameHeader = this.renderer.createElement('h2');
+    this.renderer.setProperty(playerNameHeader, 'innerHTML', player.name);
 
     // W-L Record
     const playerGlobalWinLossHeader = this.renderer.createElement('h3');
@@ -69,5 +72,15 @@ export class PlayerViewCreatorService {
     this.renderer.appendChild(playerContainer, playerDecksContainer);
 
     return playerContainer;
+  }
+
+  generatePlayerViews(players: Player[]) {
+
+    const playerViews = [];
+    players.forEach(player => playerViews.push(this.createPlayerContainer(player)))
+
+    players.forEach(player => console.log(player));
+
+    return playerViews;
   }
 }
