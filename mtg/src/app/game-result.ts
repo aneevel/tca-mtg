@@ -2,7 +2,7 @@ export interface GameResult {
     dateOccurred: Date,
     winner: string,
     loser: string,
-    winningLife: int,
+    winningLife: Number,
     winnerDeck: string, 
     loserDeck: string
 }
