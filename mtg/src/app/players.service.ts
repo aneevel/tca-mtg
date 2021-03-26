@@ -9,8 +9,10 @@ export class PlayersService {
 
     players: Player[] = [];
 
-    addPlayer(player) {
-        this.players.push(player);
+    addPlayer(playerName) {
+
+        this.players.push({ 'name': playerName });
+        window.alert(`Adding player with name ${playerName}`);
     }
 
     getPlayers() {

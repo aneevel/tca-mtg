@@ -2,7 +2,9 @@
     <div id="player-one-mat">
         <mat-grid-list cols="2" rows="3">
             <mat-grid-tile class="player-one name">
-                <h2>Player One</h2>
+                <h2>{{ this.players[0].name }}</h2>
+                <h3>(Player One)</h3>
+                <h3>{{ this.decks[0].name }}</h3>
             </mat-grid-tile>
             <mat-grid-tile class="player-one mana" [rowspan]=3>
                 <h2>Mana Pool</h2>
@@ -14,7 +16,7 @@
                 <button mat-icon-button>
                     <mat-icon>exposure_minus_1</mat-icon>
                 </button>
-                <h2 class="life">Life: 20</h2>
+                <h2 class="life">{{ this.lifes[0] }}</h2>
                 <button mat-icon-button>
                     <mat-icon>exposure_plus_1</mat-icon>
                 </button>
@@ -39,7 +41,9 @@
                 </button>
             </mat-grid-tile>
             <mat-grid-tile class="player-two name">
-                <h2>Player Two</h2>
+                <h2>{{ this.players[1].name }}</h2>
+                <h3>(Player Two)</h3>
+                <h3>{{ this.decks[1].name }}</h3>
             </mat-grid-tile>
         </mat-grid-list>
     </div>

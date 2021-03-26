@@ -13,12 +13,20 @@ export class CurrentGameService {
   lifes: Number[] = []
   manas: string[][] = [];
 
-  addPlayer(player: Player) {
-    this.players.push(player);
+  initializeGame() {
+    this.players.forEach(player => {
+      this.lifes.push(20);
+    });
+
+    this.players.forEach(player => console.log(player.name));
   }
 
-  addDeck(deck: Deck) {
-    this.decks.push(deck);
+  addPlayer(playerName: string) {
+    this.players.push({ 'name': playerName });
+  }
+
+  addDeck(deckName: string) {
+    this.decks.push({ 'name': deckName, 'colors': [], 'description': ''});
   }
 
   resetLife() {
@@ -41,8 +49,16 @@ export class CurrentGameService {
     return this.players;
   }
 
+  getPlayer(index: string) {
+    return this.players[index];
+  }
+
   getDecks(): Deck[] {
     return this.decks;
+  }
+
+  getDeck(index: string) {
+    return this.decks[index];
   }
 
   getLifes(): Number[] {
@@ -53,5 +69,10 @@ export class CurrentGameService {
     return this.manas[index];
   }
 
-  constructor() { }
+  getManas(): string[][] {
+    return this.manas;
+  }
+
+  constructor(
+  ) { }
 }

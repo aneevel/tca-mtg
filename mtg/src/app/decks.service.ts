@@ -9,8 +9,8 @@ export class DecksService {
 
   decks: Deck[] = [];
 
-  addDeck(deck) {
-    this.decks.push(deck);
+  addDeck(deckName) {
+    this.decks.push({ 'name': deckName, 'colors': [], 'description': '' });
   }
 
   getDecks() {

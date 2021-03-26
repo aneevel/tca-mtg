@@ -16,6 +16,8 @@ import { CurrentGameService } from '../current-game.service';
 
 export class GameSetupComponent implements OnInit {
 
+    currentGameService: CurrentGameService;
+
     playersForm = this.formBuilder.group ({
         playerOneNameControl: ['', Validators.required],
         playerOneDeckControl: ['', Validators.required],
@@ -35,6 +37,7 @@ export class GameSetupComponent implements OnInit {
     ) { 
         this.players = playerService.getPlayers();
         this.decks = deckService.getDecks();
+        this.currentGameService = gameService;
     }
 
     ngOnInit(): void {
@@ -61,8 +64,8 @@ export class GameSetupComponent implements OnInit {
         }
 
         // Set player names as active players
-        this.gameService.addPlayer(this.playerService.getPlayer(this.playersForm.controls.playerOneNameControl.value));
-        this.gameService.addPlayer(this.playerService.getPlayer(this.playersForm.controls.playerTwoNameControl.value));
+        this.currentGameService.addPlayer((this.playersForm.controls.playerOneNameControl.value));
+        this.currentGameService.addPlayer((this.playersForm.controls.playerTwoNameControl.value));
 
         // Add a new deck if one wasn't found
         if (!this.deckNameExists(this.playersForm.controls.playerOneDeckControl.value)) {
@@ -73,8 +76,10 @@ export class GameSetupComponent implements OnInit {
         }
 
         // Set decks as active decks
-        this.gameService.addDeck(this.deckService.getDeck(this.playersForm.controls.playerOneDeckControl.value));
-        this.gameService.addDeck(this.deckService.getDeck(this.playersForm.controls.playerTwoDeckControl.value));
+        this.currentGameService.addDeck((this.playersForm.controls.playerOneDeckControl.value));
+        this.currentGameService.addDeck((this.playersForm.controls.playerTwoDeckControl.value));
+
+        window.alert(`Current Game Service has current player ${ this.currentGameService.getPlayer('0').name }`);
 
         // Move to game-play screen
         this.router.navigate(['/game-play']);
