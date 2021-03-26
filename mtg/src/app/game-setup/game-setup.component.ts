@@ -79,8 +79,6 @@ export class GameSetupComponent implements OnInit {
         this.currentGameService.addDeck((this.playersForm.controls.playerOneDeckControl.value));
         this.currentGameService.addDeck((this.playersForm.controls.playerTwoDeckControl.value));
 
-        window.alert(`Current Game Service has current player ${ this.currentGameService.getPlayer('0').name }`);
-
         // Move to game-play screen
         this.router.navigate(['/game-play']);
     }

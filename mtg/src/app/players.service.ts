@@ -12,7 +12,6 @@ export class PlayersService {
     addPlayer(playerName) {
 
         this.players.push({ 'name': playerName });
-        window.alert(`Adding player with name ${playerName}`);
     }
 
     getPlayers() {

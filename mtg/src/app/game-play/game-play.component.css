@@ -3,6 +3,10 @@
     height: 100%;
 }
 
+.player-mat {
+    height: 30vh;
+}
+
 .name {
     justify-content: center;
     align-items: center;
