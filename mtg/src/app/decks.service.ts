@@ -17,8 +17,8 @@ export class DecksService {
     return this.decks;
   }
 
-  getDeck(deck) {
-    return this.decks.find(deck);
+  getDeck(deckName) {
+    return this.decks.find(deck => deck.name === deckName);
   }
 
   constructor() { }

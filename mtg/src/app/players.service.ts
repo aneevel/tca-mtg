@@ -17,8 +17,8 @@ export class PlayersService {
         return this.players;
     }
 
-    getPlayer(player) {
-        return this.players.find(player);
+    getPlayer(playerName) {
+        return this.players.find(player => player.name === playerName);
     }
 
     constructor() { }
