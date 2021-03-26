@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { Deck } from '../deck';
 import { DecksService } from '../decks.service';
 import { Player } from '../player';
 import { PlayersService } from '../players.service';
+import { CurrentGameService } from '../current-game.service';
 
 @Component({
   selector: 'app-game-setup',
@@ -27,6 +29,8 @@ export class GameSetupComponent implements OnInit {
     constructor(
         private playerService: PlayersService,
         private deckService: DecksService,
+        private gameService: CurrentGameService,
+        private router: Router,
         private formBuilder: FormBuilder
     ) { 
         this.players = playerService.getPlayers();
@@ -47,20 +51,33 @@ export class GameSetupComponent implements OnInit {
 
     onSubmit() {
         
-        // Add a new player if this one wasn't found
-        if (!this.playerNameExists(this.playersForm.controls.nameControl.value)) {
-            this.playerService.addPlayer({ name: this.playersForm.controls.nameControl.value });
+        // Add a new player if one wasn't found
+        if (!this.playerNameExists(this.playersForm.controls.playerOneNameControl.value)) {
+            this.playerService.addPlayer({ name: this.playersForm.controls.playerOneNameControl.value });
+        }
+
+        if (!this.playerNameExists(this.playersForm.controls.playerTwoNameControl.value)) {
+            this.playerService.addPlayer({ name: this.playersForm.controls.playerTwoNameControl.value });
         }
 
         // Set player names as active players
+        this.gameService.addPlayer(this.playerService.getPlayer(this.playersForm.controls.playerOneNameControl.value));
+        this.gameService.addPlayer(this.playerService.getPlayer(this.playersForm.controls.playerTwoNameControl.value));
 
-
-        // Add a new deck if this one wasn't found
-        if (!this.deckNameExists(this.playersForm.controls.deckControl.value)) {
-            this.deckService.addDeck({ name: this.playersForm.controls.deckControl.value, description: "", colors: []});
+        // Add a new deck if one wasn't found
+        if (!this.deckNameExists(this.playersForm.controls.playerOneDeckControl.value)) {
+            this.deckService.addDeck({ name: this.playersForm.controls.playerOneDeckControl.value, description: "", colors: []});
+        }
+        if (!this.deckNameExists(this.playersForm.controls.playerTwoDeckControl.value)) {
+            this.deckService.addDeck({ name: this.playersForm.controls.playerTwoDeckControl.value, description: "", colors: []});
         }
 
         // Set decks as active decks
+        this.gameService.addDeck(this.deckService.getDeck(this.playersForm.controls.playerOneDeckControl.value));
+        this.gameService.addDeck(this.deckService.getDeck(this.playersForm.controls.playerTwoDeckControl.value));
+
+        // Move to game-play screen
+        this.router.navigate(['/game-play']);
     }
 
     playerNameExists(playerName: string): boolean {
