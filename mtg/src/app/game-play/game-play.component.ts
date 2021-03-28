@@ -19,6 +19,7 @@ export class GamePlayComponent implements OnInit {
   manas: string[][] = [];
 
   constructor(currentGame: CurrentGameService) { 
+
     currentGame.initializeGame();
     this.players = currentGame.getPlayers();
     this.decks = currentGame.getDecks();
