@@ -1,0 +1,8 @@
+GOALS 3/28
+---
+
+- Pass player/deck data from game-setup screen to game-play screen
+
+- Hook up life buttons to life display
+
+- Allow mana of any type to be added
