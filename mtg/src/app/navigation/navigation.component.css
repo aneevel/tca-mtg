@@ -1,3 +1,8 @@
+#navigation-container {
+    width: 100%;
+    width: 100vw;
+}
+
 #app-features {
     list-style-type: none;
     display: flex;
