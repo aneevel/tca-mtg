@@ -17,8 +17,6 @@ export class CurrentGameService {
     this.players.forEach(player => {
       this.lifes.push(20);
     });
-
-    this.players.forEach(player => console.log(player.name));
   }
 
   addPlayer(playerName: string) {
