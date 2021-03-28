@@ -30,4 +30,12 @@ export class GamePlayComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  incrementLife(player) {
+      
+  }
+
+  decrementLife(player) {
+
+  }
+
 }
