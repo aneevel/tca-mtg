@@ -4,13 +4,11 @@
 
 #play-mat {
     width: 100%;
-    height: 100%;
 }
 
 .player-mat {
-    height: 60vh;
     border: 0.5em;
-    margin: 2em;
+    margin: 3em;
     padding: 1em;
     border-style: solid;
     border-color: black;
@@ -18,6 +16,18 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.name-container {
+    width: 100%;
+}
+
+.mana-container {
+    width: 100%;
+}
+
+.life-contianer {
+    width: 100%;
 }
 
 #player-one-mat {
