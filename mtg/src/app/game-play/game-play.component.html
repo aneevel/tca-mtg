@@ -1,48 +1,46 @@
 <div id="play-mat">
     <div id="player-one-mat" class="player-mat">
-        <div class="player-one name">
-            <h2>{{ this.players[0].name }}</h2>
-            <h3>(Player One)</h3>
-            <h3>{{ this.decks[0].name }}</h3>
+        <div class="player-one name-container">
+            <h2 class="name-header">{{ this.players[0].name }}</h2>
+            <h3 class="name-signifier">(Player One)</h3>
+            <h3 class="deck-header">{{ this.decks[0].name }}</h3>
         </div>
-        <div class="player-one mana">
-            <h2>Mana Pool</h2>
-            <button mat-icon-button>
+        <div class="player-one mana-container">
+            <h2 class="mana-header">Mana Pool</h2>
+            <button class="mana-add-button" mat-icon-button>
                 <mat-icon>expand_more</mat-icon>
             </button>
         </div>
-        <div class="life">
-            <button mat-icon-button>
+        <div class="player-one life-container">
+            <button class="minus-button" mat-icon-button>
                 <mat-icon>exposure_minus_1</mat-icon>
             </button>
-            <h2 class="life">Life: {{ this.lifes[0] }}</h2>
-            <button mat-icon-button>
+            <h2 class="life-header">Life: {{ this.lifes[0] }}</h2>
+            <button class="plus-button" mat-icon-button>
                 <mat-icon>exposure_plus_1</mat-icon>
             </button>
         </div>
     </div>
     <div id="player-two-mat" class="player-mat">
-        <div class="player-two status">
-            <button mat-icon-button>
+        <div class="player-two life-container">
+            <button class="minus-button" mat-icon-button>
                 <mat-icon>exposure_minus_1</mat-icon>
             </button>
-        </div>
-        <div class="life">
-            <h2 class="life">Life: {{ this.lifes[1] }}</h2>
-                <button mat-icon-button>
+            <h2 class="life-header">Life: {{ this.lifes[1] }}</h2>
+                <button class="plus-button" mat-icon-button>
                     <mat-icon>exposure_plus_1</mat-icon>
                 </button>
         </div>
-        <div class="player-two mana">
-            <h2>Mana Pool</h2>
-            <button mat-icon-button>
+        <div class="player-two mana-container">
+            <h2 class="mana-header">Mana Pool</h2>
+            <button class="mana-add-button" mat-icon-button>
                 <mat-icon>expand_more</mat-icon>
             </button>
         </div>
-        <div class="player-two name">
-            <h2>{{ this.players[1].name }}</h2>
-            <h3>(Player Two)</h3>
-            <h3>{{ this.decks[1].name }}</h3>
+        <div class="player-two name-container">
+            <h2 class="name-header">{{ this.players[1].name }}</h2>
+            <h3 class="name-signifier">(Player Two)</h3>
+            <h3 class="deck-header">{{ this.decks[1].name }}</h3>
         </div>
     </div>
 </div>
