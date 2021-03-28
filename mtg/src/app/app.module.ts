@@ -22,6 +22,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatIconModule } from '@angular/material/icon';
 
 
 const routes: Routes = [
@@ -58,6 +60,8 @@ const routes: Routes = [
     MatAutocompleteModule,
     MatFormFieldModule,
     MatInputModule,
+    MatGridListModule,
+    MatIconModule,
     ReactiveFormsModule,
     BrowserAnimationsModule
   ],
