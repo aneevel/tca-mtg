@@ -1,8 +1,8 @@
 <div id="play-mat">
     <div id="player-one-mat" class="player-one player-mat">
         <div class="player-one name-container">
-            <h2 class="name-header">{{ this.players[0].name }}</h2>
-            <h3 class="deck-header">{{ this.decks[0].name }}</h3>
+            <h2 class="name-header">{{ this.currentGame.players[0].name }}</h2>
+            <h3 class="deck-header">{{ this.currentGame.decks[0].name }}</h3>
         </div>
         <div class="player-one mana-container">
             <h2 class="mana-header">Mana Pool</h2>
@@ -14,7 +14,7 @@
             <button (click)="decrementLife(0)" class="minus-button" mat-icon-button>
                 <mat-icon >exposure_minus_1</mat-icon>
             </button>
-            <h2 class="life-header">Life: {{ this.lifes[0] }}</h2>
+            <h2 class="life-header">Life: {{ this.currentGame.lifes[0] }}</h2>
             <button (click)="incrementLife(0)"class="plus-button" mat-icon-button>
                 <mat-icon>exposure_plus_1</mat-icon>
             </button>
@@ -25,7 +25,7 @@
             <button (click)="decrementLife(1)" class="minus-button" mat-icon-button>
                 <mat-icon>exposure_minus_1</mat-icon>
             </button>
-            <h2 class="life-header">Life: {{ this.lifes[1] }}</h2>
+            <h2 class="life-header">Life: {{ this.currentGame.lifes[1] }}</h2>
                 <button (click)="incrementLife(1)" class="plus-button" mat-icon-button>
                     <mat-icon>exposure_plus_1</mat-icon>
                 </button>
@@ -37,8 +37,8 @@
             </button>
         </div>
         <div class="player-two name-container">
-            <h2 class="name-header">{{ this.players[1].name }}</h2>
-            <h3 class="deck-header">{{ this.decks[1].name }}</h3>
+            <h2 class="name-header">{{ this.currentGame.players[1].name }}</h2>
+            <h3 class="deck-header">{{ this.currentGame.decks[1].name }}</h3>
         </div>
     </div>
 </div>

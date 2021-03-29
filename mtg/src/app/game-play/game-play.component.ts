@@ -13,18 +13,9 @@ import { CurrentGameService } from '../current-game.service';
 })
 export class GamePlayComponent implements OnInit {
 
-  players: Player[] = [];
-  decks: Deck[] = [];
-  lifes: Number[] = [];
-  manas: string[][] = [];
-
-  constructor(currentGame: CurrentGameService) { 
+  constructor(public currentGame: CurrentGameService) { 
 
     currentGame.initializeGame();
-    this.players = currentGame.getPlayers();
-    this.decks = currentGame.getDecks();
-    this.lifes = currentGame.getLifes();
-    this.manas = currentGame.getManas();
   }
 
   ngOnInit(): void {
