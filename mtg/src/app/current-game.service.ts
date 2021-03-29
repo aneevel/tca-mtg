@@ -71,6 +71,14 @@ export class CurrentGameService {
     return this.manas;
   }
 
+  incrementLife(player: string) {
+    this.changeLife(player, 1);
+  }
+
+  decrementLife(player: string) {
+    this.changeLife(player, -1);
+  }
+
   constructor(
   ) { }
 }

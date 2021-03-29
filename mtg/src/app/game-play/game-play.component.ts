@@ -22,11 +22,11 @@ export class GamePlayComponent implements OnInit {
   }
 
   incrementLife(player) {
-      
+      this.currentGame.incrementLife(player);
   }
 
   decrementLife(player) {
-
+      this.currentGame.decrementLife(player);
   }
 
 }
