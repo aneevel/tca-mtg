@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2, RendererFactory2 } from '@angular/core';
 
 import { MatGridListModule } from '@angular/material/grid-list';
 
 import { Player } from '../player';
 import { Deck } from '../deck';
 import { CurrentGameService } from '../current-game.service';
+import { ManaCreatorService } from '../mana-creator.service';
 
 @Component({
   selector: 'app-game-play',
@@ -13,8 +14,13 @@ import { CurrentGameService } from '../current-game.service';
 })
 export class GamePlayComponent implements OnInit {
 
-  constructor(public currentGame: CurrentGameService) { 
+  private renderer: Renderer2;
 
+  constructor(public currentGame: CurrentGameService,
+    private manaCreator: ManaCreatorService,
+    rendererFactory: RendererFactory2) { 
+
+    this.renderer = rendererFactory.createRenderer(null, null);
     currentGame.initializeGame();
   }
 
@@ -22,7 +28,7 @@ export class GamePlayComponent implements OnInit {
   }
 
   addMana(manaType: string, player) {
-    console.log(`${manaType} Mana added to ${this.currentGame.players[player].name}'s Mana pool!`);
+    this.renderer.appendChild(document.getElementById(`${player}-mana-container`), this.manaCreator.buildMana(manaType));
   }
 
   incrementLife(player) {

@@ -99,3 +99,8 @@ h3 {
 .mat-icon-button i, .mat-icon-button .mat-icon {
     line-height: 12px;
 }
+
+::ng-deep .mana-button {
+    width: 30px;
+    height: 30px;
+}

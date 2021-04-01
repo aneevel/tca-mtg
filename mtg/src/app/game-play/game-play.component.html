@@ -4,15 +4,15 @@
             <h2 class="name-header">{{ this.currentGame.players[0].name }}</h2>
             <h3 class="deck-header">{{ this.currentGame.decks[0].name }}</h3>
         </div>
-        <div class="player-one mana-container">
+        <div id="player-one-mana-container" class="player-one mana-container">
             <h2 class="mana-header">Mana Pool</h2>
             <button class="mana-add-button" mat-button [matMenuTriggerFor]="playerOneManaMenu">Add Mana</button>
             <mat-menu #playerOneManaMenu="matMenu">
-                <button (click)="addMana('Red', 0)" mat-menu-item>Red</button>
-                <button (click)="addMana('White', 0)" mat-menu-item>White</button>
-                <button (click)="addMana('Black', 0)" mat-menu-item>Black</button>
-                <button (click)="addMana('Green', 0)" mat-menu-item>Green</button>
-                <button (click)="addMana('Blue', 0)" mat-menu-item>Blue</button>
+                <button (click)="addMana('red', 'player-one')" mat-menu-item>Red</button>
+                <button (click)="addMana('white', 'player-one')" mat-menu-item>White</button>
+                <button (click)="addMana('black', 'player-one')" mat-menu-item>Black</button>
+                <button (click)="addMana('green', 'player-one')" mat-menu-item>Green</button>
+                <button (click)="addMana('blue', 'player-one')" mat-menu-item>Blue</button>
             </mat-menu>
         </div>
         <div class="player-one life-container">
@@ -35,15 +35,15 @@
                     <mat-icon>exposure_plus_1</mat-icon>
                 </button>
         </div>
-        <div class="player-two mana-container">
+        <div id="player-two-mana-container" class="player-two mana-container">
             <h2 class="mana-header">Mana Pool</h2>
             <button mat-button [matMenuTriggerFor]="playerTwoManaMenu">Add Mana</button>
             <mat-menu #playerTwoManaMenu="matMenu">
-                <button (click)="addMana('Red', 1)" mat-menu-item>Red</button>
-                <button (click)="addMana('White', 1)" mat-menu-item>White</button>
-                <button (click)="addMana('Black', 1)" mat-menu-item>Black</button>
-                <button (click)="addMana('Green', 1)" mat-menu-item>Green</button>
-                <button (click)="addMana('Blue', 1)" mat-menu-item>Blue</button>
+                <button (click)="addMana('red', 'player-two')" mat-menu-item>Red</button>
+                <button (click)="addMana('white', 'player-two')" mat-menu-item>White</button>
+                <button (click)="addMana('black', 'player-two')" mat-menu-item>Black</button>
+                <button (click)="addMana('green', 'player-two')" mat-menu-item>Green</button>
+                <button (click)="addMana('blue', 'player-two')" mat-menu-item>Blue</button>
             </mat-menu>
         </div>
         <div class="player-two name-container">
