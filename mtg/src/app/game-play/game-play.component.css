@@ -81,3 +81,21 @@ h3 {
     align-items: center;
     margin: 2px;
 }
+
+.mana-header {
+    padding: 1.5em;
+}
+
+.mana-add-button {
+    background-color: black;
+    color: white;
+}
+
+.mat-icon-button {
+    width: 2.5em;
+    height: 2.5em;
+}
+
+.mat-icon-button i, .mat-icon-button .mat-icon {
+    line-height: 12px;
+}

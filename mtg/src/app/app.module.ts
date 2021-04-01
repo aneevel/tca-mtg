@@ -24,6 +24,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
 
 
 const routes: Routes = [
@@ -62,6 +63,7 @@ const routes: Routes = [
     MatInputModule,
     MatGridListModule,
     MatIconModule,
+    MatMenuModule,
     ReactiveFormsModule,
     BrowserAnimationsModule
   ],
