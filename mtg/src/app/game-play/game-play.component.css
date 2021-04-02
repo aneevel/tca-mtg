@@ -37,6 +37,12 @@ h3 {
     align-items: center;
 }
 
+.mana-container-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .mana-container {
     width: 100%;
     display: flex;
