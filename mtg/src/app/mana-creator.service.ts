@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { Renderer2, RendererFactory2 } from '@angular/core';
+import { Renderer2, RendererFactory2, ElementRef } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
@@ -22,9 +22,9 @@ export class ManaCreatorService {
     // Create mana button
     const manaButton = this.renderer.createElement('button');
     this.renderer.setProperty(manaButton, "id", `mana${this.manaCount}`);
-    this.renderer.addClass(manaButton, "mana-button");
+    this.renderer.addClass(manaButton, "mana-button"); 
+    this.renderer.addClass(manaButton, `${manaType}-mana`);
     this.renderer.listen(manaButton, "click", this.useMana(`mana${this.manaCount}`));
-    this.renderer.setStyle(manaButton, "background-image", `assets/images/${manaType}-symbol.png`);
 
     return manaButton;
 

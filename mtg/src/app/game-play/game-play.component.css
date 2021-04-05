@@ -116,3 +116,32 @@ h3 {
     width: 30px;
     height: 30px;
 }
+
+::ng-deep .red-mana {
+    background: url('/assets/images/red-symbol.png') no-repeat center;
+    background-size: contain;
+}
+
+::ng-deep .black-mana {
+    background: url('/assets/images/black-symbol.png') no-repeat center;
+    background-size: contain;
+}
+
+::ng-deep .white-mana {
+    background: url('/assets/images/white-symbol.png') no-repeat center;
+    background-size: contain;
+}
+
+::ng-deep .green-mana {
+    background: url('/assets/images/green-symbol.png') no-repeat center;
+    background-size: contain;
+}
+
+::ng-deep .blue-mana {
+    background: url('/assets/images/blue-symbol.png') no-repeat center;
+    background-size: contain;
+}
+
+::ng-deep .used-mana {
+    filter: grayscale(50%);
+}
