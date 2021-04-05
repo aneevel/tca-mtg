@@ -143,5 +143,5 @@ h3 {
 }
 
 ::ng-deep .used-mana {
-    filter: grayscale(50%);
+    filter: grayscale(100%);
 }

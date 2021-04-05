@@ -8,7 +8,7 @@ import { Renderer2, RendererFactory2, ElementRef } from '@angular/core';
 export class ManaCreatorService {
 
   private renderer: Renderer2;
-  private manaCount: Number;
+  private manaCount: number;
 
   constructor(
     rendererFactory: RendererFactory2)
@@ -21,16 +21,22 @@ export class ManaCreatorService {
     
     // Create mana button
     const manaButton = this.renderer.createElement('button');
-    this.renderer.setProperty(manaButton, "id", `mana${this.manaCount}`);
+    const currentManaCount = this.manaCount;
+    this.renderer.setProperty(manaButton, "id", `mana${currentManaCount}`);
     this.renderer.addClass(manaButton, "mana-button"); 
     this.renderer.addClass(manaButton, `${manaType}-mana`);
-    this.renderer.listen(manaButton, "click", this.useMana(`mana${this.manaCount}`));
+    this.renderer.listen(manaButton, "click", (event) => {
+      this.useMana(`mana${currentManaCount}`);
+    });
 
+    this.manaCount = this.manaCount + 1;
     return manaButton;
 
   }
 
   useMana(manaName): any {
-    
+    console.log(`Mana use for element ${manaName}`);
+    const manaButton = document.getElementById(`${manaName}`);
+    this.renderer.addClass(manaButton, 'used-mana');
   }
 }
