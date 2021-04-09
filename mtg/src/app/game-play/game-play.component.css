@@ -92,7 +92,7 @@ h3 {
     padding: 1.5em;
 }
 
-.mana-add-button {
+.mana-add-button, .new-turn-button {
     background-color: black;
     color: white;
 }

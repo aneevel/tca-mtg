@@ -1,8 +1,11 @@
+import { Player } from './player';
+import { Deck } from './deck';
+
 export interface GameResult {
     dateOccurred: Date,
-    winner: string,
-    loser: string,
+    winner: Player,
+    loser: Player,
     winningLife: Number,
-    winnerDeck: string, 
-    loserDeck: string
+    winnerDeck: Deck, 
+    loserDeck: Deck
 }

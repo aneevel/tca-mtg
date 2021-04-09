@@ -1,9 +1,6 @@
 import { Component, OnInit, Renderer2, RendererFactory2 } from '@angular/core';
+import { Router } from '@angular/router';
 
-import { MatGridListModule } from '@angular/material/grid-list';
-
-import { Player } from '../player';
-import { Deck } from '../deck';
 import { CurrentGameService } from '../current-game.service';
 import { ManaCreatorService } from '../mana-creator.service';
 
@@ -17,6 +14,7 @@ export class GamePlayComponent implements OnInit {
   private renderer: Renderer2;
 
   constructor(public currentGame: CurrentGameService,
+    private router: Router,
     private manaCreator: ManaCreatorService,
     rendererFactory: RendererFactory2) { 
 
@@ -28,7 +26,17 @@ export class GamePlayComponent implements OnInit {
   }
 
   addMana(manaType: string, player) {
-    this.renderer.appendChild(document.getElementById(`${player}-mana-container`), this.manaCreator.buildMana(manaType));
+    this.renderer.appendChild(document.getElementById(`${player}-mana-container`), this.manaCreator.buildMana(manaType, player));
+  }
+
+  resetMana(player) {
+    // Get all used mana icons with player class
+    const manaButtons = document.getElementsByClassName(`used-mana ${player}`);
+
+    // Remove used mana class
+    while (manaButtons.length > 0 ) {
+      manaButtons[0].classList.remove('used-mana');
+    }
   }
 
   incrementLife(player) {
@@ -49,6 +57,8 @@ export class GamePlayComponent implements OnInit {
 
   endGame() {
     window.alert("Game Over!");
+    this.currentGame.finalizeGame();
+    this.router.navigate(['/game-results']);
   }
 
 }

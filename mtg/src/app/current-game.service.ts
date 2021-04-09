@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { Player } from './player';
 import { Deck } from './deck';
+import { GameResult } from './game-result';
 
 @Injectable({
   providedIn: 'root'
@@ -12,11 +13,50 @@ export class CurrentGameService {
   decks: Deck[] = []
   lifes: Number[] = []
   manas: string[][] = [];
+  gameResult: GameResult;
 
   initializeGame() {
     this.players.forEach(player => {
       this.lifes.push(20);
     });
+  }
+
+  finalizeGame() {
+
+    // Construct basic game result
+    this.gameResult = {
+      dateOccurred: new Date(),
+      winner: this.players[0],
+      loser: this.players[0],
+      winningLife: 0,
+      winnerDeck: this.decks[0],
+      loserDeck: this.decks[0]
+    };
+    this.gameResult.dateOccurred = new Date();
+
+    // Determine who won
+    if (this.lifes[1] === 0) {
+
+      // Setup winner variables
+      this.gameResult.winner = this.players[0];
+      this.gameResult.winnerDeck = this.decks[0];
+      this.gameResult.winningLife = this.lifes[0];
+
+      // Setup loser variables
+      this.gameResult.loser = this.players[1];
+      this.gameResult.loserDeck = this.decks[1];
+    }  else {
+
+      // Setup winner variables
+      this.gameResult.winner = this.players[1];
+      this.gameResult.winnerDeck = this.decks[1];
+      this.gameResult.winningLife = this.lifes[1];
+
+      // Setup loser variables
+      this.gameResult.loser = this.players[0];
+      this.gameResult.loserDeck = this.decks[0];
+    }
+
   }
 
   addPlayer(playerName: string) {

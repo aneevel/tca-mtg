@@ -6,6 +6,7 @@
         </div>
         <div class="mana-top-level-container">
             <div class="mana-container-header">
+                <button class="new-turn-button" mat-button (click)="resetMana('player-one')">New Turn</button>
                 <h2 class="mana-header">Mana Pool</h2>
                 <button class="add-mana-button" mat-button [matMenuTriggerFor]="playerOneManaMenu">Add Mana</button>
                 <mat-menu #playerOneManaMenu="matMenu">
@@ -40,6 +41,7 @@
         </div>
         <div class="mana-top-level-container">
             <div class="mana-container-header">
+                <button class="new-turn-button" mat-button (click)="resetMana('player-two')">New Turn</button>
                 <h2 class="mana-header">Mana Pool</h2>
                 <button class="add-mana-button" mat-button [matMenuTriggerFor]="playerTwoManaMenu">Add Mana</button>
                 <mat-menu #playerTwoManaMenu="matMenu">

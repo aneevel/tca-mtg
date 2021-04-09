@@ -1,1 +1,13 @@
-<p>game-results works!</p>
+<div id="result-container">
+    <h1>{{this.gameService.gameResult.winner.name}} takes down 
+        {{this.gameService.gameResult.loser.name}}!</h1>
+    <h3>Using their {{this.gameService.gameResult.winnerDeck.name}} deck, 
+        {{this.gameService.gameResult.winner.name}} took down 
+        {{this.gameService.gameResult.loser.name}} and their 
+        {{this.gameService.gameResult.loserDeck.name}} deck.
+    </h3>
+    <p>Everyone will remember the epic clash that ended on 
+        {{this.gameService.gameResult.dateOccurred}} by the final score of
+        {{this.gameService.gameResult.winningLife}} to 0.
+    </p>
+</div>
