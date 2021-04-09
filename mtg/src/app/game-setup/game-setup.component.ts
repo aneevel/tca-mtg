@@ -31,26 +31,14 @@ export class GameSetupComponent implements OnInit {
     constructor(
         private playerService: PlayersService,
         private deckService: DecksService,
-        private gameService: CurrentGameService,
         private router: Router,
         private formBuilder: FormBuilder
     ) { 
         this.players = playerService.getPlayers();
         this.decks = deckService.getDecks();
-        this.currentGameService = gameService;
     }
 
-    ngOnInit(): void {
-
-        // Add some dummy data
-        this.players = [...this.players, { name: "Alec" }, { name: "Alison"}, { name: "Ryan"}];
-        this.decks = [...this.decks, 
-            {   name: "Vizier", description: "A top meta deck in modern", colors: [ "White", "Green" ]},
-            {   name: "Burn", description: "Get ready to feel the heat, baby", colors: [ "Red"]},
-            {   name: "Land Destruction", description: "When you don't want your opponent to even play the game!", colors: [ "Red", "Blue"]}
-        ];
-        
-    }
+    ngOnInit(): void {}
 
     onSubmit() {
         

@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 
+import { Player } from './player';
+import { Deck } from './deck';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -27,6 +30,14 @@ export class StorageService {
     }
 
     return null;
+  }
+
+  getUniquePlayers(): Player[] {
+    return [];
+  }
+
+  getUniqueDecks(): Deck[] {
+    return [];
   }
 
   remove(key: string) {

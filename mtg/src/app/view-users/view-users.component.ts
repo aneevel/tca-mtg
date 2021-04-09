@@ -3,6 +3,7 @@ import { Component, OnInit, Renderer2, RendererFactory2 } from '@angular/core';
 import { Player } from '../player';
 import { PlayerViewCreatorService } from '../player-view-creator.service';
 import { PlayersService } from '../players.service';
+import { StorageService } from '../storage.service';
 
 @Component({
   selector: 'app-view-users',
@@ -17,10 +18,11 @@ export class ViewUsersComponent implements OnInit {
   constructor(
     private playersService: PlayersService,
     private playerViewCreatorService: PlayerViewCreatorService,
+    private storageService: StorageService,
     rendererFactory: RendererFactory2) 
   { 
     this.renderer = rendererFactory.createRenderer(null, null);
-    this.playerViews = playerViewCreatorService.generatePlayerViews([ { name: "Alec" }, { name: "Alison" }, { name: "Ryan" }]);
+    this.playerViews = playerViewCreatorService.generatePlayerViews(this.storageService.getUniquePlayers());
   }
 
   ngOnInit(): void {
