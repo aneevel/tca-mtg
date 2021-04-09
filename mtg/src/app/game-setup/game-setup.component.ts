@@ -7,6 +7,7 @@ import { DecksService } from '../decks.service';
 import { Player } from '../player';
 import { PlayersService } from '../players.service';
 import { CurrentGameService } from '../current-game.service';
+import { StorageService } from '../storage.service';
 
 @Component({
   selector: 'app-game-setup',
@@ -31,6 +32,7 @@ export class GameSetupComponent implements OnInit {
     constructor(
         private playerService: PlayersService,
         private deckService: DecksService,
+        private storageService: StorageService,
         private router: Router,
         private formBuilder: FormBuilder
     ) { 

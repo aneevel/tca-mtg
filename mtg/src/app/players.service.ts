@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { Player } from './player';
+import { StorageService } from './storage.service';
 
 @Injectable({
   providedIn: 'root'
@@ -22,5 +23,5 @@ export class PlayersService {
         return this.players.find(player => player.name === playerName);
     }
 
-    constructor() { }
+    constructor(private storageService: StorageService) { }
 }
