@@ -13,7 +13,7 @@ export class StorageService {
 
   set(key: string, value: string): boolean {
     if (this.isLocalStorageSupported) {
-      this.localStorage.setItem(key, JSON.stringify(value));
+      this.localStorage.setItem(key, value);
 
       return true;
     }
