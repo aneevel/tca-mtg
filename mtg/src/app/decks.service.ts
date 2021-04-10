@@ -9,7 +9,7 @@ import { StorageService } from './storage.service';
 export class DecksService {
 
   addDeck(deckName) {
-    this.storageService.add(deckName, JSON.stringify({ 'name': deckName, 'colors': [], 'description': '' }));
+    this.storageService.add("decks", JSON.stringify({ 'name': deckName, 'colors': [], 'description': '' }));
   }
 
   getDecks() {
@@ -22,6 +22,10 @@ export class DecksService {
 
   getDeck(deckName) {
     return this.getDecks().filter(x => x["name"] === deckName);
+  }
+
+  deckExists(deckName): boolean {
+    return false;
   }
 
   constructor(private storageService: StorageService) { }

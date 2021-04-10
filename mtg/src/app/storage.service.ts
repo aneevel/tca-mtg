@@ -25,6 +25,11 @@ export class StorageService {
   }
 
   add(key: string, value: string): boolean {
+    if (this.get(key) != null) {
+      console.log("Adding value where key already existed!");
+    } else {
+      console.log("Adding value for previously non-existent key!");
+    }
     if (this.isLocalStorageSupported) {
         this.set(key, value);    
     }

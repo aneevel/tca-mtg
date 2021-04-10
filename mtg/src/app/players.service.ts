@@ -10,7 +10,7 @@ export class PlayersService {
 
     addPlayer(playerName) {
 
-        this.storageService.add(playerName, JSON.stringify({ 'name': playerName }));
+        this.storageService.add("players", JSON.stringify({ 'name': playerName }));
     }
 
     getPlayers() {
@@ -23,6 +23,10 @@ export class PlayersService {
 
     getPlayer(playerName) {
         return this.getPlayers().filter(x => x["name"] === playerName);
+    }
+
+    playerExists(playerName): boolean {
+        return false;
     }
 
     constructor(private storageService: StorageService) { }

@@ -76,11 +76,11 @@ export class GameSetupComponent implements OnInit {
     }
 
     playerNameExists(playerName: string): boolean {
-        return (this.players.some(x => x.name === playerName));
+        return this.playerService.playerExists(playerName);
     }
 
     deckNameExists(deckName: string): boolean {
-        return (this.decks.some(x => x.name === deckName));
+        return this.deckService.deckExists(deckName);
     }
 
     displayPlayerFunction(player: Player): string {
