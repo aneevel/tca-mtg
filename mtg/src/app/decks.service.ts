@@ -9,7 +9,7 @@ import { StorageService } from './storage.service';
 export class DecksService {
 
   addDeck(deckName) {
-    this.storageService.add("decks", JSON.stringify({ 'name': deckName, 'colors': [], 'description': '' }));
+    this.storageService.addDeck({ 'name': deckName, 'colors': [], 'description': '' });
   }
 
   getDecks() {
@@ -21,10 +21,11 @@ export class DecksService {
   }
 
   getDeck(deckName) {
-    return this.getDecks().filter(x => x["name"] === deckName);
+    return this.storageService.getDeck(deckName);
   }
 
   deckExists(deckName): boolean {
+    console.log(`Searching for ${deckName} results in `, this.getDeck(deckName));
     return false;
   }
 

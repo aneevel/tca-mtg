@@ -14,7 +14,7 @@ export class StorageService {
     this.localStorage = window.localStorage;
   }
 
-  set(key: string, value: string): boolean {
+  set(key: string, value): boolean {
     if (this.isLocalStorageSupported) {
       this.localStorage.setItem(key, value);
 
@@ -24,16 +24,24 @@ export class StorageService {
     return false;
   }
 
-  add(key: string, value: string): boolean {
-    if (this.get(key) != null) {
-      console.log("Adding value where key already existed!");
-    } else {
-      console.log("Adding value for previously non-existent key!");
-    }
-    if (this.isLocalStorageSupported) {
-        this.set(key, value);    
-    }
+  addPlayer(player: Player): boolean {
+    let players = this.get("players");
+    console.log(players);
     return false;
+  }
+
+  addDeck(deck: Deck): boolean {
+    let decks = this.get("decks");
+    console.log(decks);
+    return false;
+  }
+
+  getPlayer(playerName: string) {
+    return null;
+  }
+
+  getDeck(deckName: string) {
+    return null;
   }
 
   get(key: string): any {
