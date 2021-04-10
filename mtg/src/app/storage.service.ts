@@ -24,6 +24,13 @@ export class StorageService {
     return false;
   }
 
+  add(key: string, value: string): boolean {
+    if (this.isLocalStorageSupported) {
+        this.set(key, value);    
+    }
+    return false;
+  }
+
   get(key: string): any {
     if (this.isLocalStorageSupported) {
       return JSON.parse(this.localStorage.getItem(key));

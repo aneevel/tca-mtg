@@ -8,18 +8,20 @@ import { StorageService } from './storage.service';
 })
 export class DecksService {
 
-  decks: Deck[] = [];
-
   addDeck(deckName) {
-    this.decks.push({ 'name': deckName, 'colors': [], 'description': '' });
+    this.storageService.add(deckName, JSON.stringify({ 'name': deckName, 'colors': [], 'description': '' }));
   }
 
   getDecks() {
-    return this.decks;
+    if (this.storageService.get("decks") != null) {
+      return this.storageService.get("decks");
+    } else {
+      return [];
+    }
   }
 
   getDeck(deckName) {
-    return this.decks.find(deck => deck.name === deckName);
+    return this.getDecks().filter(x => x["name"] === deckName);
   }
 
   constructor(private storageService: StorageService) { }

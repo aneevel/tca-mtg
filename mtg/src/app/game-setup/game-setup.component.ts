@@ -33,11 +33,13 @@ export class GameSetupComponent implements OnInit {
         private playerService: PlayersService,
         private deckService: DecksService,
         private storageService: StorageService,
+        private gameService: CurrentGameService,
         private router: Router,
         private formBuilder: FormBuilder
     ) { 
         this.players = playerService.getPlayers();
         this.decks = deckService.getDecks();
+        this.currentGameService = gameService;
     }
 
     ngOnInit(): void {}
@@ -46,11 +48,11 @@ export class GameSetupComponent implements OnInit {
         
         // Add a new player if one wasn't found
         if (!this.playerNameExists(this.playersForm.controls.playerOneNameControl.value)) {
-            this.playerService.addPlayer({ name: this.playersForm.controls.playerOneNameControl.value });
+            this.playerService.addPlayer(this.playersForm.controls.playerOneNameControl.value);
         }
 
         if (!this.playerNameExists(this.playersForm.controls.playerTwoNameControl.value)) {
-            this.playerService.addPlayer({ name: this.playersForm.controls.playerTwoNameControl.value });
+            this.playerService.addPlayer(this.playersForm.controls.playerTwoNameControl.value);
         }
 
         // Set player names as active players
@@ -59,10 +61,10 @@ export class GameSetupComponent implements OnInit {
 
         // Add a new deck if one wasn't found
         if (!this.deckNameExists(this.playersForm.controls.playerOneDeckControl.value)) {
-            this.deckService.addDeck({ name: this.playersForm.controls.playerOneDeckControl.value, description: "", colors: []});
+            this.deckService.addDeck(this.playersForm.controls.playerOneDeckControl.value);
         }
         if (!this.deckNameExists(this.playersForm.controls.playerTwoDeckControl.value)) {
-            this.deckService.addDeck({ name: this.playersForm.controls.playerTwoDeckControl.value, description: "", colors: []});
+            this.deckService.addDeck(this.playersForm.controls.playerTwoDeckControl.value);
         }
 
         // Set decks as active decks
