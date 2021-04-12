@@ -1,21 +1,24 @@
 import { Injectable } from '@angular/core';
 
 import { GameResult } from './game-result';
+import { StorageService } from './storage.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GameResultsService {
 
-  results: GameResult[] = [];
-
   addResult(result) {
-    this.results.push(result);
+    this.storageService.addResult(result);
   }
 
   getResults() {
-    return this.results;
+    if (this.storageService.get("results") != null) {
+      return this.storageService.get("results");
+    } else {
+      return [];
+    }
   }
 
-  constructor() { }
+  constructor(private storageService: StorageService) { }
 }

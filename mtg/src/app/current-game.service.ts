@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Player } from './player';
 import { Deck } from './deck';
 import { GameResult } from './game-result';
-import { StorageService } from './storage.service';
+import { GameResultsService } from './game-results.service';
 
 @Injectable({
   providedIn: 'root'
@@ -58,7 +58,7 @@ export class CurrentGameService {
       this.gameResult.loserDeck = this.decks[0];
     }
 
-    this.storageService.set(`game${this.gameResult.dateOccurred}`, JSON.stringify(this.gameResult));
+    this.gameResultsService.addResult(this.gameResult);
   }
 
   addPlayer(playerName: string) {
@@ -121,5 +121,5 @@ export class CurrentGameService {
     this.changeLife(player, -1);
   }
 
-  constructor(private storageService: StorageService) { }
+  constructor(private gameResultsService: GameResultsService) { }
 }

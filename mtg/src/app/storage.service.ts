@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { Player } from './player';
 import { Deck } from './deck';
+import { GameResult } from './game-result';
 
 @Injectable({
   providedIn: 'root'
@@ -28,9 +29,7 @@ export class StorageService {
     let players = this.get("players");
     if (!players) {
       this.set("players", JSON.stringify([{ "name": player.name}]));
-      return;
     } else {
-      let players = [...this.get("players")];
       this.set("players", JSON.stringify([...players, { "name": player.name}]));
     }
 
@@ -40,10 +39,27 @@ export class StorageService {
     let decks = this.get("decks");
     if (!decks) {
       this.set("decks", JSON.stringify([{ "name": deck.name, "colors": deck.colors, "description": deck.description}]));
-      return;
     } else {
-      let decks = [...this.get("decks")];
       this.set("decks", JSON.stringify([...decks, { "name": deck.name, "colors": deck.colors, "description": deck.description}]));
+    }
+  }
+
+  addResult(result: GameResult) {
+    let results = this.get("results");
+    if (!results) {
+      this.set("results", JSON.stringify([{ "dateOccurred": result.dateOccurred,
+          "winner": result.winner,
+          "loser": result.loser,
+          "winningLife": result.winningLife,
+          "winnerDeck": result.winnerDeck,
+          "loserDeck": result.loserDeck}]));
+    } else {
+      this.set("results", JSON.stringify([...results, { "dateOccurred": result.dateOccurred,
+          "winner": result.winner,
+          "loser": result.loser,
+          "winningLife": result.winningLife,
+          "winnerDeck": result.winnerDeck,
+          "loserDeck": result.loserDeck}]));
     }
   }
 
