@@ -26,7 +26,6 @@ export class PlayersService {
     }
 
     playerExists(playerName): boolean {
-        console.log(`Searching for ${playerName} results in `, this.getPlayer(playerName));
         return false;
     }
 

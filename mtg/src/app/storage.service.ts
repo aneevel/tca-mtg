@@ -24,16 +24,27 @@ export class StorageService {
     return false;
   }
 
-  addPlayer(player: Player): boolean {
+  addPlayer(player: Player) {
     let players = this.get("players");
-    console.log(players);
-    return false;
+    if (!players) {
+      this.set("players", JSON.stringify([{ "name": player.name}]));
+      return;
+    } else {
+      let players = [...this.get("players")];
+      this.set("players", JSON.stringify([...players, { "name": player.name}]));
+    }
+
   }
 
-  addDeck(deck: Deck): boolean {
+  addDeck(deck: Deck) {
     let decks = this.get("decks");
-    console.log(decks);
-    return false;
+    if (!decks) {
+      this.set("decks", JSON.stringify([{ "name": deck.name, "colors": deck.colors, "description": deck.description}]));
+      return;
+    } else {
+      let decks = [...this.get("decks")];
+      this.set("decks", JSON.stringify([...decks, { "name": deck.name, "colors": deck.colors, "description": deck.description}]));
+    }
   }
 
   getPlayer(playerName: string) {

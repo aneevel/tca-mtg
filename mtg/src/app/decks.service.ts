@@ -25,7 +25,6 @@ export class DecksService {
   }
 
   deckExists(deckName): boolean {
-    console.log(`Searching for ${deckName} results in `, this.getDeck(deckName));
     return false;
   }
 
