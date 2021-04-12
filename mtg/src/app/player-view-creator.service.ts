@@ -107,8 +107,6 @@ export class PlayerViewCreatorService {
     const playerViews = [];
     players.forEach(player => playerViews.push(this.createPlayerContainer(player)))
 
-    players.forEach(player => console.log(player));
-
     return playerViews;
   }
 }

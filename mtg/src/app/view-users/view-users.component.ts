@@ -22,7 +22,7 @@ export class ViewUsersComponent implements OnInit {
     rendererFactory: RendererFactory2) 
   { 
     this.renderer = rendererFactory.createRenderer(null, null);
-    this.playerViews = playerViewCreatorService.generatePlayerViews(this.storageService.getUniquePlayers());
+    this.playerViews = playerViewCreatorService.generatePlayerViews(this.storageService.getPlayers());
   }
 
   ngOnInit(): void {

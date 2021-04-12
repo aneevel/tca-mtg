@@ -63,11 +63,49 @@ export class StorageService {
     }
   }
 
+  getPlayers() {
+    let players = this.get("players");
+    if (players)
+      return players;
+
+    return null;
+  }
+
+  getDecks() {
+    let decks = this.get("decks");
+    if (decks)
+      return decks;
+    
+    return null;
+  }
+
+  getResults() {
+    let results = this.get("results");
+    if (results)
+      return results;
+
+    return null;
+  }
+
   getPlayer(playerName: string) {
+    let players = this.getPlayers();
+    if (!players) 
+      return null;
+
+    let player = players.find(player => player.name === playerName);
+    if (player !== undefined) 
+      return player;
     return null;
   }
 
   getDeck(deckName: string) {
+    let decks = this.getDecks();
+    if (!decks) 
+      return null;
+
+    let deck = decks.find(deck => deck.name === deckName);
+    if (deck !== undefined)
+      return deck;
     return null;
   }
 
@@ -77,14 +115,6 @@ export class StorageService {
     }
 
     return null;
-  }
-
-  getUniquePlayers(): Player[] {
-    return [];
-  }
-
-  getUniqueDecks(): Deck[] {
-    return [];
   }
 
   remove(key: string) {

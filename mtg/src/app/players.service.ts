@@ -26,6 +26,8 @@ export class PlayersService {
     }
 
     playerExists(playerName): boolean {
+        if (this.getPlayer(playerName) != null) 
+            return true;
         return false;
     }
 

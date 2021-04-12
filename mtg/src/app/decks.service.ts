@@ -25,6 +25,8 @@ export class DecksService {
   }
 
   deckExists(deckName): boolean {
+    if (this.getDeck(deckName) != null) 
+      return true;
     return false;
   }
 
