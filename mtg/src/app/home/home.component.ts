@@ -16,9 +16,13 @@ export class HomeComponent implements OnInit {
     private resultsViewCreatorService: ResultsViewCreatorService,
     private storageService: StorageService,
     rendererFactory: RendererFactory2
-  ) { }
+  ) { 
+    this.renderer = rendererFactory.createRenderer(null, null);
+    this.resultViews = resultsViewCreatorService.generateResultViews(this.storageService.getResults(), 5);
+  }
 
   ngOnInit(): void {
+    this.resultViews.forEach(resultView => this.renderer.appendChild(document.getElementById('recent-games-container'), resultView)); 
   }
 
 }
