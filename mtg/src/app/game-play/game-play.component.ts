@@ -58,7 +58,7 @@ export class GamePlayComponent implements OnInit {
   endGame() {
     window.alert("Game Over!");
     this.currentGame.finalizeGame();
-    this.router.navigate(['/game-results']);
+    this.router.navigate(['/']);
   }
 
 }

@@ -59,6 +59,19 @@ export class CurrentGameService {
     }
 
     this.gameResultsService.addResult(this.gameResult);
+    this.clearGame();
+  }
+
+  clearGame() {
+    this.resetLife();
+    this.resetMana();
+    this.resetPlayers();
+    this.resetDecks();
+    this.resetResult();
+  }
+
+  resetResult() {
+    this.gameResult = null;
   }
 
   addPlayer(playerName: string) {
@@ -89,12 +102,20 @@ export class CurrentGameService {
     return this.players;
   }
 
+  resetPlayers() {
+    this.players = [];
+  }
+
   getPlayer(index: string) {
     return this.players[index];
   }
 
   getDecks(): Deck[] {
     return this.decks;
+  }
+
+  resetDecks() {
+    this.decks = [];
   }
 
   getDeck(index: string) {

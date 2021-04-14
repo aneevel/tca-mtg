@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { GameSetupComponent } from './game-setup/game-setup.component';
 import { GamePlayComponent } from './game-play/game-play.component';
-import { GameResultsComponent } from './game-results/game-results.component';
 import { ViewStatsComponent } from './view-stats/view-stats.component';
 import { ViewUsersComponent } from './view-users/view-users.component';
 import { ViewUserProfileComponent } from './view-user-profile/view-user-profile.component';
@@ -30,7 +29,6 @@ import { MatMenuModule } from '@angular/material/menu';
 const routes: Routes = [
     { path: 'game-setup', component: GameSetupComponent },
     { path: 'game-play', component: GamePlayComponent },
-    { path: 'game-results', component: GameResultsComponent },
     { path: 'view-stats', component: ViewStatsComponent },
     { path: 'view-users', component: ViewUsersComponent },
     { path: 'view-user-profile', component: ViewUserProfileComponent },
@@ -44,7 +42,6 @@ const routes: Routes = [
     HomeComponent,
     GameSetupComponent,
     GamePlayComponent,
-    GameResultsComponent,
     ViewStatsComponent,
     ViewUsersComponent,
     ViewUserProfileComponent,

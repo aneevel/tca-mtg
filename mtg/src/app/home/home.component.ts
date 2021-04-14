@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2, RendererFactory2 } from '@angular/core';
+import { StorageService } from '../storage.service';
+import { ResultsViewCreatorService } from '../results-view-creator.service';
 
 @Component({
   selector: 'app-home',
@@ -7,7 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  resultViews = [];
+  private renderer: Renderer2;
+
+  constructor(
+    private resultsViewCreatorService: ResultsViewCreatorService,
+    private storageService: StorageService,
+    rendererFactory: RendererFactory2
+  ) { }
 
   ngOnInit(): void {
   }
