@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.resultViews.forEach(resultView => this.renderer.appendChild(document.getElementById('recent-games-container'), resultView)); 
+    this.resultViews.forEach(resultView => this.renderer.appendChild(document.getElementById('recent-games-list'), resultView)); 
   }
 
 }
