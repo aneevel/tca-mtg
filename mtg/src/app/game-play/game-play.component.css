@@ -118,27 +118,27 @@ h3 {
 }
 
 ::ng-deep .red-mana {
-    background: url('/assets/red-symbol.png') no-repeat center;
+    background: url('/tca-mtg/assets/red-symbol.png') no-repeat center;
     background-size: contain;
 }
 
 ::ng-deep .black-mana {
-    background: url('/assets/black-symbol.png') no-repeat center;
+    background: url('/tca-mtg/assets/black-symbol.png') no-repeat center;
     background-size: contain;
 }
 
 ::ng-deep .white-mana {
-    background: url('/assets/white-symbol.png') no-repeat center;
+    background: url('/tca-mtg/assets/white-symbol.png') no-repeat center;
     background-size: contain;
 }
 
 ::ng-deep .green-mana {
-    background: url('/assets/green-symbol.png') no-repeat center;
+    background: url('/tca-mtg/assets/green-symbol.png') no-repeat center;
     background-size: contain;
 }
 
 ::ng-deep .blue-mana {
-    background: url('/assets/blue-symbol.png') no-repeat center;
+    background: url('/tca-mtg/assets/blue-symbol.png') no-repeat center;
     background-size: contain;
 }
 
