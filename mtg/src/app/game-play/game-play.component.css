@@ -118,27 +118,27 @@ h3 {
 }
 
 ::ng-deep .red-mana {
-    background: url('/assets/images/red-symbol.png') no-repeat center;
+    background: url('/assets/red-symbol.png') no-repeat center;
     background-size: contain;
 }
 
 ::ng-deep .black-mana {
-    background: url('/assets/images/black-symbol.png') no-repeat center;
+    background: url('/assets/black-symbol.png') no-repeat center;
     background-size: contain;
 }
 
 ::ng-deep .white-mana {
-    background: url('/assets/images/white-symbol.png') no-repeat center;
+    background: url('/assets/white-symbol.png') no-repeat center;
     background-size: contain;
 }
 
 ::ng-deep .green-mana {
-    background: url('/assets/images/green-symbol.png') no-repeat center;
+    background: url('/assets/green-symbol.png') no-repeat center;
     background-size: contain;
 }
 
 ::ng-deep .blue-mana {
-    background: url('/assets/images/blue-symbol.png') no-repeat center;
+    background: url('/assets/blue-symbol.png') no-repeat center;
     background-size: contain;
 }
 
