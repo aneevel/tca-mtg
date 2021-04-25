@@ -16,11 +16,11 @@ export class ViewStatsComponent implements OnInit {
       private storageService: StorageService,
       rendererFactory: RendererFactory2) { 
     this.renderer = rendererFactory.createRenderer(null, null);
-    this.resultViews = resultsViewCreatorService.generateResultViews(this.storageService.getResults(), this.storageService.getResults().length);
+    this.resultViews = resultsViewCreatorService.generateResultViews(this.storageService.getResults(), 100);
   }
 
   ngOnInit(): void {
-    this.resultViews.forEach(resultView => this.renderer.appendChild(document.getElementById('games-list'), resultView));
+    this.resultViews.forEach(resultView => this.renderer.appendChild(document.getElementById('game-results-list'), resultView));
   }
 
 }
