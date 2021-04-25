@@ -9,7 +9,6 @@ import { GameSetupComponent } from './game-setup/game-setup.component';
 import { GamePlayComponent } from './game-play/game-play.component';
 import { ViewStatsComponent } from './view-stats/view-stats.component';
 import { ViewUsersComponent } from './view-users/view-users.component';
-import { ViewUserProfileComponent } from './view-user-profile/view-user-profile.component';
 import { ViewDecksComponent } from './view-decks/view-decks.component';
 import { NavigationComponent } from './navigation/navigation.component';
 
@@ -31,7 +30,6 @@ const routes: Routes = [
     { path: 'game-play', component: GamePlayComponent },
     { path: 'view-stats', component: ViewStatsComponent },
     { path: 'view-users', component: ViewUsersComponent },
-    { path: 'view-user-profile', component: ViewUserProfileComponent },
     { path: 'view-decks', component: ViewDecksComponent },
     { path: '**', component: HomeComponent }
 ];
@@ -44,7 +42,6 @@ const routes: Routes = [
     GamePlayComponent,
     ViewStatsComponent,
     ViewUsersComponent,
-    ViewUserProfileComponent,
     ViewDecksComponent,
     NavigationComponent,
   ],

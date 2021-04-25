@@ -1,6 +1,7 @@
 import { Injectable, Renderer2, RendererFactory2 } from '@angular/core';
 
 import { Player } from "./player";
+import { ResultsService } from './results.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,8 @@ export class PlayerViewCreatorService {
 
   private renderer: Renderer2;
 
-  constructor(rendererFactory: RendererFactory2) { 
+  constructor(rendererFactory: RendererFactory2,
+      private resultsService: ResultsService) { 
 
     this.renderer = rendererFactory.createRenderer(null, null);
   }
@@ -108,5 +110,12 @@ export class PlayerViewCreatorService {
     players.forEach(player => playerViews.push(this.createPlayerContainer(player)))
 
     return playerViews;
+  }
+
+  generateResults(playerName: string, numberOfResults) {
+    let results = this.resultsService.getResultsForPlayer(playerName);
+    let filteredResults = [...results.slice(0, numberOfResults)];
+
+    return filteredResults;
   }
 }
