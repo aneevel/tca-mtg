@@ -1,0 +1,35 @@
+h1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 25px;
+    margin: auto;
+    margin-bottom: 25px;
+    font-size: 2em;
+    background-color: brown;
+    width: 150px;
+    height: 50px;
+}
+
+#decks-container {
+    margin: 10px;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-column-gap: 10%;
+    grid-template-rows: auto;
+    grid-row-gap: 10%;
+}
+
+::ng-deep .deck-container {
+    height: 100%;
+    width: 100%;
+    background-color: purple;
+}
+
+::ng-deep .button-container {
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    height: auto;
+}
