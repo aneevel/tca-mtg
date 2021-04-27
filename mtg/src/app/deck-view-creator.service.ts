@@ -26,6 +26,17 @@ export class DeckViewCreatorService {
     const deckNameHeader = this.renderer.createElement('h2');
     this.renderer.setProperty(deckNameHeader, 'innerHTML', deck.name);
 
+    // Button container
+    const buttonContainer = this.renderer.createElement('div');
+    this.renderer.setAttribute(buttonContainer, 'class', 'button-container');
+
+    // Remove button
+    const removeDeckButton = this.renderer.createElement('button');
+    this.renderer.setProperty(removeDeckButton, 'innerHTML', "Remove");
+    this.renderer.addClass(removeDeckButton, "mat-raised-button");
+
+    this.renderer.appendChild(buttonContainer, removeDeckButton);
+
     // Mana container
     const manaContainer = this.createManaContainer(deck.colors);
     
@@ -34,6 +45,7 @@ export class DeckViewCreatorService {
 
     // Tie all HTML elements together
     this.renderer.appendChild(deckContainer, deckNameHeader);
+    this.renderer.appendChild(deckContainer, buttonContainer);
     this.renderer.appendChild(deckContainer, manaContainer);
     this.renderer.appendChild(deckContainer, descriptionContainer);
 
