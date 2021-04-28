@@ -19,9 +19,23 @@ export class GameSetupComponent implements OnInit {
 
     currentGameService: CurrentGameService;
 
+    deckOneAddRed = false;
+    deckOneAddBlue = false;
+    deckOneAddBlack = false;
+    deckOneAddGreen = false;
+    deckOneAddWhite = false;
+
+    deckTwoAddRed = false;
+    deckTwoAddBlue = false;
+    deckTwoAddBlack = false;
+    deckTwoAddGreen = false;
+    deckTwoAddWhite = false;
+
     playersForm = this.formBuilder.group ({
         playerOneNameControl: ['', Validators.required],
         playerOneDeckControl: ['', Validators.required],
+        playerOneDeckColors: ['White'],
+        playerOneDeckDescription: ['An ordinary, boring deck.'],
         playerTwoNameControl: ['', Validators.required],
         playerTwoDeckControl: ['', Validators.required]
     });

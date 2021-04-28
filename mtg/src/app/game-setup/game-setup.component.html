@@ -39,6 +39,32 @@
                     </mat-option>
                 </mat-autocomplete>
             </mat-form-field>
+            
+            <h3>Select the colors in deck (if creating new deck)</h3>
+            <mat-form-field>
+                <mat-checkbox ([ngModel])="deckOneAddRed">Red
+                </mat-checkbox>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-checkbox ([ngModel])="deckOneAddBlue">Blue
+                </mat-checkbox>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-checkbox ([ngModel])="deckOneAddBlack">Black
+                </mat-checkbox>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-checkbox ([ngModel])="deckOneAddGreen">Green
+                </mat-checkbox>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-checkbox ([ngModel])="deckOneAddWhite">White
+                </mat-checkbox>
+            </mat-form-field>
+            
+            <mat-form-field>
+                <h3>Enter a description of the deck (if creating new deck)</h3>
+            </mat-form-field>
         </div>
         <div class="player-setup-container" 
             id="player-two-container">
