@@ -1,128 +1,101 @@
 <div id="player-form-container">
-    <form class="players-form" [formGroup]="playersForm" (ngSubmit)="onSubmit()">
-        <div class="player-setup-container" id="player-one-container">
+    <div class="player-setup-form" id="player-one-container">
+        <form class="player-form" [formGroup]="playerOneForm">
             <h2>Player One</h2>
             <mat-divider></mat-divider>
-        
-            <h3>Select Player <em>- OR -</em> Create New Player</h3>
-            <mat-form-field>
-                <mat-label>
-                    Player Name
-                </mat-label>
-                <input type="text" 
-                    matInput 
-                    formControlName="playerOneNameControl" 
-                    [matAutocomplete]="autoPlayerName" 
-                    required>  
-                <mat-autocomplete #autoPlayerName="matAutocomplete" 
-                    [displayWith]="displayPlayerFunction">
-                    <mat-option *ngFor="let player of players" 
-                        [value]="player.name">
-                        {{player.name}}
-                    </mat-option>
-                </mat-autocomplete>
-            </mat-form-field>
 
-            <h3>Select Deck <em>- OR -</em> Create New Deck</h3>
-            <mat-form-field>
-                <mat-label>Deck</mat-label>
-                <input type="text" 
-                    matInput 
-                    formControlName="playerOneDeckControl"
-                    [matAutocomplete]="autoDeckName" 
-                    required>
-                <mat-autocomplete #autoDeckName="matAutocomplete" 
-                    [displayWith]="displayDeckFunction">
-                    <mat-option *ngFor="let deck of decks" 
-                        [value]="deck.name">
-                        {{deck.name}}
-                    </mat-option>
-                </mat-autocomplete>
-            </mat-form-field>
-            
-            <h3>Select the colors in deck (if creating new deck)</h3>
-            <mat-form-field>
-                <mat-checkbox ([ngModel])="deckOneAddRed">Red
-                </mat-checkbox>
-            </mat-form-field>
-            <mat-form-field>
-                <mat-checkbox ([ngModel])="deckOneAddBlue">Blue
-                </mat-checkbox>
-            </mat-form-field>
-            <mat-form-field>
-                <mat-checkbox ([ngModel])="deckOneAddBlack">Black
-                </mat-checkbox>
-            </mat-form-field>
-            <mat-form-field>
-                <mat-checkbox ([ngModel])="deckOneAddGreen">Green
-                </mat-checkbox>
-            </mat-form-field>
-            <mat-form-field>
-                <mat-checkbox ([ngModel])="deckOneAddWhite">White
-                </mat-checkbox>
-            </mat-form-field>
-            
-            <mat-form-field>
-                <h3>Enter a description of the deck (if creating new deck)</h3>
-            </mat-form-field>
-        </div>
-        <div class="player-setup-container" 
-            id="player-two-container">
-            <h2>Player Two</h2>
-            <mat-divider></mat-divider>
-        
-            <h3>Select Player <em>- OR -</em> Create New Player</h3>
-            <mat-form-field>
-                <mat-label>
-                    Player Name
-                </mat-label>
-                <input type="text" 
-                    matInput 
-                    formControlName="playerTwoNameControl" 
-                    [matAutocomplete]="autoPlayerName" 
-                    required>  
-                <mat-autocomplete #autoPlayerName="matAutocomplete" 
-                    [displayWith]="displayPlayerFunction">
-                    <mat-option *ngFor="let player of players" 
-                        [value]="player.name">
-                        {{player.name}}
-                    </mat-option>
-                </mat-autocomplete>
-            </mat-form-field>
+            <div class="player-name-container">
+                <h3>Select Player <em>- OR -</em> Create New Player</h3>
+                <mat-form-field>
+                    <mat-label>
+                        Player Name
+                    </mat-label>
+                    <input type="text" 
+                        matInput 
+                        formControlName="playerNameControl" 
+                        [matAutocomplete]="autoPlayerName" 
+                        required>  
+                    <mat-autocomplete #autoPlayerName="matAutocomplete" 
+                        [displayWith]="displayPlayerFunction">
+                        <mat-option *ngFor="let player of players" 
+                            [value]="player.name">
+                            {{player.name}}
+                        </mat-option>
+                    </mat-autocomplete>
+                </mat-form-field>
+            </div>
 
-            <h3>Select Deck <em>- OR -</em> Create New Deck</h3>
-            <mat-form-field>
-                <mat-label>Deck</mat-label>
-                <input type="text" 
-                    matInput 
-                    formControlName="playerTwoDeckControl" 
-                    [matAutocomplete]="autoDeckName" 
-                    required>
-                <mat-autocomplete #autoDeckName="matAutocomplete" 
-                    [displayWith]="displayDeckFunction">
-                    <mat-option *ngFor="let deck of decks" 
-                        [value]="deck.name">
-                        {{deck.name}}
-                    </mat-option>
-                </mat-autocomplete>
-            </mat-form-field>
-            <mat-divider></mat-divider>
-        </div>
-        <div *ngIf="playersForm.controls.playerOneNameControl.value != '' && playersForm.controls.playerOneDeckControl.value 
-                && playersForm.controls.playerTwoNameControl.value != '' && playersForm.controls.playerTwoDeckControl.value != ''" class="player-one-config">
-            <p>
-                Player One will be known as {{playersForm.controls.playerOneNameControl.value}} and they will use the {{playersForm.controls.playerOneDeckControl.value}} deck. 
-                They will take on {{playersForm.controls.playerTwoNameControl.value}} and their {{playersForm.controls.playerTwoDeckControl.value}} deck.
-            </p>
-        </div>  
-        <div id="submission-area">
-            <button type="submit" 
-                [disabled]="!playersForm.valid"
-                id="play-game-button"
-                mat-raised-button color="primary">
-                Play Game!
-            </button>
-        </div>  
+            <div class="deck-name-container">
+                <h3>Select Deck <em>- OR -</em> Create New Deck</h3>
+                <mat-form-field>
+                    <mat-label>Deck</mat-label>
+                    <input type="text" 
+                        matInput 
+                        formControlName="deckNameControl"
+                        [matAutocomplete]="autoDeckName" 
+                        required>
+                    <mat-autocomplete #autoDeckName="matAutocomplete" 
+                        [displayWith]="displayDeckFunction">
+                        <mat-option *ngFor="let deck of decks" 
+                            [value]="deck.name">
+                            {{deck.name}}
+                        </mat-option>
+                    </mat-autocomplete>
+                </mat-form-field>
+            </div>
+
+            <div class="color-selection-container">
+                <h3>Select colors for deck</h3>
+                <mat-checkbox formControlName="redControl">Red</mat-checkbox>
+                <mat-checkbox formControlName="blueControl">Blue</mat-checkbox>
+                <mat-checkbox formControlName="greenControl">Green</mat-checkbox>
+                <mat-checkbox formControlName="blackControl">Black</mat-checkbox>
+                <mat-checkbox formControlName="whiteControl">White</mat-checkbox>
+            </div>
+
+        </form>
+    </div>
+
+    <div class="player-setup-form" id="player-two-container">
+    <form class="player-form" [formGroup]="playerTwoForm">
+        <h2>Player Two</h2>
+        <mat-divider></mat-divider>
+
+        <h3>Select Player <em>- OR -</em> Create New Player</h3>
+        <mat-form-field>
+            <mat-label>
+                Player Name
+            </mat-label>
+            <input type="text" 
+                matInput 
+                formControlName="playerNameControl" 
+                [matAutocomplete]="autoPlayerName" 
+                required>  
+            <mat-autocomplete #autoPlayerName="matAutocomplete" 
+                [displayWith]="displayPlayerFunction">
+                <mat-option *ngFor="let player of players" 
+                    [value]="player.name">
+                    {{player.name}}
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+
+        <h3>Select Deck <em>- OR -</em> Create New Deck</h3>
+        <mat-form-field>
+            <mat-label>Deck</mat-label>
+            <input type="text" 
+                matInput 
+                formControlName="deckNameControl"
+                [matAutocomplete]="autoDeckName" 
+                required>
+            <mat-autocomplete #autoDeckName="matAutocomplete" 
+                [displayWith]="displayDeckFunction">
+                <mat-option *ngFor="let deck of decks" 
+                    [value]="deck.name">
+                    {{deck.name}}
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
     </form>
-
+    </div>
 </div>

@@ -19,25 +19,19 @@ export class GameSetupComponent implements OnInit {
 
     currentGameService: CurrentGameService;
 
-    deckOneAddRed = false;
-    deckOneAddBlue = false;
-    deckOneAddBlack = false;
-    deckOneAddGreen = false;
-    deckOneAddWhite = false;
+    playerOneForm = this.formBuilder.group ({
+        playerNameControl: ['', Validators.required],
+        deckNameControl: ['', Validators.required],
+        redControl: null,
+        blueControl: null,
+        greenControl: null,
+        blackControl: null,
+        whiteControl: null,
+    });
 
-    deckTwoAddRed = false;
-    deckTwoAddBlue = false;
-    deckTwoAddBlack = false;
-    deckTwoAddGreen = false;
-    deckTwoAddWhite = false;
-
-    playersForm = this.formBuilder.group ({
-        playerOneNameControl: ['', Validators.required],
-        playerOneDeckControl: ['', Validators.required],
-        playerOneDeckColors: ['White'],
-        playerOneDeckDescription: ['An ordinary, boring deck.'],
-        playerTwoNameControl: ['', Validators.required],
-        playerTwoDeckControl: ['', Validators.required]
+    playerTwoForm = this.formBuilder.group({
+        playerNameControl: ['', Validators.required],
+        deckNameControl: ['', Validators.required],
     });
 
     players: Player[] = [];
@@ -59,31 +53,6 @@ export class GameSetupComponent implements OnInit {
     ngOnInit(): void {}
 
     onSubmit() {
-        
-        // Add a new player if one wasn't found
-        if (!this.playerNameExists(this.playersForm.controls.playerOneNameControl.value)) {
-            this.playerService.addPlayer(this.playersForm.controls.playerOneNameControl.value);
-        }
-
-        if (!this.playerNameExists(this.playersForm.controls.playerTwoNameControl.value)) {
-            this.playerService.addPlayer(this.playersForm.controls.playerTwoNameControl.value);
-        }
-
-        // Set player names as active players
-        this.currentGameService.addPlayer((this.playersForm.controls.playerOneNameControl.value));
-        this.currentGameService.addPlayer((this.playersForm.controls.playerTwoNameControl.value));
-
-        // Add a new deck if one wasn't found
-        if (!this.deckNameExists(this.playersForm.controls.playerOneDeckControl.value)) {
-            this.deckService.addDeck(this.playersForm.controls.playerOneDeckControl.value);
-        }
-        if (!this.deckNameExists(this.playersForm.controls.playerTwoDeckControl.value)) {
-            this.deckService.addDeck(this.playersForm.controls.playerTwoDeckControl.value);
-        }
-
-        // Set decks as active decks
-        this.currentGameService.addDeck((this.playersForm.controls.playerOneDeckControl.value));
-        this.currentGameService.addDeck((this.playersForm.controls.playerTwoDeckControl.value));
 
         // Move to game-play screen
         this.router.navigate(['/game-play']);
