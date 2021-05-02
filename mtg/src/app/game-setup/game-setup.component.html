@@ -83,7 +83,7 @@
                 <p>A new deck will be added with the name {{playerOneForm.controls.deckNameControl.value}}.</p>
             </div>
         </div>
-        <button mat-raised-button disabled color="primary">Play!</button>
+        <button mat-raised-button [disabled]="!playerOneForm.valid || !playerTwoForm.valid" (click)="onSubmit()" color="primary">Play!</button>
         <div *ngIf="playerTwoForm.controls.playerNameControl.value.length > 0 
             && playerTwoForm.controls.deckNameControl.value.length > 0" class="game-submission-info">
         <p>Player Two will be known as {{playerTwoForm.controls.playerNameControl.value}} 
