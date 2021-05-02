@@ -33,6 +33,7 @@
                         matInput 
                         formControlName="deckNameControl"
                         [matAutocomplete]="autoDeckName" 
+                        (change)="checkDeck($event, 0)"
                         required>
                     <mat-autocomplete #autoDeckName="matAutocomplete" 
                         [displayWith]="displayDeckFunction">
@@ -46,11 +47,11 @@
 
             <div class="color-selection-container">
                 <h3>Select colors for deck</h3>
-                <mat-checkbox formControlName="redControl">Red</mat-checkbox>
-                <mat-checkbox formControlName="blueControl">Blue</mat-checkbox>
-                <mat-checkbox formControlName="greenControl">Green</mat-checkbox>
-                <mat-checkbox formControlName="blackControl">Black</mat-checkbox>
-                <mat-checkbox formControlName="whiteControl">White</mat-checkbox>
+                <mat-checkbox [checked]="addDeckOneRed" (change)="addDeckOneRed = !addDeckOneRed" formControlName="redControl">Red</mat-checkbox>
+                <mat-checkbox [checked]="addDeckOneBlue" (change)="addDeckOneBlue = !addDeckOneBlue" formControlName="blueControl">Blue</mat-checkbox>
+                <mat-checkbox [checked]="addDeckOneGreen" (change)="addDeckOneGreen = !addDeckOneGreen" formControlName="greenControl">Green</mat-checkbox>
+                <mat-checkbox [checked]="addDeckOneBlack" (change)="addDeckOneBlack = !addDeckOneBlack" formControlName="blackControl">Black</mat-checkbox>
+                <mat-checkbox [checked]="addDeckOneWhite" (change)="addDeckOneWhite = !addDeckOneWhite" formControlName="whiteControl">White</mat-checkbox>
             </div>
 
         </form>
@@ -58,7 +59,34 @@
 
     <mat-divider></mat-divider>
     <div class="submission-area">
+        <div *ngIf="playerOneForm.controls.playerNameControl.value.length > 0 
+                && playerOneForm.controls.deckNameControl.value.length > 0" class="game-submission-info">
+            <p>Player One will be known as {{playerOneForm.controls.playerNameControl.value}} 
+                and they will use the {{playerOneForm.controls.deckNameControl.value}} deck.</p>
+            <div *ngIf="addDeckOne" class="deck-add-info">
+                <p>A new deck will be added with name {{playerOneForm.controls.deckNameControl.value}}.</p>
+                <p>The deck will be described as; {{playerOneForm.controls.deckDescriptionControl.value}}</p>
+                <p *ngIf="addDeckOneRed" class="mana-add-info">
+                    The new deck will have red mana.
+                </p>
+                <p *ngIf="addDeckOneBlue" class="mana-add-info">
+                    The new deck will have blue mana.
+                </p>
+                <p *ngIf="addDeckOneGreen" class="mana-add-info">
+                    The new deck will have green mana.
+                </p>
+                <p *ngIf="addDeckOneBlack" class="mana-add-info">
+                    The new deck will have black mana.
+                </p>
+                <p *ngIf="addDeckOneWhite" class="mana-add-info">
+                    The new deck will have white mana.
+                </p>
+            </div>
+        </div>
         <button mat-raised-button disabled color="primary">Play!</button>
+        <div *ngIf="validPlayerTwo" class="game-submission-info">
+
+        </div>
     </div>
     <mat-divider></mat-divider>
 

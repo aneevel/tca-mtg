@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { Deck } from '../deck';
@@ -19,23 +19,27 @@ export class GameSetupComponent implements OnInit {
 
     currentGameService: CurrentGameService;
 
-    playerOneForm = this.formBuilder.group ({
-        playerNameControl: ['', Validators.required],
-        deckNameControl: ['', Validators.required],
-        redControl: null,
-        blueControl: null,
-        greenControl: null,
-        blackControl: null,
-        whiteControl: null,
-    });
-
-    playerTwoForm = this.formBuilder.group({
-        playerNameControl: ['', Validators.required],
-        deckNameControl: ['', Validators.required],
-    });
+    playerOneForm: FormGroup;
+    playerTwoForm: FormGroup;
 
     players: Player[] = [];
     decks: Deck[] = [];
+
+    validPlayerOne: boolean = false;
+    addDeckOne: boolean = false;
+    addDeckOneRed: boolean = false;
+    addDeckOneBlue: boolean = false;
+    addDeckOneGreen: boolean = false;
+    addDeckOneBlack: boolean = false;
+    addDeckOneWhite: boolean = false;
+
+    validPlayerTwo: boolean = false;
+    addDeckTwo: boolean = false;
+    addDeckTwoRed: boolean = false;
+    addDeckTwoBlue: boolean = false;
+    addDeckTwoGreen: boolean = false;
+    addDeckTwoBlack: boolean = false;
+    addDeckTwoWhite: boolean = false;
 
     constructor(
         private playerService: PlayersService,
@@ -50,12 +54,35 @@ export class GameSetupComponent implements OnInit {
         this.currentGameService = gameService;
     }
 
-    ngOnInit(): void {}
+    ngOnInit(): void {
+
+        this.playerOneForm = this.formBuilder.group ({
+            playerNameControl: ['', Validators.required],
+            deckNameControl: ['', Validators.required],
+            redControl: null,
+            blueControl: null,
+            greenControl: null,
+            blackControl: null,
+            whiteControl: null,
+            deckDescriptionControl: ['Just your ordinary deck'],
+        });
+    
+        this.playerTwoForm = this.formBuilder.group({
+            playerNameControl: ['', Validators.required],
+            deckNameControl: ['', Validators.required],
+        });
+    }
 
     onSubmit() {
 
         // Move to game-play screen
         this.router.navigate(['/game-play']);
+    }
+
+    checkDeck(deckName: string, playerIndex) {
+        if (!this.deckNameExists(deckName)) {
+            this.addDeckOne = true;
+        }
     }
 
     playerNameExists(playerName: string): boolean {
