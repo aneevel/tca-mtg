@@ -64,23 +64,36 @@ export class GameSetupComponent implements OnInit {
             greenControl: null,
             blackControl: null,
             whiteControl: null,
-            deckDescriptionControl: ['Just your ordinary deck'],
+            deckDescriptionControl: [''],
         });
     
         this.playerTwoForm = this.formBuilder.group({
             playerNameControl: ['', Validators.required],
             deckNameControl: ['', Validators.required],
+            redControl: null,
+            blueControl: null,
+            greenControl: null,
+            blackControl: null,
+            whiteControl: null,
+            deckDescriptionControl: [''],
         });
     }
 
     onSubmit() {
+
+        if (this.addDeckOne) {
+            // Add deck one
+        }
+
+        if (this.addDeckTwo) {
+            // Add deck two
+        }
 
         // Move to game-play screen
         this.router.navigate(['/game-play']);
     }
 
     checkDeck(deckName: string, playerIndex) {
-        console.log(`Checking for deck name with ${deckName}`);
         if (playerIndex === 0) {
             if (!this.deckNameExists(deckName)) {
                 this.addDeckOne = true;

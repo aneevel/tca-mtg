@@ -45,13 +45,29 @@
                 </mat-form-field>
             </div>
 
-            <div *ngIf="addDeckOne" class="color-selection-container">
-                <h3>Select colors for deck</h3>
-                <mat-checkbox [checked]="addDeckOneRed" (change)="addDeckOneRed = !addDeckOneRed" formControlName="redControl">Red</mat-checkbox>
-                <mat-checkbox [checked]="addDeckOneBlue" (change)="addDeckOneBlue = !addDeckOneBlue" formControlName="blueControl">Blue</mat-checkbox>
-                <mat-checkbox [checked]="addDeckOneGreen" (change)="addDeckOneGreen = !addDeckOneGreen" formControlName="greenControl">Green</mat-checkbox>
-                <mat-checkbox [checked]="addDeckOneBlack" (change)="addDeckOneBlack = !addDeckOneBlack" formControlName="blackControl">Black</mat-checkbox>
-                <mat-checkbox [checked]="addDeckOneWhite" (change)="addDeckOneWhite = !addDeckOneWhite" formControlName="whiteControl">White</mat-checkbox>
+            <div *ngIf="addDeckOne" class="add-deck-info">
+                <div class="color-selection-container">
+                    <h3>Select colors for deck</h3>
+                    <mat-checkbox [checked]="addDeckOneRed" (change)="addDeckOneRed = !addDeckOneRed" formControlName="redControl">Red</mat-checkbox>
+                    <mat-checkbox [checked]="addDeckOneBlue" (change)="addDeckOneBlue = !addDeckOneBlue" formControlName="blueControl">Blue</mat-checkbox>
+                    <mat-checkbox [checked]="addDeckOneGreen" (change)="addDeckOneGreen = !addDeckOneGreen" formControlName="greenControl">Green</mat-checkbox>
+                    <mat-checkbox [checked]="addDeckOneBlack" (change)="addDeckOneBlack = !addDeckOneBlack" formControlName="blackControl">Black</mat-checkbox>
+                    <mat-checkbox [checked]="addDeckOneWhite" (change)="addDeckOneWhite = !addDeckOneWhite" formControlName="whiteControl">White</mat-checkbox>
+                </div>
+
+                <div class="deck-description-container">
+                    <h3>Provide a description for the deck</h3>
+                    <mat-form-field>
+                        <mat-label>Deck Description</mat-label>
+                        <textarea
+                            matInput
+                            placeholder="Just a boring old deck!"
+                            formControlName="deckDescriptionControl"
+                            >
+                        
+                        </textarea>
+                    </mat-form-field>
+                </div>
             </div>
 
         </form>
@@ -64,29 +80,18 @@
             <p>Player One will be known as {{playerOneForm.controls.playerNameControl.value}} 
                 and they will use the {{playerOneForm.controls.deckNameControl.value}} deck.</p>
             <div *ngIf="addDeckOne" class="deck-add-info">
-                <p>A new deck will be added with name {{playerOneForm.controls.deckNameControl.value}}.</p>
-                <p>The deck will be described as; {{playerOneForm.controls.deckDescriptionControl.value}}</p>
-                <p *ngIf="addDeckOneRed" class="mana-add-info">
-                    The new deck will have red mana.
-                </p>
-                <p *ngIf="addDeckOneBlue" class="mana-add-info">
-                    The new deck will have blue mana.
-                </p>
-                <p *ngIf="addDeckOneGreen" class="mana-add-info">
-                    The new deck will have green mana.
-                </p>
-                <p *ngIf="addDeckOneBlack" class="mana-add-info">
-                    The new deck will have black mana.
-                </p>
-                <p *ngIf="addDeckOneWhite" class="mana-add-info">
-                    The new deck will have white mana.
-                </p>
+                <p>A new deck will be added with the name {{playerOneForm.controls.deckNameControl.value}}.</p>
             </div>
         </div>
         <button mat-raised-button disabled color="primary">Play!</button>
-        <div *ngIf="validPlayerTwo" class="game-submission-info">
-
+        <div *ngIf="playerTwoForm.controls.playerNameControl.value.length > 0 
+            && playerTwoForm.controls.deckNameControl.value.length > 0" class="game-submission-info">
+        <p>Player Two will be known as {{playerTwoForm.controls.playerNameControl.value}} 
+            and they will use the {{playerTwoForm.controls.deckNameControl.value}} deck.</p>
+        <div *ngIf="addDeckTwo" class="deck-add-info">
+            <p>A new deck will be added with the name {{playerTwoForm.controls.deckNameControl.value}}.</p>
         </div>
+    </div>
     </div>
     <mat-divider></mat-divider>
 
@@ -122,6 +127,7 @@
                 matInput 
                 formControlName="deckNameControl"
                 [matAutocomplete]="autoDeckName" 
+                (change)="checkDeck($event.target.value, 1)"
                 required>
             <mat-autocomplete #autoDeckName="matAutocomplete" 
                 [displayWith]="displayDeckFunction">
@@ -131,6 +137,31 @@
                 </mat-option>
             </mat-autocomplete>
         </mat-form-field>
+
+        <div *ngIf="addDeckTwo" class="add-deck-info">
+            <div class="color-selection-container">
+                <h3>Select colors for deck</h3>
+                <mat-checkbox [checked]="addDeckTwoRed" (change)="addDeckTwoRed = !addDeckTwoRed" formControlName="redControl">Red</mat-checkbox>
+                <mat-checkbox [checked]="addDeckTwoBlue" (change)="addDeckTwoBlue = !addDeckTwoBlue" formControlName="blueControl">Blue</mat-checkbox>
+                <mat-checkbox [checked]="addDeckTwoGreen" (change)="addDeckTwoGreen = !addDeckTwoGreen" formControlName="greenControl">Green</mat-checkbox>
+                <mat-checkbox [checked]="addDeckTwoBlack" (change)="addDeckTwoBlack = !addDeckTwoBlack" formControlName="blackControl">Black</mat-checkbox>
+                <mat-checkbox [checked]="addDeckTwoWhite" (change)="addDeckTwoWhite = !addDeckTwoWhite" formControlName="whiteControl">White</mat-checkbox>
+            </div>
+
+            <div class="deck-description-container">
+                <h3>Provide a description for the deck</h3>
+                <mat-form-field>
+                    <mat-label>Deck Description</mat-label>
+                    <textarea
+                        matInput
+                        placeholder="Just a boring old deck!"
+                        formControlName="deckDescriptionControl"
+                        >
+                    
+                    </textarea>
+                </mat-form-field>
+            </div>
+        </div>
     </form>
     </div>
 </div>
