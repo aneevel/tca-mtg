@@ -33,7 +33,7 @@
                         matInput 
                         formControlName="deckNameControl"
                         [matAutocomplete]="autoDeckName" 
-                        (change)="checkDeck($event, 0)"
+                        (change)="checkDeck($event.target.value, 0)"
                         required>
                     <mat-autocomplete #autoDeckName="matAutocomplete" 
                         [displayWith]="displayDeckFunction">
@@ -45,7 +45,7 @@
                 </mat-form-field>
             </div>
 
-            <div class="color-selection-container">
+            <div *ngIf="addDeckOne" class="color-selection-container">
                 <h3>Select colors for deck</h3>
                 <mat-checkbox [checked]="addDeckOneRed" (change)="addDeckOneRed = !addDeckOneRed" formControlName="redControl">Red</mat-checkbox>
                 <mat-checkbox [checked]="addDeckOneBlue" (change)="addDeckOneBlue = !addDeckOneBlue" formControlName="blueControl">Blue</mat-checkbox>

@@ -80,8 +80,19 @@ export class GameSetupComponent implements OnInit {
     }
 
     checkDeck(deckName: string, playerIndex) {
-        if (!this.deckNameExists(deckName)) {
-            this.addDeckOne = true;
+        console.log(`Checking for deck name with ${deckName}`);
+        if (playerIndex === 0) {
+            if (!this.deckNameExists(deckName)) {
+                this.addDeckOne = true;
+            } else {
+                this.addDeckOne = false;
+            }
+        } else {
+            if (!this.deckNameExists(deckName)) {
+                this.addDeckTwo = true;
+            } else {
+                this.addDeckTwo = false;
+            }
         }
     }
 
