@@ -81,16 +81,72 @@ export class GameSetupComponent implements OnInit {
 
     onSubmit() {
 
+        // Persist player one info
+        if (this.playerService.getPlayer(this.playerOneForm.controls.playerNameControl.value) === null) 
+            this.playerService.addPlayer(this.playerOneForm.controls.playerNameControl.value);
+        this.currentGameService.addPlayer(this.playerService.getPlayer(this.playerOneForm.controls.playerNameControl.value));
+
         if (this.addDeckOne) {
-            // Add deck one
+            this.deckService.addDeck(this.playerOneForm.controls.deckNameControl.value, 
+                [...this.getColors(0)], 
+                this.playerOneForm.controls.deckDescriptionControl.value);
         }
+        this.currentGameService.addDeck(this.deckService.getDeck(this.playerOneForm.controls.deckNameControl.value));
+
+        // Persist player two info
+        if (this.playerService.getPlayer(this.playerTwoForm.controls.playerNameControl.value) === null)
+            this.playerService.addPlayer(this.playerTwoForm.controls.playerNameControl.value);
+        this.currentGameService.addPlayer(this.playerService.getPlayer(this.playerTwoForm.controls.playerNameControl.value));
 
         if (this.addDeckTwo) {
-            // Add deck two
+            this.deckService.addDeck(this.playerTwoForm.controls.deckNameControl.value,
+                [...this.getColors(1)],
+                this.playerTwoForm.controls.deckDescriptionControl.value);
         }
+        this.currentGameService.addDeck(this.deckService.getDeck(this.playerTwoForm.controls.deckNameControl.value));
 
         // Move to game-play screen
         this.router.navigate(['/game-play']);
+    }
+
+    getColors(player): string[] {
+        
+        let colors = [];
+        if (player === 0) {
+            if (this.addDeckOneBlack) {
+                colors.push("black");
+            }
+            if (this.addDeckOneBlue) {
+                colors.push("blue");
+            }
+            if (this.addDeckOneGreen) {
+                colors.push("green");
+            }
+            if (this.addDeckOneRed) {
+                colors.push("red");
+            }
+            if (this.addDeckOneWhite) {
+                colors.push("white");
+            }
+        } else if (player === 1) {
+            if (this.addDeckTwoBlack) {
+                colors.push("black");
+            }
+            if (this.addDeckTwoBlue) {
+                colors.push("blue");
+            }
+            if (this.addDeckTwoGreen) {
+                colors.push("green");
+            }
+            if (this.addDeckTwoRed) {
+                colors.push("red");
+            }
+            if (this.addDeckTwoWhite) {
+                colors.push("white");
+            }
+        }
+        
+        return colors;
     }
 
     checkDeck(deckName: string, playerIndex) {

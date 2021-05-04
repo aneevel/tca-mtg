@@ -8,8 +8,8 @@ import { StorageService } from './storage.service';
 })
 export class DecksService {
 
-  addDeck(deckName) {
-    this.storageService.addDeck({ 'name': deckName, 'colors': [], 'description': '' });
+  addDeck(deckName, colors, description) {
+    this.storageService.addDeck({ 'name': deckName, 'colors': [...colors], 'description': description });
   }
 
   getDecks() {
