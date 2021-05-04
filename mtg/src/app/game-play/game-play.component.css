@@ -145,3 +145,10 @@ h3 {
 ::ng-deep .used-mana {
     filter: grayscale(100%);
 }
+
+@media only screen and (max-width: 768px) {
+
+    #player-one-mat {
+        transform: rotate(180deg);
+    }
+}
