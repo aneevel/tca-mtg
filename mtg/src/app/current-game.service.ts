@@ -78,8 +78,8 @@ export class CurrentGameService {
     this.players.push({ 'name': playerName });
   }
 
-  addDeck(deckName: string) {
-    this.decks.push({ 'name': deckName, 'colors': [], 'description': ''});
+  addDeck(deck: Deck) {
+    this.decks.push(deck);
   }
 
   resetLife() {

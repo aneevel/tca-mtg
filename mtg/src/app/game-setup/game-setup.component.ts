@@ -84,7 +84,7 @@ export class GameSetupComponent implements OnInit {
         // Persist player one info
         if (this.playerService.getPlayer(this.playerOneForm.controls.playerNameControl.value) === null) 
             this.playerService.addPlayer(this.playerOneForm.controls.playerNameControl.value);
-        this.currentGameService.addPlayer(this.playerService.getPlayer(this.playerOneForm.controls.playerNameControl.value));
+        this.currentGameService.addPlayer(this.playerOneForm.controls.playerNameControl.value);
 
         if (this.addDeckOne) {
             this.deckService.addDeck(this.playerOneForm.controls.deckNameControl.value, 
@@ -96,7 +96,7 @@ export class GameSetupComponent implements OnInit {
         // Persist player two info
         if (this.playerService.getPlayer(this.playerTwoForm.controls.playerNameControl.value) === null)
             this.playerService.addPlayer(this.playerTwoForm.controls.playerNameControl.value);
-        this.currentGameService.addPlayer(this.playerService.getPlayer(this.playerTwoForm.controls.playerNameControl.value));
+        this.currentGameService.addPlayer(this.playerTwoForm.controls.playerNameControl.value);
 
         if (this.addDeckTwo) {
             this.deckService.addDeck(this.playerTwoForm.controls.deckNameControl.value,
