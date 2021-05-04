@@ -20,22 +20,22 @@
             <div id="player-one-mana-container" class="player-one mana-container"></div>
         </div>
         <div class="player-one life-container">
-            <button (click)="decrementLife(0)" class="minus-button" mat-icon-button>
+            <button mat-raised-button secondary (click)="decrementLife(0)" class="minus-button" mat-icon-button>
                 <mat-icon >exposure_minus_1</mat-icon>
             </button>
             <h2 class="life-header">Life: {{ this.currentGame.lifes[0] }}</h2>
-            <button (click)="incrementLife(0)"class="plus-button" mat-icon-button>
+            <button mat-raised-button secondary (click)="incrementLife(0)"class="plus-button" mat-icon-button>
                 <mat-icon>exposure_plus_1</mat-icon>
             </button>
         </div>
     </div>
     <div id="player-two-mat" class="player-two player-mat">
         <div class="player-two life-container">
-            <button (click)="decrementLife(1)" class="minus-button" mat-icon-button>
+            <button mat-raised-button secondary (click)="decrementLife(1)" class="minus-button" mat-icon-button>
                 <mat-icon>exposure_minus_1</mat-icon>
             </button>
             <h2 class="life-header">Life: {{ this.currentGame.lifes[1] }}</h2>
-                <button (click)="incrementLife(1)" class="plus-button" mat-icon-button>
+                <button mat-raised-button secondary (click)="incrementLife(1)" class="plus-button" mat-icon-button>
                     <mat-icon>exposure_plus_1</mat-icon>
                 </button>
         </div>
