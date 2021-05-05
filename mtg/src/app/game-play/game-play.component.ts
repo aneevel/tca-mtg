@@ -1,4 +1,5 @@
-import { Component, OnInit, Renderer2, RendererFactory2 } from '@angular/core';
+import { Component, Inject, OnInit, Renderer2, RendererFactory2 } from '@angular/core';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 
 import { CurrentGameService } from '../current-game.service';
@@ -16,6 +17,7 @@ export class GamePlayComponent implements OnInit {
   constructor(public currentGame: CurrentGameService,
     private router: Router,
     private manaCreator: ManaCreatorService,
+    public dialog: MatDialog,
     rendererFactory: RendererFactory2) { 
 
     this.renderer = rendererFactory.createRenderer(null, null);
@@ -60,4 +62,20 @@ export class GamePlayComponent implements OnInit {
     this.router.navigate(['/']);
   }
 
+  openConfig(player) {
+    this.dialog.open(DialogConfigDialog, {
+      data: {
+        player: `${player}`
+      }
+    });
+  }
+
+}
+
+@Component({
+  selector: 'dialog-config-dialog',
+  templateUrl: 'dialog-config-dialog.html',
+})
+export class DialogConfigDialog {
+  constructor(@Inject(MAT_DIALOG_DATA) public data) {}
 }

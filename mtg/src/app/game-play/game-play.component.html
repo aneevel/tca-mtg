@@ -1,6 +1,6 @@
 <div id="play-mat">
     <div id="player-one-mat" class="player-one player-mat">
-        <button mat-raised-button secondary class="config-button" mat-icon-button>
+        <button mat-raised-button secondary (click)="openConfig(0)" class="config-button" mat-icon-button>
             <mat-icon>manage_accounts</mat-icon>
         </button>
         <div class="player-one name-container">
@@ -33,7 +33,7 @@
         </div>
     </div>
     <div id="player-two-mat" class="player-two player-mat">
-        <button mat-raised-button secondary class="config-button" mat-icon-button>
+        <button mat-raised-button secondary (click)="openConfig(1)" class="config-button" mat-icon-button>
             <mat-icon>manage_accounts</mat-icon>
         </button>
         <div class="player-two life-container">
