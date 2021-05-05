@@ -35,8 +35,6 @@ export class DeckViewCreatorService {
     this.renderer.setProperty(removeDeckButton, 'innerHTML', "Remove");
     this.renderer.addClass(removeDeckButton, "mat-raised-button");
 
-    this.renderer.appendChild(buttonContainer, removeDeckButton);
-
     // Mana container
     const manaContainer = this.createManaContainer(deck.colors);
     
@@ -45,9 +43,10 @@ export class DeckViewCreatorService {
 
     // Tie all HTML elements together
     this.renderer.appendChild(deckContainer, deckNameHeader);
-    this.renderer.appendChild(deckContainer, buttonContainer);
     this.renderer.appendChild(deckContainer, manaContainer);
     this.renderer.appendChild(deckContainer, descriptionContainer);
+    this.renderer.appendChild(buttonContainer, removeDeckButton);
+    this.renderer.appendChild(deckContainer, buttonContainer);
 
     return deckContainer;
   }
@@ -57,6 +56,7 @@ export class DeckViewCreatorService {
 
     // Create a mana symbol for each color passed in
     let manaSymbols: HTMLElement[] = colors.map(color => this.createManaSymbol(color));
+    console.log(`Mana symbols created: ${colors}`);
 
     // Append symbols
     manaSymbols.forEach(symbol => this.renderer.appendChild(manaContainer, symbol));
@@ -77,6 +77,9 @@ export class DeckViewCreatorService {
 
   createManaSymbol(color: string): HTMLElement {
     const manaSymbol = this.renderer.createElement('img');
+    this.renderer.setProperty(manaSymbol, "src", `assets/${color}-symbol.png`);
+    this.renderer.setProperty(manaSymbol, 'width', 20);
+    this.renderer.setProperty(manaSymbol, "height", 20);
 
     return manaSymbol;
   }
