@@ -33,3 +33,8 @@ h1 {
     width: 80%;
     height: auto;
 }
+
+::ng-deep .mat-raised-button {
+    width: 50%;
+    text-align: center;
+}

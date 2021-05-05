@@ -18,9 +18,14 @@ export class DeckViewCreatorService {
 
   createDeckContainer(deck: Deck): HTMLElement {
 
+    // Grid tile
+    const tileContainer = this.renderer.createElement('mat-grid-tile');
+    this.renderer.setAttribute(tileContainer, 'class', 'deck-tile');
+
     // Top level container
     const deckContainer = this.renderer.createElement('mat-card');
     this.renderer.setAttribute(deckContainer, 'class', 'deck-container');
+    this.renderer.appendChild(tileContainer, deckContainer);
 
     // Name header
     const deckNameHeader = this.renderer.createElement('mat-card-header');
@@ -56,13 +61,15 @@ export class DeckViewCreatorService {
 
   createManaContainer(colors: string[]): HTMLElement {
     const manaContainer = this.renderer.createElement('mat-card-subtitle');
+    this.renderer.addClass(manaContainer, "mana-container");
 
     // Create a mana symbol for each color passed in
     let manaSymbols: HTMLElement[] = colors.map(color => this.createManaSymbol(color));
     console.log(`Mana symbols created: ${colors}`);
 
     // Append symbols
-    manaSymbols.forEach(symbol => this.renderer.appendChild(manaContainer, symbol));
+    manaSymbols.forEach(symbol => 
+        this.renderer.appendChild(manaContainer, symbol));
 
     return manaContainer;
   }
@@ -72,6 +79,7 @@ export class DeckViewCreatorService {
     
     const descriptionText = this.renderer.createElement('p');
     this.renderer.setProperty(descriptionText, 'innerHTML', description);
+    this.renderer.addClass(descriptionText, 'deck-description-text');
 
     this.renderer.appendChild(descriptionContainer, descriptionText);
 
