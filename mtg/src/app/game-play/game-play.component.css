@@ -71,13 +71,13 @@ h3 {
 }
 
 #player-one-mat {
-    background-color: blue;
+    background-color: Crimson;
     border-style: solid;
     border-color: black;
 }
 
 #player-two-mat {
-    background-color: red;
+    background-color: DarkBlue;
     border-style: solid;
     border-color: black;
 }

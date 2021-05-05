@@ -12,6 +12,9 @@ import { ManaCreatorService } from '../mana-creator.service';
 export class GamePlayComponent implements OnInit {
 
   private renderer: Renderer2;
+  private playerOneColorCycle = 0;
+  private playerTwoColorCycle = 1;
+  private colors = ["Crimson", "DarkBlue", "DarkSeaGreen", "BlanchedAlmond", "DarkSlateGray"];
 
   constructor(public currentGame: CurrentGameService,
     private router: Router,
@@ -62,6 +65,27 @@ export class GamePlayComponent implements OnInit {
 
   cycleColor(player) {
 
+    let mat;
+    let nextColor;
+    if (player === 0) {
+      mat = "player-one";
+      if (this.playerOneColorCycle === 4) {
+        this.playerOneColorCycle = 0;
+      } else {
+        this.playerOneColorCycle++;
+      }
+      nextColor = this.colors[this.playerOneColorCycle];
+    } else {
+      mat = "player-two";
+      if (this.playerTwoColorCycle === 4) {
+        this.playerTwoColorCycle = 0;
+      } else {
+        this.playerTwoColorCycle++;
+      }
+      nextColor = this.colors[this.playerTwoColorCycle];
+    }
+
+    this.renderer.setStyle(document.getElementById(`${mat}-mat`), "background-color", nextColor);
   }
 
 }
