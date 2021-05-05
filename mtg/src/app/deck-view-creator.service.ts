@@ -19,27 +19,30 @@ export class DeckViewCreatorService {
   createDeckContainer(deck: Deck): HTMLElement {
 
     // Top level container
-    const deckContainer = this.renderer.createElement('div');
+    const deckContainer = this.renderer.createElement('mat-card');
     this.renderer.setAttribute(deckContainer, 'class', 'deck-container');
 
     // Name header
-    const deckNameHeader = this.renderer.createElement('h2');
-    this.renderer.setProperty(deckNameHeader, 'innerHTML', deck.name);
+    const deckNameHeader = this.renderer.createElement('mat-card-header');
+    const deckNameHeaderTitle = this.renderer.createElement('mat-card-title');
+    this.renderer.setProperty(deckNameHeaderTitle, 'innerHTML', deck.name);
+    this.renderer.appendChild(deckNameHeader, deckNameHeaderTitle);
+
+    // Mana container
+    const manaContainer = this.createManaContainer(deck.colors);
+
+    // Description container
+    const descriptionContainer = this.createDescriptionContainer(deck.description);
 
     // Button container
-    const buttonContainer = this.renderer.createElement('div');
+    const buttonContainer = this.renderer.createElement('mat-card-actions');
     this.renderer.setAttribute(buttonContainer, 'class', 'button-container');
 
     // Remove button
     const removeDeckButton = this.renderer.createElement('button');
     this.renderer.setProperty(removeDeckButton, 'innerHTML', "Remove");
     this.renderer.addClass(removeDeckButton, "mat-raised-button");
-
-    // Mana container
-    const manaContainer = this.createManaContainer(deck.colors);
     
-    // Description container
-    const descriptionContainer = this.createDescriptionContainer(deck.description);
 
     // Tie all HTML elements together
     this.renderer.appendChild(deckContainer, deckNameHeader);
@@ -52,7 +55,7 @@ export class DeckViewCreatorService {
   }
 
   createManaContainer(colors: string[]): HTMLElement {
-    const manaContainer = this.renderer.createElement('div');
+    const manaContainer = this.renderer.createElement('mat-card-subtitle');
 
     // Create a mana symbol for each color passed in
     let manaSymbols: HTMLElement[] = colors.map(color => this.createManaSymbol(color));
@@ -65,7 +68,7 @@ export class DeckViewCreatorService {
   }
 
   createDescriptionContainer(description: string): HTMLElement {
-    const descriptionContainer = this.renderer.createElement('div');
+    const descriptionContainer = this.renderer.createElement('mat-card-content');
     
     const descriptionText = this.renderer.createElement('p');
     this.renderer.setProperty(descriptionText, 'innerHTML', description);
