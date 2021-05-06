@@ -31,14 +31,4 @@ export class ViewUsersComponent implements OnInit {
     this.playerViews.forEach(playerView => this.renderer.appendChild(document.getElementById('players-container'), playerView));
   }
 
-  calculateWinLossRecord(playerName: string) {
-
-  }
-
-  //determineTopDecksUsed(playerName: string): Deck {
-  // const playerResults = this.storageService.getResults();
-
-
-  //}
-
 }

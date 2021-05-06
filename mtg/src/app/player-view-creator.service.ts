@@ -2,6 +2,7 @@ import { Injectable, Renderer2, RendererFactory2 } from '@angular/core';
 
 import { Player } from "./player";
 import { ResultsService } from './results.service';
+import { StorageService } from './storage.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,7 @@ export class PlayerViewCreatorService {
   private renderer: Renderer2;
 
   constructor(rendererFactory: RendererFactory2,
+      private storageService: StorageService,
       private resultsService: ResultsService) { 
 
     this.renderer = rendererFactory.createRenderer(null, null);
@@ -26,7 +28,7 @@ export class PlayerViewCreatorService {
     
     const playerNameContainer = this.renderer.createElement('div');
 
-    const playerWinLossContainer = this.createWinLossContainer();
+    const playerWinLossContainer = this.createWinLossContainer(player.name);
     const playerResultsContainer = this.createRecentResultsContainer();
     const playerDecksContainer = this.createDecksUsedContainer();
 
@@ -48,15 +50,18 @@ export class PlayerViewCreatorService {
     return playerContainer;
   }
 
-  createWinLossContainer() {
+  createWinLossContainer(playerName: string) {
 
     const playerWinLossContainer = this.renderer.createElement('div');
     this.renderer.setAttribute(playerWinLossContainer, 'class', 'player-win-loss-container');
 
+    // Setup global win-loss section
     const playerGlobalWinLossHeader = this.renderer.createElement('h3');
     this.renderer.setAttribute(playerGlobalWinLossHeader, 'class', 'player-global-wl-header');
     this.renderer.setProperty(playerGlobalWinLossHeader, 'innerHTML', 'Win - Loss Record');
+    this.renderer.appendChild(playerGlobalWinLossHeader, this.generateGlobalWinLossRecord(playerName));
 
+    // Setup individual VS record section
     const playerVsRecordsList = this.renderer.createElement('ul');
     this.renderer.setAttribute(playerVsRecordsList, 'class', 'player-vs-records-list');
 
@@ -118,4 +123,27 @@ export class PlayerViewCreatorService {
 
     return filteredResults;
   }
+
+  generateGlobalWinLossRecord(playerName: string): HTMLElement {
+
+    let winLossDisplay;
+    const playerResults = [...this.storageService.getResults().filter(result => result.winner.name === playerName || result.loser.name === playerName)];
+
+    // Determine wins and games played
+    const wins = playerResults.filter(result => result.winner.name === playerName).length;
+    const totalGames = playerResults.length;
+
+    // Setup HTMLElement to display
+    winLossDisplay = this.renderer.createElement("h4");
+    this.renderer.setProperty(winLossDisplay, "class", "win-loss-record");
+    this.renderer.setProperty(winLossDisplay, "innerHTML", `${wins / totalGames} (${wins} - ${totalGames - wins})`);
+
+    return winLossDisplay;
+  }
+
+  //determineTopDecksUsed(playerName: string): Deck {
+  // const playerResults = this.storageService.getResults();
+
+
+  //}
 }
