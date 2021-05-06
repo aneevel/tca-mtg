@@ -64,6 +64,7 @@ export class PlayerViewCreatorService {
     // Setup individual VS record section
     const playerVsRecordsList = this.renderer.createElement('ul');
     this.renderer.setAttribute(playerVsRecordsList, 'class', 'player-vs-records-list');
+    this.generateVsRecords(playerName);
 
     this.renderer.appendChild(playerWinLossContainer, playerGlobalWinLossHeader);
     this.renderer.appendChild(playerWinLossContainer, playerVsRecordsList);
@@ -98,7 +99,7 @@ export class PlayerViewCreatorService {
 
     const playerTopDecksHeader = this.renderer.createElement('h3');
     this.renderer.setAttribute(playerTopDecksHeader, 'class', 'player-top-decks-header');
-    this.renderer.setProperty(playerTopDecksHeader, 'innerHTML', 'Top Decks Used');
+    this.renderer.setProperty(playerTopDecksHeader, 'innerHTML', 'Top 5 Decks Used');
 
     const playerTopDecksList = this.renderer.createElement('ul');
     this.renderer.setAttribute(playerTopDecksList, 'class', 'player-top-decks-list');
@@ -139,6 +140,32 @@ export class PlayerViewCreatorService {
     this.renderer.setProperty(winLossDisplay, "innerHTML", `${wins / totalGames} (${wins} - ${totalGames - wins})`);
 
     return winLossDisplay;
+  }
+
+  generateVsRecords(playerName: string): HTMLElement {
+
+    let vsRecordDisplay = this.renderer.createElement("div");
+
+    // Get all results for player
+    const playerResults = [...this.storageService.getResults().filter(result => result.winner.name === playerName || result.loser.name === playerName)];
+    
+    // Get all unique players
+    const uniqueWinners = [...new Set(this.storageService.getResults().map(result => result.winner.name))];
+    const uniqueLosers = [...new Set(this.storageService.getResults().map(result => result.loser.name))];
+    const uniquePlayers = new Set([...uniqueWinners, ...uniqueLosers]);
+
+    // Remove the player we're looking at
+    uniquePlayers.delete(playerName);
+    uniquePlayers.forEach(player => console.log(`Found unique player ${player}`));
+
+    return vsRecordDisplay;
+  }
+
+  generateVsRecord(playerName: string, opponentName: string): HTMLElement {
+
+    let vsRecordDisplay = this.renderer.createElement("li");
+
+    return vsRecordDisplay;
   }
 
   //determineTopDecksUsed(playerName: string): Deck {
