@@ -61,13 +61,8 @@ export class PlayerViewCreatorService {
     this.renderer.setProperty(playerGlobalWinLossHeader, 'innerHTML', 'Win - Loss Record');
     this.renderer.appendChild(playerGlobalWinLossHeader, this.generateGlobalWinLossRecord(playerName));
 
-    // Setup individual VS record section
-    const playerVsRecordsList = this.renderer.createElement('ul');
-    this.renderer.setAttribute(playerVsRecordsList, 'class', 'player-vs-records-list');
-    this.generateVsRecords(playerName);
-
     this.renderer.appendChild(playerWinLossContainer, playerGlobalWinLossHeader);
-    this.renderer.appendChild(playerWinLossContainer, playerVsRecordsList);
+    this.renderer.appendChild(playerWinLossContainer, this.generateVsRecords(playerName));
 
     // TODO: Setup and attach each individual vs record
 
@@ -76,6 +71,7 @@ export class PlayerViewCreatorService {
 
   createRecentResultsContainer() {
 
+    // Create top-level componenent
     const playerResultsContainer = this.renderer.createElement('div');
     this.renderer.setAttribute(playerResultsContainer, 'class', 'player-results-container');
 
@@ -137,17 +133,16 @@ export class PlayerViewCreatorService {
     // Setup HTMLElement to display
     winLossDisplay = this.renderer.createElement("h4");
     this.renderer.setProperty(winLossDisplay, "class", "win-loss-record");
-    this.renderer.setProperty(winLossDisplay, "innerHTML", `${wins / totalGames} (${wins} - ${totalGames - wins})`);
+    this.renderer.setProperty(winLossDisplay, "innerHTML", `${(wins / totalGames).toFixed(3)} (${wins} - ${totalGames - wins})`);
 
     return winLossDisplay;
   }
 
   generateVsRecords(playerName: string): HTMLElement {
 
-    let vsRecordDisplay = this.renderer.createElement("div");
-
-    // Get all results for player
-    const playerResults = [...this.storageService.getResults().filter(result => result.winner.name === playerName || result.loser.name === playerName)];
+    let vsRecordDisplayContainer = this.renderer.createElement("div");
+    let vsRecordDisplayList = this.renderer.createElement("ul");
+    this.renderer.appendChild(vsRecordDisplayContainer, vsRecordDisplayList);
     
     // Get all unique players
     const uniqueWinners = [...new Set(this.storageService.getResults().map(result => result.winner.name))];
@@ -156,14 +151,36 @@ export class PlayerViewCreatorService {
 
     // Remove the player we're looking at
     uniquePlayers.delete(playerName);
-    uniquePlayers.forEach(player => console.log(`Found unique player ${player}`));
 
-    return vsRecordDisplay;
+    // Construct an element for each individual vs record
+    uniquePlayers.forEach(player => 
+      this.renderer.appendChild(vsRecordDisplayList, this.generateVsRecord(playerName, player as string)));
+
+    return vsRecordDisplayContainer;
   }
 
   generateVsRecord(playerName: string, opponentName: string): HTMLElement {
 
+    // Create list container
     let vsRecordDisplay = this.renderer.createElement("li");
+
+    // Determine record vs player
+    const playerResults = [...this.storageService.getResults().filter(result => (result.winner.name === playerName || result.loser.name === playerName)
+      && (result.winner.name === opponentName || result.loser.name === opponentName))];
+    const playerWins = playerResults.filter(result => result.winner.name === playerName).length;
+    const playerLosses = playerResults.length - playerWins;
+
+    // Construct the final HTML element
+    let vsRecord = this.renderer.createElement("p");
+    
+    // If no results were found, indicate no record
+    if (playerResults.length === 0) {
+      this.renderer.setProperty(vsRecord, "innerHTML", `vs. ${opponentName}: No games played`);
+    } else {
+      this.renderer.setProperty(vsRecord, "innerHTML", `vs. ${opponentName}: ${(playerWins / playerResults.length).toFixed(3)} (${playerWins} - ${playerLosses})`);
+    }
+    
+    this.renderer.appendChild(vsRecordDisplay, vsRecord);
 
     return vsRecordDisplay;
   }
