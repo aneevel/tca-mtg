@@ -28,7 +28,7 @@ export class ViewUsersComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.playerViews.forEach(playerView => this.renderer.appendChild(document.getElementById('players-container'), playerView));
+      this.playerViews.forEach(playerView => this.renderer.appendChild(document.getElementById('players-container'), playerView));
   }
 
 }

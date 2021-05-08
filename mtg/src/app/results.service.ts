@@ -16,6 +16,9 @@ export class ResultsService {
     const player = this.storageService.getPlayer(playerName);
     const results = this.storageService.getResults();
 
+    if (results === null) 
+      return null;
+
     const playerResults = results.filter(result => 
         result.winner === player || result.loser === player);
 

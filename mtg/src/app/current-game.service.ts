@@ -26,14 +26,14 @@ export class CurrentGameService {
 
     // Construct basic game result
     this.gameResult = {
-      dateOccurred: new Date(),
+      dateOccurred: "",
       winner: this.players[0],
       loser: this.players[0],
       winningLife: 0,
       winnerDeck: this.decks[0],
       loserDeck: this.decks[0]
     };
-    this.gameResult.dateOccurred = new Date();
+    this.gameResult.dateOccurred = new Date().toLocaleDateString("en-US", { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'});
 
     // Determine who won
     if (this.lifes[1] === 0) {

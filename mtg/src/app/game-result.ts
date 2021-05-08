@@ -2,7 +2,7 @@ import { Player } from './player';
 import { Deck } from './deck';
 
 export interface GameResult {
-    dateOccurred: Date,
+    dateOccurred: string,
     winner: Player,
     loser: Player,
     winningLife: Number,

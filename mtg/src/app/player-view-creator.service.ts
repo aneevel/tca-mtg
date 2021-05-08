@@ -22,6 +22,10 @@ export class PlayerViewCreatorService {
     
     /**  Create all html elements */
 
+    // Return empty div if there are no results for the player
+    if (this.resultsService.getResultsForPlayer(player.name) === null) 
+      return this.renderer.createElement('div');
+
     // Top level player container
     const playerContainer = this.renderer.createElement('div');
     this.renderer.setAttribute(playerContainer, 'class', 'player-container');
@@ -185,7 +189,11 @@ export class PlayerViewCreatorService {
     return vsRecordDisplay;
   }
 
-  //determineTopDecksUsed(playerName: string): Deck {
+  generateRecentResults(playerName: string) {
+
+  }
+
+  //generateTopDecksUsed(playerName: string): Deck {
   // const playerResults = this.storageService.getResults();
 
 

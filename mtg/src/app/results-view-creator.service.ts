@@ -49,8 +49,10 @@ export class ResultsViewCreatorService {
   generateResultViews(results: GameResult[], resultsToShow): HTMLElement[] {
 
     const resultViews = [];
-    let truncatedResults = [...results.slice(0, resultsToShow)];
-    truncatedResults.forEach(result => resultViews.push(this.createResultView(result)));
+    if (results !== null) {
+      let truncatedResults = [...results.slice(results.length - 5, resultsToShow.length)];
+      truncatedResults.forEach(result => resultViews.push(this.createResultView(result)));
+    }
 
     return resultViews;
   }
