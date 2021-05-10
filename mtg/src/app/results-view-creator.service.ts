@@ -50,7 +50,7 @@ export class ResultsViewCreatorService {
 
     const resultViews = [];
     if (results !== null) {
-      let truncatedResults = [...results.slice(results.length - 5, resultsToShow.length)];
+      let truncatedResults = [...results.slice(Math.max(results.length - 5, 0)).reverse()];
       truncatedResults.forEach(result => resultViews.push(this.createResultView(result)));
     }
 
