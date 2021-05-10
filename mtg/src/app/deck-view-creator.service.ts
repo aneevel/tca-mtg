@@ -86,7 +86,7 @@ export class DeckViewCreatorService {
 
   createManaSymbol(color: string): HTMLElement {
     const manaSymbol = this.renderer.createElement('img');
-    this.renderer.setProperty(manaSymbol, "src", `assets/${color}-symbol.png`);
+    this.renderer.setProperty(manaSymbol, "src", `/tca-mtg/assets/${color}-symbol.png`);
     this.renderer.setProperty(manaSymbol, 'width', 20);
     this.renderer.setProperty(manaSymbol, "height", 20);
 

@@ -34,7 +34,7 @@ export class PlayerViewCreatorService {
 
     const playerWinLossContainer = this.createWinLossContainer(player.name);
     const playerResultsContainer = this.createRecentResultsContainer(player.name);
-    const playerDecksContainer = this.createDecksUsedContainer();
+    const playerDecksContainer = this.createDecksUsedContainer(player.name);
 
     // Name
     const playerNameHeader = this.renderer.createElement('h2');
@@ -90,7 +90,7 @@ export class PlayerViewCreatorService {
     return playerResultsContainer;
   }
 
-  createDecksUsedContainer() {
+  createDecksUsedContainer(playerName: string) {
 
     const playerDecksContainer = this.renderer.createElement('div');
     this.renderer.setAttribute(playerDecksContainer, 'class', 'player-decks-container');
@@ -99,7 +99,7 @@ export class PlayerViewCreatorService {
     this.renderer.setAttribute(playerTopDecksHeader, 'class', 'player-top-decks-header');
     this.renderer.setProperty(playerTopDecksHeader, 'innerHTML', 'Top 5 Decks Used');
 
-    const playerTopDecksList = this.renderer.createElement('ul');
+    const playerTopDecksList = this.generateTopDecksUsed(playerName);
     this.renderer.setAttribute(playerTopDecksList, 'class', 'player-top-decks-list');
 
     this.renderer.appendChild(playerDecksContainer, playerTopDecksHeader);
@@ -221,9 +221,73 @@ export class PlayerViewCreatorService {
     return recentResultItem;
   }
 
-  //generateTopDecksUsed(playerName: string): Deck {
-  // const playerResults = this.storageService.getResults();
+  generateTopDecksUsed(playerName: string): HTMLElement {
 
+      // Construct top-level container
+      let topDecksContainer = this.renderer.createElement("div");
+      let topDecksDisplay = this.renderer.createElement("ul");
+      this.renderer.appendChild(topDecksContainer, topDecksDisplay);
 
-  //}
+      // Get all results for player
+      const results = [...this.resultsService.getResultsForPlayer(playerName)];
+
+      // Generate info object detailing top decks used
+      const topDecks = this.generateTopDeckInfo(results, playerName);
+
+      // Construct an element for each result
+      topDecks.forEach(deckInfo => this.renderer.appendChild(topDecksDisplay, this.generateTopDeckView(deckInfo)));
+
+      return topDecksContainer;
+  }
+
+  generateTopDeckView(deckInfo) : HTMLElement {
+
+    // Create list item
+    let deckItem = this.renderer.createElement("li");
+    let deckText = this.renderer.createElement("p");
+    this.renderer.appendChild(deckItem, deckText);
+
+    // Attach formatted text
+    this.renderer.setProperty(deckText, "innerHTML", `${deckInfo.name} used ${deckInfo.usage} time(s) (${deckInfo.wins} - ${deckInfo.losses} record)`);
+
+    return deckItem;
+  }
+
+  generateTopDeckInfo(results, playerName: string) {
+
+    // Create top-level array of deck info
+    let deckInfos = [];
+  
+    // Find the highest occurring result by comparing 
+    let highestOccurringResults = results.sort((resultA, resultB) =>
+      results.filter(result => result.winnerDeck.name === resultA.winnerDeck.name || result.loserDeck.name === resultA.loserDeck.name).length
+      - results.filter(result => result.winnerDeck.name === resultB.winnerDeck.name || result.loserDeck.name === resultB.loserDeck.name).length);
+    
+    let terminator = 5;
+    if (highestOccurringResults.length < 5) {
+      terminator = highestOccurringResults.length;
+    }
+
+    // Build deck info for top 5 results
+    for (let i = 0; i < terminator; i++) {
+
+      let currentResult = highestOccurringResults[i];
+
+      // Grab deck name
+      let deckName = currentResult.winner.name === playerName ? currentResult.winnerDeck.name : currentResult.loserDeck.name;
+
+      // Determine wins
+      let wins = results.filter(result => result.winnerDeck === currentResult.winnerDeck && result.winner.name === playerName).length;
+
+      // Determine losses
+      let losses = results.filter(result => result.loserDeck === currentResult.loserDeck && result.loser.name === playerName).length;
+
+      // Determine usage
+      let usage = wins + losses;
+
+      deckInfos.push({ "name": deckName, "usage": usage, "wins": wins, "losses": losses});
+    }
+          
+    return deckInfos;
+  }
 }

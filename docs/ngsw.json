@@ -1,0 +1,99 @@
+{
+  "configVersion": 1,
+  "timestamp": 1620674360864,
+  "index": "https://aneevel.github.io/tca-mtg/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "https://aneevel.github.io/tca-mtg/favicon.ico",
+        "https://aneevel.github.io/tca-mtg/index.html",
+        "https://aneevel.github.io/tca-mtg/main-es2015.72a5d29794f54fc7a1d8.js",
+        "https://aneevel.github.io/tca-mtg/main-es5.72a5d29794f54fc7a1d8.js",
+        "https://aneevel.github.io/tca-mtg/manifest.webmanifest",
+        "https://aneevel.github.io/tca-mtg/polyfills-es2015.38b4851f3ee2c7dab617.js",
+        "https://aneevel.github.io/tca-mtg/polyfills-es5.cb6e163a24bcc46d04ed.js",
+        "https://aneevel.github.io/tca-mtg/runtime-es2015.a4dadbc03350107420a4.js",
+        "https://aneevel.github.io/tca-mtg/runtime-es5.a4dadbc03350107420a4.js",
+        "https://aneevel.github.io/tca-mtg/styles.737a1a5cdf5ea4aa6df9.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "https://aneevel.github.io/tca-mtg/assets/black-symbol.png",
+        "https://aneevel.github.io/tca-mtg/assets/blue-symbol.png",
+        "https://aneevel.github.io/tca-mtg/assets/green-symbol.png",
+        "https://aneevel.github.io/tca-mtg/assets/icons/icon-128x128.png",
+        "https://aneevel.github.io/tca-mtg/assets/icons/icon-144x144.png",
+        "https://aneevel.github.io/tca-mtg/assets/icons/icon-152x152.png",
+        "https://aneevel.github.io/tca-mtg/assets/icons/icon-192x192.png",
+        "https://aneevel.github.io/tca-mtg/assets/icons/icon-384x384.png",
+        "https://aneevel.github.io/tca-mtg/assets/icons/icon-512x512.png",
+        "https://aneevel.github.io/tca-mtg/assets/icons/icon-72x72.png",
+        "https://aneevel.github.io/tca-mtg/assets/icons/icon-96x96.png",
+        "https://aneevel.github.io/tca-mtg/assets/paladin-of-atonement.jpg",
+        "https://aneevel.github.io/tca-mtg/assets/red-symbol.png",
+        "https://aneevel.github.io/tca-mtg/assets/white-symbol.png"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "https://aneevel.github.io/tca-mtg/assets/black-symbol.png": "f8adce46ad906a72e0c4afe973b698fdffb25346",
+    "https://aneevel.github.io/tca-mtg/assets/blue-symbol.png": "219deaf8e684a469f5b202fea447b94789fdb86f",
+    "https://aneevel.github.io/tca-mtg/assets/green-symbol.png": "87728693b9878fe217aaba82f352a4c1316dbf65",
+    "https://aneevel.github.io/tca-mtg/assets/icons/icon-128x128.png": "dae3b6ed49bdaf4327b92531d4b5b4a5d30c7532",
+    "https://aneevel.github.io/tca-mtg/assets/icons/icon-144x144.png": "b0bd89982e08f9bd2b642928f5391915b74799a7",
+    "https://aneevel.github.io/tca-mtg/assets/icons/icon-152x152.png": "7479a9477815dfd9668d60f8b3b2fba709b91310",
+    "https://aneevel.github.io/tca-mtg/assets/icons/icon-192x192.png": "1abd80d431a237a853ce38147d8c63752f10933b",
+    "https://aneevel.github.io/tca-mtg/assets/icons/icon-384x384.png": "329749cd6393768d3131ed6304c136b1ca05f2fd",
+    "https://aneevel.github.io/tca-mtg/assets/icons/icon-512x512.png": "559d9c4318b45a1f2b10596bbb4c960fe521dbcc",
+    "https://aneevel.github.io/tca-mtg/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
+    "https://aneevel.github.io/tca-mtg/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
+    "https://aneevel.github.io/tca-mtg/assets/paladin-of-atonement.jpg": "2e9630fa39147c87ce77125b4a8c07d7d9f10036",
+    "https://aneevel.github.io/tca-mtg/assets/red-symbol.png": "df0b762f652ef9dcfcfaea96f7e887f00f0998af",
+    "https://aneevel.github.io/tca-mtg/assets/white-symbol.png": "7987c6b4f01e2777e403544235215913c3cc324f",
+    "https://aneevel.github.io/tca-mtg/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
+    "https://aneevel.github.io/tca-mtg/index.html": "aa4fa003feca61e7e5448a82be74cd9d04b33928",
+    "https://aneevel.github.io/tca-mtg/main-es2015.72a5d29794f54fc7a1d8.js": "934334513af8303fc7bc1f8f0948cd6591b43245",
+    "https://aneevel.github.io/tca-mtg/main-es5.72a5d29794f54fc7a1d8.js": "8bedb0dfc6164f72eb1cd752ac3a1a78d4cd8a66",
+    "https://aneevel.github.io/tca-mtg/manifest.webmanifest": "c6f2dc49cf01ca0de6d6346c8a1e4a21237bb167",
+    "https://aneevel.github.io/tca-mtg/polyfills-es2015.38b4851f3ee2c7dab617.js": "65c537467564ee0ba776b629f71ed3413413a7cb",
+    "https://aneevel.github.io/tca-mtg/polyfills-es5.cb6e163a24bcc46d04ed.js": "f1fb001939e2a054d62f941e8281f6051a71bf04",
+    "https://aneevel.github.io/tca-mtg/runtime-es2015.a4dadbc03350107420a4.js": "a9aafcf49f49145093fc831efd9b8e2f6c71bb9c",
+    "https://aneevel.github.io/tca-mtg/runtime-es5.a4dadbc03350107420a4.js": "a9aafcf49f49145093fc831efd9b8e2f6c71bb9c",
+    "https://aneevel.github.io/tca-mtg/styles.737a1a5cdf5ea4aa6df9.css": "9233b5b086ba1451299d157ce57d66ba9d7e59da"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ],
+  "navigationRequestStrategy": "performance"
+}
