@@ -33,7 +33,7 @@ export class PlayerViewCreatorService {
     const playerNameContainer = this.renderer.createElement('div');
 
     const playerWinLossContainer = this.createWinLossContainer(player.name);
-    const playerResultsContainer = this.createRecentResultsContainer();
+    const playerResultsContainer = this.createRecentResultsContainer(player.name);
     const playerDecksContainer = this.createDecksUsedContainer();
 
     // Name
@@ -73,7 +73,7 @@ export class PlayerViewCreatorService {
     return playerWinLossContainer;
   }
 
-  createRecentResultsContainer() {
+  createRecentResultsContainer(playerName: string) {
 
     // Create top-level componenent
     const playerResultsContainer = this.renderer.createElement('div');
@@ -83,11 +83,9 @@ export class PlayerViewCreatorService {
     this.renderer.setAttribute(playerResultsHeader, 'class', 'player-results-header');
     this.renderer.setProperty(playerResultsHeader, 'innerHTML', 'Recent Results');
 
-    const playerRecentResultsList = this.renderer.createElement('ul');
-    this.renderer.setAttribute(playerRecentResultsList, 'class', 'player-recent-results-list');
 
     this.renderer.appendChild(playerResultsContainer, playerResultsHeader);
-    this.renderer.appendChild(playerResultsContainer, playerRecentResultsList);
+    this.renderer.appendChild(playerResultsContainer, this.generateRecentResults(playerName));
 
     return playerResultsContainer;
   }
@@ -137,7 +135,11 @@ export class PlayerViewCreatorService {
     // Setup HTMLElement to display
     winLossDisplay = this.renderer.createElement("h4");
     this.renderer.setProperty(winLossDisplay, "class", "win-loss-record");
-    this.renderer.setProperty(winLossDisplay, "innerHTML", `${(wins / totalGames).toFixed(3)} (${wins} - ${totalGames - wins})`);
+    if (totalGames === 0) {
+      this.renderer.setProperty(winLossDisplay, "innerHTML", "No games played yet");
+    } else {
+      this.renderer.setProperty(winLossDisplay, "innerHTML", `${(wins / totalGames).toFixed(3)} (${wins} - ${totalGames - wins})`);
+    }
 
     return winLossDisplay;
   }
@@ -189,8 +191,34 @@ export class PlayerViewCreatorService {
     return vsRecordDisplay;
   }
 
-  generateRecentResults(playerName: string) {
+  generateRecentResults(playerName: string) : HTMLElement {
 
+    // Construct top-level container
+    let recentResultsContainer = this.renderer.createElement("div");
+    let recentResultsDisplay = this.renderer.createElement("ul");
+    this.renderer.appendChild(recentResultsContainer, recentResultsDisplay);
+
+    // Get results for player
+    const results = [...this.resultsService.getResultsForPlayer(playerName)];
+    const truncatedResults = [...results.slice(results.length - 5, results.length).reverse()];
+
+    // Construct an element for each result
+    truncatedResults.forEach(result => this.renderer.appendChild(recentResultsDisplay, this.generateRecentResultView(result)));
+
+    return recentResultsContainer;
+  }
+
+  generateRecentResultView(result) : HTMLElement {
+
+    // Create list item
+    let recentResultItem = this.renderer.createElement("li");
+    let recentResultText = this.renderer.createElement("p");
+    this.renderer.appendChild(recentResultItem, recentResultText);
+
+    // Attach formatted text
+    this.renderer.setProperty(recentResultText, "innerHTML", `On ${result.dateOccurred}, ${result.winner.name} defeated ${result.loser.name} ${result.winningLife} to 0`)
+
+    return recentResultItem;
   }
 
   //generateTopDecksUsed(playerName: string): Deck {

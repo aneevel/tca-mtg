@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { Player } from './player';
 import { PlayersService } from './players.service';
-import { Deck } from './deck';
 import { DecksService } from './decks.service';
 import { StorageService } from './storage.service';
 
@@ -13,14 +11,13 @@ export class ResultsService {
 
   getResultsForPlayer(playerName: string) {
 
-    const player = this.storageService.getPlayer(playerName);
     const results = this.storageService.getResults();
 
     if (results === null) 
       return null;
 
     const playerResults = results.filter(result => 
-        result.winner === player || result.loser === player);
+        result.winner.name === playerName || result.loser.name === playerName);
 
     return playerResults;
   }
