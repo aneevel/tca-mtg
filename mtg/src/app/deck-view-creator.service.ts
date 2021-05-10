@@ -65,7 +65,6 @@ export class DeckViewCreatorService {
 
     // Create a mana symbol for each color passed in
     let manaSymbols: HTMLElement[] = colors.map(color => this.createManaSymbol(color));
-    console.log(`Mana symbols created: ${colors}`);
 
     // Append symbols
     manaSymbols.forEach(symbol => 
