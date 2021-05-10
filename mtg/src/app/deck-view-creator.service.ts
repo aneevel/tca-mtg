@@ -1,7 +1,6 @@
 import { Injectable, Renderer2, RendererFactory2 } from '@angular/core';
 
 import { Deck } from "./deck";
-import { ResultsService } from "./results.service";
 
 @Injectable({
   providedIn: 'root'
@@ -10,8 +9,7 @@ export class DeckViewCreatorService {
 
   private renderer: Renderer2;
 
-  constructor(rendererFactory: RendererFactory2,
-      private resultsService: ResultsService) { 
+  constructor(rendererFactory: RendererFactory2) { 
 
     this.renderer = rendererFactory.createRenderer(null, null);
   }
@@ -50,13 +48,14 @@ export class DeckViewCreatorService {
     
 
     // Tie all HTML elements together
+    this.renderer.appendChild(tileContainer, deckContainer);
     this.renderer.appendChild(deckContainer, deckNameHeader);
     this.renderer.appendChild(deckContainer, manaContainer);
     this.renderer.appendChild(deckContainer, descriptionContainer);
     this.renderer.appendChild(buttonContainer, removeDeckButton);
     this.renderer.appendChild(deckContainer, buttonContainer);
 
-    return deckContainer;
+    return tileContainer;
   }
 
   createManaContainer(colors: string[]): HTMLElement {

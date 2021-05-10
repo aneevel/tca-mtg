@@ -21,7 +21,7 @@ h1 {
     grid-row-gap: 10%;
 }
 
-::ng-deep .deck-container {
+::ng-deep .deck-tile {
     height: 100%;
     width: 100%;
     background-color: purple;
