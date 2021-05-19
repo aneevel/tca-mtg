@@ -14,6 +14,20 @@ export class DeckViewCreatorService {
     this.renderer = rendererFactory.createRenderer(null, null);
   }
 
+  createEmptyPlaceholder(): HTMLElement {
+
+    const placeholderContainer = this.renderer.createElement('div');
+    this.renderer.setAttribute(placeholderContainer, 'class', 'empty-container');
+
+    // Some flavor text should inform user there are no decks currently
+    const placeholderContent = this.renderer.createElement('h2');
+    this.renderer.setProperty(placeholderContent, 'innerHTML', 'No decks currently exist. Play some games to fill out this page!');
+
+    this.renderer.appendChild(placeholderContainer, placeholderContent);
+
+    return placeholderContainer;
+  }
+
   createDeckContainer(deck: Deck): HTMLElement {
 
     // Grid tile
@@ -87,6 +101,8 @@ export class DeckViewCreatorService {
     // Avoid errors if there are no decks to generate views for
     if (decks)
       decks.forEach(deck => deckViews.push(this.createDeckContainer(deck)));
+    else 
+      deckViews.push(this.createEmptyPlaceholder());
 
     return deckViews;
   }
