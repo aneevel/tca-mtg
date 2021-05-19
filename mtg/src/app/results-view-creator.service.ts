@@ -13,6 +13,20 @@ export class ResultsViewCreatorService {
     this.renderer = rendererFactory.createRenderer(null, null);
   }
 
+  createEmptyPlaceholder(): HTMLElement {
+    
+    const placeholderContainer = this.renderer.createElement('div');
+    this.renderer.setAttribute(placeholderContainer, 'class', 'empty-container');
+
+    // Some flavor text should inform user there are no current stats
+    const placeholderContent = this.renderer.createElement('h2');
+    this.renderer.setProperty(placeholderContent, 'innerHTML', 'No games currently exist. Play some games to fill out this page!');
+
+    this.renderer.appendChild(placeholderContainer, placeholderContent);
+
+    return placeholderContainer;
+  }
+
   createResultView(result: GameResult): HTMLElement {
     const resultContainer = this.renderer.createElement('div');
     this.renderer.setAttribute(resultContainer, "class", "result-view");
@@ -52,6 +66,8 @@ export class ResultsViewCreatorService {
     if (results !== null) {
       let truncatedResults = [...results.slice(Math.max(results.length - 5, 0)).reverse()];
       truncatedResults.forEach(result => resultViews.push(this.createResultView(result)));
+    } else {
+      resultViews.push(this.createEmptyPlaceholder());
     }
 
     return resultViews;
