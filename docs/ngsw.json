@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1620674360864,
+  "timestamp": 1620674674619,
   "index": "https://aneevel.github.io/tca-mtg/index.html",
   "assetGroups": [
     {
@@ -67,7 +67,7 @@
     "https://aneevel.github.io/tca-mtg/assets/red-symbol.png": "df0b762f652ef9dcfcfaea96f7e887f00f0998af",
     "https://aneevel.github.io/tca-mtg/assets/white-symbol.png": "7987c6b4f01e2777e403544235215913c3cc324f",
     "https://aneevel.github.io/tca-mtg/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "https://aneevel.github.io/tca-mtg/index.html": "aa4fa003feca61e7e5448a82be74cd9d04b33928",
+    "https://aneevel.github.io/tca-mtg/index.html": "a5a7105c86e8db003b2bd2cd9e15227a22fd5296",
     "https://aneevel.github.io/tca-mtg/main-es2015.72a5d29794f54fc7a1d8.js": "934334513af8303fc7bc1f8f0948cd6591b43245",
     "https://aneevel.github.io/tca-mtg/main-es5.72a5d29794f54fc7a1d8.js": "8bedb0dfc6164f72eb1cd752ac3a1a78d4cd8a66",
     "https://aneevel.github.io/tca-mtg/manifest.webmanifest": "c6f2dc49cf01ca0de6d6346c8a1e4a21237bb167",

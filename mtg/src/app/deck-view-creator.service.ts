@@ -38,13 +38,13 @@ export class DeckViewCreatorService {
     const descriptionContainer = this.createDescriptionContainer(deck.description);
 
     // Button container
-    const buttonContainer = this.renderer.createElement('mat-card-actions');
-    this.renderer.setAttribute(buttonContainer, 'class', 'button-container');
+    //const buttonContainer = this.renderer.createElement('mat-card-actions');
+    //this.renderer.setAttribute(buttonContainer, 'class', 'button-container');
 
     // Remove button
-    const removeDeckButton = this.renderer.createElement('button');
-    this.renderer.setProperty(removeDeckButton, 'innerHTML', "Remove");
-    this.renderer.addClass(removeDeckButton, "mat-raised-button");
+    //const removeDeckButton = this.renderer.createElement('button');
+    //this.renderer.setProperty(removeDeckButton, 'innerHTML', "Remove");
+    //this.renderer.addClass(removeDeckButton, "mat-raised-button");
     
 
     // Tie all HTML elements together
@@ -52,8 +52,8 @@ export class DeckViewCreatorService {
     this.renderer.appendChild(deckContainer, deckNameHeader);
     this.renderer.appendChild(deckContainer, manaContainer);
     this.renderer.appendChild(deckContainer, descriptionContainer);
-    this.renderer.appendChild(buttonContainer, removeDeckButton);
-    this.renderer.appendChild(deckContainer, buttonContainer);
+    //this.renderer.appendChild(buttonContainer, removeDeckButton);
+    //this.renderer.appendChild(deckContainer, buttonContainer);
 
     return tileContainer;
   }
