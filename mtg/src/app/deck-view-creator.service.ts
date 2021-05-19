@@ -37,23 +37,11 @@ export class DeckViewCreatorService {
     // Description container
     const descriptionContainer = this.createDescriptionContainer(deck.description);
 
-    // Button container
-    //const buttonContainer = this.renderer.createElement('mat-card-actions');
-    //this.renderer.setAttribute(buttonContainer, 'class', 'button-container');
-
-    // Remove button
-    //const removeDeckButton = this.renderer.createElement('button');
-    //this.renderer.setProperty(removeDeckButton, 'innerHTML', "Remove");
-    //this.renderer.addClass(removeDeckButton, "mat-raised-button");
-    
-
     // Tie all HTML elements together
     this.renderer.appendChild(tileContainer, deckContainer);
     this.renderer.appendChild(deckContainer, deckNameHeader);
     this.renderer.appendChild(deckContainer, manaContainer);
     this.renderer.appendChild(deckContainer, descriptionContainer);
-    //this.renderer.appendChild(buttonContainer, removeDeckButton);
-    //this.renderer.appendChild(deckContainer, buttonContainer);
 
     return tileContainer;
   }
@@ -86,7 +74,7 @@ export class DeckViewCreatorService {
 
   createManaSymbol(color: string): HTMLElement {
     const manaSymbol = this.renderer.createElement('img');
-    this.renderer.setProperty(manaSymbol, "src", `/tca-mtg/assets/${color}-symbol.png`);
+    this.renderer.setProperty(manaSymbol, "src", `assets/${color}-symbol.png`);
     this.renderer.setProperty(manaSymbol, 'width', 20);
     this.renderer.setProperty(manaSymbol, "height", 20);
 
@@ -95,7 +83,10 @@ export class DeckViewCreatorService {
 
   generateDeckViews(decks: Deck[]) {
     const deckViews = [];
-    decks.forEach(deck => deckViews.push(this.createDeckContainer(deck)));
+
+    // Avoid errors if there are no decks to generate views for
+    if (decks)
+      decks.forEach(deck => deckViews.push(this.createDeckContainer(deck)));
 
     return deckViews;
   }
