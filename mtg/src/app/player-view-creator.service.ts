@@ -18,6 +18,20 @@ export class PlayerViewCreatorService {
     this.renderer = rendererFactory.createRenderer(null, null);
   }
 
+  createEmptyPlaceholder(): HTMLElement {
+
+    const placeholderContainer = this.renderer.createElement('div');
+    this.renderer.setAttribute(placeholderContainer, 'class', 'empty-container');
+
+    // Some flavor text should inform user there are no current players
+    const placeholderContent = this.renderer.createElement('h2');
+    this.renderer.setProperty(placeholderContent, 'innerHTML', 'No players currently exist. Play some games to fill out this page!');
+
+    this.renderer.appendChild(placeholderContainer, placeholderContent);
+
+    return placeholderContainer;
+  }
+
   createPlayerContainer(player: Player): HTMLElement {
     
     /**  Create all html elements */
@@ -111,7 +125,12 @@ export class PlayerViewCreatorService {
   generatePlayerViews(players: Player[]) {
 
     const playerViews = [];
-    players.forEach(player => playerViews.push(this.createPlayerContainer(player)))
+
+    // Avoid error when generating deck views with empty players array
+    if (players)
+      players.forEach(player => playerViews.push(this.createPlayerContainer(player)))
+    else 
+      playerViews.push(this.createEmptyPlaceholder());
 
     return playerViews;
   }
