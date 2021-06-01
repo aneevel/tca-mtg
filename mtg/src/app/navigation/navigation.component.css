@@ -20,9 +20,25 @@
     background-color: green;
 }
 
-@media (max-width: 680px)
-{
-    #app-header {
-        display: none;
-    }
+#app-header {
+    text-decoration: none;
+    color: white;
+}
+
+#app-title {
+    font-size: 1.2em;
+}
+
+#title-decorator {
+    font-size: 0.8em;
+}
+
+mat-list-item:focus {
+    outline: none;
+    border: 0;
+}
+
+mat-list-item:hover {
+    outline: none;
+    border: 0;
 }

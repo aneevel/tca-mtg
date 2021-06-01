@@ -1,6 +1,18 @@
 <mat-toolbar id="navigation-container">
-    <h1 id="app-header">Magic: The Gathering - Companion App</h1>
     <mat-nav-list id="app-features">
+        <mat-list-item>
+            <a routerLink="/home"
+            routerLinkActive="active"
+            id="app-header"
+            >
+                <h1 id="app-title">
+                Magic: The Gathering
+                </h1>
+                <h2 id="title-decorator">
+                Companion App 
+                </h2>
+            </a>
+        </mat-list-item>
         <mat-list-item>
         <a routerLink="/game-setup" 
                 routerLinkActive="active"
