@@ -10,11 +10,10 @@ export class ApiLayerService {
 
   constructor() { }
 
-  getCardByID(id) {
+  getCardById(id) {
     Scry.Cards.byId(id)
       .then(result => {
         if (result.object === "card") {
-          console.log(result);
           return result;
         } else {
           throw new Error(`Unable to find card with id ${id}`);
@@ -29,7 +28,6 @@ export class ApiLayerService {
     Scry.Cards.byName(name)
       .then(result => {
         if (result.object === "card") {
-          console.log(result);
           return result;
         } else {
           throw new Error(`Unable to find card with name ${name}`);
@@ -38,5 +36,9 @@ export class ApiLayerService {
       .catch((error) => 
         console.error(error)
       );
+  }
+
+  getRandomCard() {
+    return Scry.Cards.random();
   }
 }

@@ -26,6 +26,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { CardDisplayComponent } from './card-display/card-display.component';
 
 
 const routes: Routes = [
@@ -47,6 +48,7 @@ const routes: Routes = [
     ViewUsersComponent,
     ViewDecksComponent,
     NavigationComponent,
+    CardDisplayComponent,
   ],
   imports: [
     RouterModule.forRoot(routes),
