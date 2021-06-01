@@ -1,6 +1,7 @@
 import { Component, OnInit, Renderer2, RendererFactory2 } from '@angular/core';
 import { StorageService } from '../storage.service';
 import { ResultsViewCreatorService } from '../results-view-creator.service';
+import { ApiLayerService } from "../api-layer.service";
 
 @Component({
   selector: 'app-home',
@@ -15,6 +16,7 @@ export class HomeComponent implements OnInit {
   constructor(
     private resultsViewCreatorService: ResultsViewCreatorService,
     private storageService: StorageService,
+    private apiService: ApiLayerService,
     rendererFactory: RendererFactory2
   ) { 
     this.renderer = rendererFactory.createRenderer(null, null);
@@ -23,6 +25,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.resultViews.forEach(resultView => this.renderer.appendChild(document.getElementById('recent-games-list'), resultView)); 
+    this.apiService.getCardByName("Paladin of Atonementss");
   }
 
 }
