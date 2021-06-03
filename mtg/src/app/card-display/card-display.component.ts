@@ -15,6 +15,7 @@ export class CardDisplayComponent implements OnInit {
     this.apiLayer.getRandomCard()
       .then(result => {
         this.currentCard = result;
+        console.log(this.currentCard);
       });
   }
 
