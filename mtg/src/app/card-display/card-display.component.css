@@ -1,0 +1,22 @@
+* {
+    box-sizing: border-box;
+}
+
+#card-highlight-container {
+    height: auto;
+    padding: 1em;
+}
+
+#card-image-holder {
+    width: 100%;
+    box-sizing: border-box;
+    display: block;
+    height: max-content;
+}
+
+#card-image {
+    max-width: 100%;
+    max-height: 100%;
+    display: inline-block;
+    border-radius: 4%;
+}

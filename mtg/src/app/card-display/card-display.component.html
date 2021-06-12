@@ -1,20 +1,20 @@
 <div id="card-highlight-container">
     <h2>Card Spotlight</h2>
-    <mat-grid-list id="card-highlight" cols="4" rows="3">
-        <mat-grid-tile>
+    <mat-grid-list id="card-highlight" cols="4" rows="3" [gutterSize]="'1em'">
+        <mat-grid-tile id="">
             <div *ngIf="this.currentCard.power && this.currentCard.toughness">
                 <p id="life-toughness-indicator"> {{this.currentCard.power}} / 
                     {{this.currentCard.toughness}} 
                 </p>
             </div>
         </mat-grid-tile>
-        <mat-grid-tile>
-            <img id="card-image" alt="Magic Card with name {{this.currentCard.name}}" src="{{this.currentCard.image_uris.normal}}"/>
+        <mat-grid-tile id="card-image-holder">
+                <img id="card-image" alt="Magic Card with name {{this.currentCard.name}}" src="{{this.currentCard.image_uris.normal}}"/>
         </mat-grid-tile>
         <mat-grid-tile>
             <div>
                 <h3 id="card-name">{{this.currentCard.name}}</h3>
-                <h3 id="card-typing">{{this.currentCard.typeLine}}</h3>
+                <h3 id="card-typing">{{this.currentCard.type_line}}</h3>
                 <p id="card-oracle-text">{{this.currentCard.oracle_text}}</p>
             </div>
         </mat-grid-tile>
