@@ -4,9 +4,19 @@
 
 #card-highlight-container {
     height: auto;
-    width: 100vw; 
+    width: 80vw; 
     padding: 1em;
     padding-right: 0px;
+    margin-bottom: 25px;
+}
+
+#card-highlight-header {
+    margin: 1em;
+    font-size: 2.5em;
+}
+
+#card-information-container > * {
+    margin-top: 25px;
 }
 
 #card-image-holder {
@@ -21,4 +31,38 @@
     max-height: 100%;
     display: inline-block;
     border-radius: 4%;
+}
+
+#card-name {
+    font-size: 2.5em;
+    font-family: "Papyrus";
+    font-weight: bold;
+}
+
+#card-typing {
+    font-size: 1.5em;
+    font-family: "Papyrus";
+    font-weight: bold;
+}
+
+#card-oracle-text {
+    font-size: 1.3em;
+    font-family: "Papyrus";
+}
+
+#life-toughness-indicator {
+    font-size: 1.3em;
+    font-family: "Papyrus";
+}
+
+#card-flavor-text {
+    font-size: 1.1em;
+    font-family: "Papyrus";
+    font-style: italic;
+}
+
+#card-artist-name {
+    font-size: 0.9em;
+    font-family: "Papyrus";
+    font-style: italic;
 }
