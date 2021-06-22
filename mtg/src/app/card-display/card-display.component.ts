@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiLayerService } from '../api-layer.service';
-import { SymbolAnalyzerService } from '../symbol-analyzer.service';
-import * as Scry from "scryfall-sdk";
+import { SymbolReplacerService } from '../symbol-replacer.service';
 
 @Component({
   selector: 'app-card-display',
@@ -11,18 +10,26 @@ import * as Scry from "scryfall-sdk";
 export class CardDisplayComponent implements OnInit {
 
   currentCard;
+  oracleText: HTMLElement;
 
   constructor(private apiLayer: ApiLayerService,
-      private symbolAnalyzer: SymbolAnalyzerService) { 
+      private symbolReplacer: SymbolReplacerService) { 
     this.apiLayer.getRandomCard()
       .then(result => {
         this.currentCard = result;
         console.log(this.currentCard);
-        console.log(this.symbolAnalyzer.getSymbolsInString(this.currentCard.oracle_text));
+
+        this.oracleText = this.symbolReplacer.replaceSymbols(this.currentCard.oracle_text);
+        this.injectReplacedTexts();
+
       });
   }
 
   ngOnInit(): void {
+  }
+
+  injectReplacedTexts() {
+
   }
 
 }

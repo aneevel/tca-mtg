@@ -8,7 +8,7 @@
             <div id="card-information-container">
                 <h3 id="card-name">{{this.currentCard.name}}</h3>
                 <h3 id="card-typing">{{this.currentCard.type_line}}</h3>
-                <p id="card-oracle-text">{{this.currentCard.oracle_text}}</p>
+                <div id="card-oracle-text"></div>
                 <div *ngIf="this.currentCard.power && this.currentCard.toughness">
                     <p id="life-toughness-indicator"> {{this.currentCard.power}} / 
                         {{this.currentCard.toughness}} 
