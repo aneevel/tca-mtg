@@ -23,14 +23,13 @@ export class SymbolReplacerService {
     let replacedText = textToReplace;
     symbolsFound.forEach(symbol =>  {
       let symbolImageName = this.symbolInjecterService.determineSymbolImage(symbol);
-      replacedText = replacedText.replaceAll(symbol, `<img src="${symbolImageName}"/>`);
+      replacedText = replacedText.replaceAll(symbol, `<img class="symbol" src="assets/${symbolImageName}"/>`);
     })
 
-    console.log(replacedText);
+    let textElement = document.createElement('p');
+    textElement.innerHTML = replacedText;
 
-    let oracleDiv = document.createElement('div');
-
-    return oracleDiv;
+    return textElement;
 
   }
 }
