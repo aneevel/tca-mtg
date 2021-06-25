@@ -1,0 +1,7 @@
+<div id="search-container">
+    <form [formGroup]="searchForm">
+
+        <input *ngFor="let control of searchForm.controls['colors']" 
+        type="checkbox" id="colors-checkbox" [formControl]="control">
+    </form>
+</div>>
