@@ -11,6 +11,7 @@ export class CardDisplayComponent implements OnInit {
 
   currentCard;
   oracleText: HTMLElement;
+  manaCost: HTMLElement;
   private renderer: Renderer2;
 
   constructor(private apiLayer: ApiLayerService,
@@ -24,6 +25,7 @@ export class CardDisplayComponent implements OnInit {
         this.renderer = rendererFactory.createRenderer(null, null);
 
         this.oracleText = this.symbolReplacer.replaceSymbols(this.currentCard.oracle_text);
+        this.manaCost = this.symbolReplacer.replaceSymbols(this.currentCard.mana_cost);
         this.injectReplacedTexts();
 
       });
@@ -34,6 +36,7 @@ export class CardDisplayComponent implements OnInit {
 
   injectReplacedTexts() {
     this.renderer.appendChild(document.getElementById('card-oracle-text'), this.oracleText);
+    this.renderer.appendChild(document.getElementById('card-mana-cost'), this.manaCost);
   }
 
 }
