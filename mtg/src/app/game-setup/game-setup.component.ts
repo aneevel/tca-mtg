@@ -44,14 +44,11 @@ export class GameSetupComponent implements OnInit {
     constructor(
         private playerService: PlayersService,
         private deckService: DecksService,
-        private storageService: StorageService,
-        private gameService: CurrentGameService,
         private router: Router,
         private formBuilder: FormBuilder
     ) { 
         this.players = playerService.getPlayers();
         this.decks = deckService.getDecks();
-        this.currentGameService = gameService;
     }
 
     ngOnInit(): void {

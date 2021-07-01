@@ -9,6 +9,10 @@ import { FormArray, FormControl, FormGroup, ReactiveFormsModule } from '@angular
 export class SearchComponent {
 
   searchForm = new FormGroup({
+    timesUsed: new FormControl(''),
+    timesWon: new FormControl(''),
+    timesLost: new FormControl(''),
+    winningPercentage: new FormControl(''),
     colors: new FormArray([
       new FormControl('Red'),
       new FormControl('Blue'),
@@ -16,10 +20,6 @@ export class SearchComponent {
       new FormControl('Black'),
       new FormControl('Green')
     ]),
-    timesUsed: new FormControl(''),
-    timesWon: new FormControl(''),
-    timesLost: new FormControl(''),
-    winningPercentage: new FormControl('')
   });
 
 }
