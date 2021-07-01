@@ -1,8 +1,27 @@
 <div id="search-container">
     <h3>Search Decks</h3>
-    <form [formGroup]="searchForm">
+    <form [formGroup]="searchForm" (ngSubmit)="onSearch()">
+        <label for="times-used">Times Used: </label>
+        <input id="times-used" type="text" formControlName="timesUsed">
+        
+        <label for="times-won">Times Won: </label>
+        <input id="times-won" type="text" formControlName="timesWon">
 
-        <input *ngFor="let control of searchForm.controls['colors']" 
-        type="checkbox" id="colors-checkbox" [formControl]="control">
+        <label for="times-lost">Times Lost: </label>
+        <input id="times-lost" type="text" formControlName="timesLost">
+
+        <div id="winning-percentage-selection">
+            <input type="radio" id="less-than" name="winningPercentage" value="less-than" checked>
+            <label for="less-than">Less Than</label>
+
+            <input type="radio" id="equal-to" name="winningPercentage" value="equal-to">
+            <label for="equal-to">Equal To</label>
+
+            <input type="radio" id="greater-than" name="winningPercentage" value="more-than">
+            <label for="greater-than">Greater Than</label>
+
+            <input id="winning-percentage" type="text" formControlName="winningPercentage">
+        </div>
+
     </form>
-</div>>
+</div>
