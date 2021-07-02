@@ -23,5 +23,7 @@
             <input id="winning-percentage" type="text" formControlName="winningPercentage">
         </div>
 
+        <button type="submit" [disabled]="!searchForm.valid">Search</button>
+
     </form>
 </div>

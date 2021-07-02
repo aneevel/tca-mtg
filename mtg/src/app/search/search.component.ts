@@ -23,7 +23,7 @@ export class SearchComponent {
   });
 
   onSearch() {
-
+    console.log("Searching for values");
   }
 
 }
