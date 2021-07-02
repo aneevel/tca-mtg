@@ -31,7 +31,7 @@ export class SearchComponent implements OnInit {
       console.log("Times Used:", form.value.timesUsed);
       console.log("Times Won:", form.value.timesWon);
       console.log("Times Lost:", form.value.timesLost);
-      console.log("Colors Included:", form.value.colorsSelection);
+      console.log("Colors Included:", this.colors.value);
   }
 
   get colors() {

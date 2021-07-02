@@ -11,8 +11,9 @@
         <input id="times-lost" type="text" formControlName="timesLost">
 
         <ng-container formArrayName="colors">
-            <div *ngFor="let color of colors.controls">
-                
+            <div *ngFor="let color of colors.controls; index as i">
+                <input type="checkbox" id="i" [formControlName]="i"/>
+                <label for="i">{{color.value}}</label>
             </div>
         </ng-container>
 
