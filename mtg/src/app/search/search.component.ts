@@ -8,19 +8,9 @@ import { FormArray, FormControl, FormGroup, ReactiveFormsModule } from '@angular
 })
 export class SearchComponent {
 
-  searchForm = new FormGroup({
-    timesUsed: new FormControl(''),
-    timesWon: new FormControl(''),
-    timesLost: new FormControl(''),
-    winningPercentage: new FormControl(''),
-    colors: new FormArray([
-      new FormControl('Red'),
-      new FormControl('Blue'),
-      new FormControl('White'),
-      new FormControl('Black'),
-      new FormControl('Green')
-    ]),
-  });
+  searchForm: FormGroup;
+
+  
 
   onSearch() {
     console.log("Searching for values");
