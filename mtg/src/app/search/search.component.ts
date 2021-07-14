@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { of } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { Deck } from '../deck';
 
 @Component({
   selector: 'app-search',
@@ -9,6 +12,7 @@ import { FormArray, FormControl, FormGroup, ReactiveFormsModule } from '@angular
 export class SearchComponent implements OnInit {
 
   searchForm: FormGroup;
+  filters: Map<string, string>;
 
   ngOnInit() {
     this.searchForm = new FormGroup({
@@ -24,18 +28,29 @@ export class SearchComponent implements OnInit {
       ]),
       winningPercentage: new FormControl('')
     })
+
+    this.filters = new Map();
   }
 
   onSearch(form: FormGroup) {
-      console.log("Searching with values...");
-      console.log("Times Used:", form.value.timesUsed);
-      console.log("Times Won:", form.value.timesWon);
-      console.log("Times Lost:", form.value.timesLost);
-      console.log("Colors Included:", this.colors.value);
+      this.replaceDecks(this.filterSearchResults(form));
   }
 
   get colors() {
     return this.searchForm.get('colors') as FormArray;
+  }
+
+  replaceDecks(decks: Deck[]) {
+
+  }
+
+  filterSearchResults(form: FormGroup): Deck[] {
+
+    let filteredDecks: Deck[] = [];
+
+    console.log("Filters in use: ", this.filters);
+
+    return filteredDecks;
   }
 
 }

@@ -1,6 +1,5 @@
 import { Component, OnInit, Renderer2, RendererFactory2 } from '@angular/core';
 
-import { Deck } from '../deck';
 import { StorageService } from '../storage.service';
 import { DecksService } from '../decks.service';
 import { DeckViewCreatorService } from '../deck-view-creator.service';
@@ -28,5 +27,14 @@ export class ViewDecksComponent implements OnInit {
   ngOnInit(): void {
     this.deckViews.forEach(deckView => this.renderer.appendChild(document.getElementById('decks-container'), deckView));
   }
+
+}
+
+@Component({
+  selector: 'app-deck-search',
+  templateUrl: './search-decks.component.html',
+  styleUrls: ['./search-decks.component.css']
+})
+export class DeckSearchComponent {
 
 }

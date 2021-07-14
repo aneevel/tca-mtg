@@ -1,5 +1,23 @@
 <div class="page-container">
     <app-search></app-search>
     <h1 class="decks" id="decks-header">Decks</h1>
-    <mat-grid-list id="decks-container" cols="3" rowHeight="2:1"></mat-grid-list>
+    <div *ngIf="isSearching">
+        <h4>Searching for decks...</h4>
+    </div>
+    <ng-container *ngIf="apiResponse['Response'] == 'False'; else elseTemplate">
+        <div role="alert">
+            {{apiResponse['Error']}}
+        </div>
+
+    </ng-container>
+
+    <ng-template #elseTemplate>
+        <div *ngFor="let deck of apiResponse['Search']">
+            <div class="deck-card">
+                <app-deck-card>
+
+                </app-deck-card>
+            </div>
+        </div>
+    </ng-template>
 </div>
