@@ -9,8 +9,9 @@ import { GameSetupComponent } from './game-setup/game-setup.component';
 import { GamePlayComponent } from './game-play/game-play.component';
 import { ViewStatsComponent } from './view-stats/view-stats.component';
 import { ViewUsersComponent } from './view-users/view-users.component';
-import { ViewDecksComponent } from './view-decks/view-decks.component';
+import { DeckSearchComponent, ViewDecksComponent } from './view-decks/view-decks.component';
 import { NavigationComponent } from './navigation/navigation.component';
+import { DeckCardComponent } from './deck-card/deck-card.component';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -27,8 +28,6 @@ import { MatMenuModule } from '@angular/material/menu';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { CardDisplayComponent } from './card-display/card-display.component';
-import { SearchComponent } from './search/search.component';
-
 
 const routes: Routes = [
     { path: 'game-setup', component: GameSetupComponent },
@@ -42,7 +41,7 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
+    HomeComponent, 
     GameSetupComponent,
     GamePlayComponent,
     ViewStatsComponent,
@@ -50,7 +49,8 @@ const routes: Routes = [
     ViewDecksComponent,
     NavigationComponent,
     CardDisplayComponent,
-    SearchComponent,
+    DeckSearchComponent,
+    DeckCardComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
